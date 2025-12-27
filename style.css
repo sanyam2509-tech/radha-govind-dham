@@ -2041,3 +2041,192 @@ body {
         font-size: 1.8rem;
     }
 }
+
+/* --- CAROUSEL STYLES --- */
+
+.carousel-container {
+    position: relative;
+    max-width: 900px;
+    /* Adjust size as needed */
+    height: 500px;
+    /* Fixed height for consistency */
+    margin: 40px auto;
+    overflow: hidden;
+    /* Hides the other images */
+    border-radius: 15px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    /* Gold border */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    /* Smooth Slide */
+}
+
+.carousel-slide {
+    min-width: 100%;
+    /* Each slide takes full width */
+    position: relative;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8);
+}
+
+/* Caption Overlay */
+.slide-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    padding: 30px;
+    text-align: left;
+}
+
+.slide-caption h3 {
+    color: var(--gold);
+    font-family: var(--font-head);
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+.slide-caption p {
+    color: #ddd;
+    margin-top: 5px;
+}
+
+/* Buttons */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    transition: 0.3s;
+}
+
+.carousel-btn:hover {
+    background: var(--gold);
+    color: black;
+}
+
+.prev-btn {
+    left: 20px;
+}
+
+.next-btn {
+    right: 20px;
+}
+
+/* Dots */
+.carousel-dots {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dot.active {
+    background: var(--gold);
+    transform: scale(1.2);
+}
+
+/* Mobile Adjustment */
+@media (max-width: 768px) {
+    .carousel-container {
+        height: 300px;
+    }
+
+    .slide-caption h3 {
+        font-size: 1.4rem;
+    }
+}
+
+/* --- TIMELINE PHOTOS --- */
+
+/* --- OPPOSITE SIDE IMAGES --- */
+
+.timeline-item {
+    position: relative;
+    overflow: visible;
+    /* Important: Allows image to sit outside the box */
+}
+
+.timeline-opposite-img {
+    position: absolute;
+    top: 10px;
+    /* Align with top of text card */
+    width: 280px;
+    /* Fixed width */
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid var(--gold);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    transition: 0.3s;
+}
+
+.timeline-opposite-img:hover {
+    transform: scale(1.05);
+    border-color: #fff;
+}
+
+/* LOGIC: Push image to the empty side */
+
+/* If Text is LEFT -> Image goes RIGHT */
+.left .timeline-opposite-img {
+    left: 120%;
+    /* 100% is the center line. 120% moves it into the right space */
+}
+
+/* If Text is RIGHT -> Image goes LEFT */
+.right .timeline-opposite-img {
+    right: 120%;
+    /* Moves it into the left space */
+}
+
+
+/* --- MOBILE FIX (Stack them) --- */
+@media (max-width: 900px) {
+    .timeline-opposite-img {
+        position: static;
+        /* No longer absolute */
+        width: 100%;
+        /* Full width of the card */
+        height: 200px;
+        margin-bottom: 20px;
+        display: block;
+        /* Reset Left/Right pushes */
+        left: auto;
+        right: auto;
+    }
+}
+
+/* Hover Effect: Photo brightens up */
+.timeline-content:hover .timeline-img {
+    filter: sepia(0%) brightness(1.1);
+    transform: scale(1.02);
+}

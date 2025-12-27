@@ -77,6 +77,55 @@
             transition: 0.3s;
         }
         .back-btn:hover { background: #FFD700; color: black; }
+        /* --- VIDEO GALLERY STYLES --- */
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Auto-responsive columns */
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.video-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.video-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* The Magic Wrapper for Responsive Video */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-card h3 {
+    color: var(--gold);
+    font-family: var(--font-head);
+    font-size: 1.2rem;
+    padding: 20px;
+    margin: 0;
+}
     </style>
 </head>
 <body>
@@ -127,6 +176,50 @@
         </p>
 
     </article>
+    <section id="video-gallery" class="centered-panel" style="padding-bottom: 80px;">
+    
+    <div class="gallery-header">
+        <h2 class="section-title">Divine Discourses</h2>
+        <p class="section-subtitle">Watch the latest Satsang and Kirtan by Didi Ji</p>
+    </div>
+
+    <div class="video-grid">
+        
+        <div class="video-card">
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/R6PmTQ9EU0Y" 
+                        title="Didi Ji Satsang" frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+            <h3>धन्य धन्य ब्रजनार माधो</h3>
+        </div>
+
+        <div class="video-card">
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/G2l_l29Y8fs" 
+                        title="Kirtan Bliss" frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+            <h3>Jagadguruttam Diwas 2024 Celebration & Distribution</h3>
+        </div>
+
+        <div class="video-card">
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/oBkJ-C3Qb98" 
+                        title="Gita Gyan" frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+            <h3>श्रद्धा ? || Devotion ?</h3>
+        </div>
+
+    </div>
+</section>
 
     <footer style="text-align: center; padding: 50px; border-top: 1px solid #333; color: #666;">
         <p>© 2025 Radha Govind Dham. All Rights Reserved.</p>

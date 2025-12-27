@@ -19,6 +19,7 @@
     <script type="module" src="https://unpkg.com/@splinetool/viewer@0.9.490/build/spline-viewer.js"></script>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 </head>
 
 <body>
@@ -32,6 +33,9 @@
         </div>
     </div>
 
+
+
+
     <main id="content">
 
         <nav class="glass-nav">
@@ -43,28 +47,65 @@
             <div class="close-menu"><i class="fa-solid fa-xmark"></i></div>
 
             <div class="menu-content">
+
                 <div class="menu-left">
-                    <img src="https://i.pinimg.com/736x/87/85/24/878524ed631849a8e81d6704fe569b9d.jpg"
-                        alt="Bansuri Logo" style="width: 150px; opacity: 0.8; margin-bottom: 20px; border-radius: 50%;">
-                    <p class="menu-quote">"The call of the Divine Flute."</p>
+                    <img id="menu-preview-img" src="images/logo.png" alt="Preview"
+                        style="width: 250px; height: 350px; object-fit: cover; border-radius: 10px; border: 1px solid var(--gold); opacity: 0.8; transition: 0.3s;">
+
+                    <p class="menu-quote" id="menu-caption">"The call of the Divine Flute."</p>
                 </div>
 
                 <ul class="nav-links">
-                    <li><a href="#kripalu" class="nav-item">The Inspiration <span class="sub-text">Shri Maharaj
-                                Ji</span></a></li>
-                    <li><a href="#deviji" class="nav-item">The Founder <span class="sub-text">Devi Ji</span></a></li>
-                    <li><a href="#future-teaser" class="nav-item">The Dham <span class="sub-text">Project
-                                Vision</span></a>
+
+                    <li>
+                        <a href="index.html" class="nav-item" data-img="images/logo.jpg"
+                            data-text='"The call of the Divine Flute."'>
+                            Home <span class="sub-text">The Beginning</span>
+                        </a>
                     </li>
-                    <li><a href="#shivir" class="nav-item">Sadhna Shivir <span class="sub-text">Register</span></a></li>
-                    <li><a href="#donate" class="nav-item donate-link">Donate (Seva)</a></li>
+
+                    <li>
+                        <a href="maharajji.html" class="nav-item" data-img="images/maharajji_portrait.jpg"
+                            data-text='"The 5th Original Jagadguru"'>
+                            The Inspiration <span class="sub-text">Shri Maharaj Ji</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="deviji.html" class="nav-item" data-img="images/deviji_portrait.JPG"
+                            data-text='"The Embodiment of Grace"'>
+                            The Founder <span class="sub-text">Sushri Devi Ji</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="journey.html" class="nav-item" data-img="images/chail_view.JPG"
+                            data-text='"The Abode of Peace"'>
+                            The Dham <span class="sub-text">Our Centers</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#shivir-section" class="nav-item" onclick="closeMenu()"
+                            data-img="mages/logo.jpg" data-text='"Transform Your Life"'>
+                            Join Us <span class="sub-text">Sadhana Shivir Registration</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#donate-section" class="nav-item donate-link" onclick="closeMenu()"
+                            data-img="images/logo.jpg" data-text='"The Joy of Giving"'>
+                            Donate <span class="sub-text">Support the Mission</span>
+                        </a>
+                    </li>
+
                 </ul>
             </div>
 
             <div class="menu-footer">
-                <a href="#">YouTube</a>
-                <a href="#">Facebook</a>
-                <a href="#">Instagram</a>
+                <a href="https://www.youtube.com/@ShreeKripaluKunj">YouTube</a>
+                <a href="https://www.facebook.com/ShreeKripaluKunj/">Facebook</a>
+                <a href="https://www.instagram.com/shreekripalukunj/">Instagram</a>
             </div>
         </div>
 
@@ -72,9 +113,33 @@
         <section class="hero-section">
             <div class="hero-bg"></div>
             <div class="hero-text">
-                <p class="subtitle">Under the Guidance of Sushri Braj Bhuvaneshwari Devi Ji</p>
-                <h1 class="glimmer-text">Radha Govind Dham</h1>
-                <p class="location">Chail, Himachal Pradesh</p>
+                <div style="text-align: center; padding: 40px 20px;">
+
+                    <p style="
+        font-family: sans-serif; 
+        font-size: 14px; 
+        text-transform: uppercase; 
+        letter-spacing: 3px; 
+        color: #FFD700; 
+        margin-bottom: 10px;
+        font-weight: 500;">
+                        Under the Guidance of
+                    </p>
+
+                    <h1 style="
+        font-family: 'Times New Roman', serif; 
+        font-size: 48px; 
+        line-height: 1.2; 
+        color: #d97706; /* Saffron/Gold Color */
+        margin: 0;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.1); /* Subtle 3D lift */
+        font-weight: 700;">
+                        Sushri Braj Bhuvaneshwari Devi Ji
+                    </h1>
+
+                </div>
+                <h1 class="glimmer-text" style="font-size: 50px;">Radha Govind Dham</h1>
+                <p class="location" style="font-size: 25px;">Chail, Himachal Pradesh</p>
                 <a href="#kripalu" class="scroll-down-btn">
                     <i class="fa-solid fa-arrow-down-long"></i>
                 </a>
@@ -100,62 +165,61 @@
 
             <div class="timeline-container">
                 <div class="timeline-line"></div>
+
                 <div class="timeline-item left">
                     <div class="timeline-dot"></div>
+
                     <div class="timeline-content glass-card">
                         <span class="year">1922</span>
                         <h3>The Divine Appearance</h3>
-                        <p>Appeared on Sharad Purnima night in Mangarh, Pratapgarh. From childhood, his divine radiance
-                            captivated everyone around him.</p>
+                        <p>Appeared on Sharad Purnima night in Mangarh. From childhood, his divine radiance captivated
+                            everyone around him.</p>
                     </div>
+
+                    <img src="images/kripalu_dham.avif" alt="Mangarh" class="timeline-opposite-img">
                 </div>
 
                 <div class="timeline-item right">
                     <div class="timeline-dot"></div>
+
                     <div class="timeline-content glass-card">
                         <span class="year">1957</span>
                         <h3>Honored as Jagadgurottam</h3>
-                        <p>At just 34 years old, he stunned the scholars of Kashi Vidvat Parishat. They unanimously
-                            honored him as the <strong>5th Original Jagadguru</strong>, a title given only 4 times
-                            before in history.</p>
+                        <p>At just 34 years old, the scholars of Kashi Vidvat Parishat unanimously honored him as the
+                            <strong>5th Original Jagadguru</strong>.
+                        </p>
                     </div>
+
+                    <img src="images/kashi_vidvat.jpg" alt="Kashi" class="timeline-opposite-img">
                 </div>
 
                 <div class="timeline-item left">
                     <div class="timeline-dot"></div>
+
                     <div class="timeline-content glass-card">
                         <span class="year">Scriptures</span>
                         <h3>The Ocean of Knowledge</h3>
-                        <p>He gifted the world with monumental works like <em>Prem Ras Madira</em> (1008 pads),
-                            <em>Radha Govind Geet</em>, and <em>Prem Ras Siddhant</em>, simplifying the Vedas for the
-                            common man.
-                        </p>
+                        <p>He gifted the world with monumental works like <em>Prem Ras Madira</em> and <em>Radha Govind
+                                Geet</em>, simplifying the Vedas for the common man.</p>
                     </div>
+
+                    <img src="images/madira.png" alt="Scriptures" class="timeline-opposite-img">
                 </div>
 
                 <div class="timeline-item right">
                     <div class="timeline-dot"></div>
+
                     <div class="timeline-content glass-card">
                         <span class="year">Legacy</span>
-                        <h3>Temples of Love</h3>
-                        <p>He established three divine monuments: <strong>Prem Mandir</strong> (Vrindavan),
-                            <strong>Bhakti Mandir</strong> (Mangarh), and <strong>Kirti Mandir</strong> (Barsana) to
-                            preserve devotion for eternity.
-                        </p>
+                        <h3>A Gift to the World</h3>
+                        <p>He established divine monuments like <strong>Prem Mandir</strong> (Vrindavan) and Kirti
+                            Mandir to preserve the glory of Bhakti for eternity.</p>
                     </div>
-                </div>
 
-                <div class="timeline-item center-end">
-                    <div class="timeline-dot large-dot"></div>
-                    <div class="timeline-content glass-card highlight-gold">
-                        <h3>The Eternal Inspiration</h3>
-                        <p>It is his divine vision that inspired Devi Ji to establish <strong>Radha Govind Dham</strong>
-                            in the Himalayas, carrying forward the flag of Bhakti.</p>
-                    </div>
+                    <img src="images/prem_mandir.png" alt="Prem Mandir" class="timeline-opposite-img">
                 </div>
 
             </div>
-
 
             </div>
             <div style="text-align: center; margin-top: 60px; padding-bottom: 40px;">
@@ -245,6 +309,8 @@
                     <i class="fa-solid fa-user-graduate"></i> Read Full Biography
                 </a>
             </div>
+            <button onclick="openMeetForm()" class="gold-btn">Greet and Meet Didi Ji</button>
+
 
         </section>
         </section>
@@ -378,6 +444,13 @@
                                 <span>Chail, Himachal</span>
                             </div>
                         </div>
+                        <div class="info-item" style="font-size: 1.5rem;">
+                            <i class="fa-solid fa-indian-rupee-sign"></i>
+                            <div>
+                                <strong>20000</strong>
+
+                            </div>
+                        </div>
                     </div>
 
                     <p class="shivir-desc">
@@ -392,20 +465,37 @@
                             <input type="tel" id="reg-phone" placeholder="WhatsApp Number" required>
                         </div>
 
-                        <div class="input-row">
-                            <select id="reg-type" class="shivir-select" onchange="updateTotal()">
-                                <option value="1500" selected>Dormitory Stay (₹1,500)</option>
-                                <option value="3500">Private Room (₹3,500)</option>
-                                <option value="0">Day Scholar (Free)</option>
-                            </select>
+                        <div class="input-row" style="display: flex; gap: 20px; align-items: flex-end;">
 
-                            <input type="number" id="reg-seva" placeholder="Add Seva Amount (Optional)" min="0"
-                                oninput="updateTotal()">
+                            <div class="input-group" style="flex: 1; min-width: 0;">
+                                <label style="color: #aaa; font-size: 0.8rem; display: block; margin-bottom: 8px;">
+                                    Advance Registration Seva
+                                </label>
+                                <input type="text" value="₹3,000" readonly style="background: rgba(255, 215, 0, 0.1); 
+                      color: #FFD700; 
+                      border: 1px solid #FFD700; 
+                      font-weight: bold; 
+                      cursor: not-allowed; 
+                      width: 100%; 
+                      box-sizing: border-box; /* THIS FIXES THE OVERLAP */
+                      height: 50px;">
+                            </div>
+
+                            <div class="input-group" style="flex: 1; min-width: 0;">
+                                <label style="color: #aaa; font-size: 0.8rem; display: block; margin-bottom: 8px;">
+                                    Add Extra Seva (Optional)
+                                </label>
+                                <input type="number" id="reg-seva" placeholder="₹0" min="0" oninput="updateTotal()"
+                                    style="width: 100%; 
+                      box-sizing: border-box; /* THIS FIXES THE OVERLAP */
+                      height: 50px;">
+                            </div>
+
                         </div>
 
                         <div class="payment-summary">
                             <span>Total Payable Now:</span>
-                            <span id="total-amount" class="amount-highlight">₹1,500</span>
+                            <span id="total-amount" class="amount-highlight">₹3,000</span>
                         </div>
 
                         <button type="submit" class="gold-btn full-width">
@@ -462,55 +552,41 @@
                     <p>The serenity of Chail and the vibrancy of Devotion.</p>
                 </div>
 
-                <div class="masonry-grid">
+                <div class="carousel-container">
 
-                    <div class="gallery-item large">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Sunset_in_the_Himalayas.jpg/1280px-Sunset_in_the_Himalayas.jpg"
-                            alt="Himalayan Sunset" loading="lazy">
-                        <div class="overlay">
-                            <span>The Divine Peak</span>
+                    <div class="carousel-track" id="track">
+
+                        <div class="carousel-slide">
+                            <img src="glimpse_1.JPG" alt="Divine Moment 1">
+                            <div class="slide-caption">
+                                <h3>Satsang Bliss</h3>
+                                <p>Devotees immersed in the nectar of kirtan.</p>
+                            </div>
                         </div>
+
+                        <div class="carousel-slide">
+                            <img src="glimpse_2.JPG" alt="Divine Moment 2">
+                            <div class="slide-caption">
+                                <h3>Darshan</h3>
+                                <p>A moment of divine connection.</p>
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide">
+                            <img src="glimpse_3.JPG" alt="Divine Moment 3">
+                            <div class="slide-caption">
+                                <h3>Seva</h3>
+                                <p>Selfless service is the highest worship.</p>
+                            </div>
+                        </div>
+
                     </div>
 
-                    <div class="gallery-item">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Golden_Temple%2C_Amritsar_03.jpg/800px-Golden_Temple%2C_Amritsar_03.jpg"
-                            alt="Temple Sanctum" loading="lazy">
-                        <div class="overlay">
-                            <span>Sanctum Sanctorum</span>
-                        </div>
-                    </div>
+                    <button class="carousel-btn prev-btn" id="prevBtn"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="carousel-btn next-btn" id="nextBtn"><i
+                            class="fa-solid fa-chevron-right"></i></button>
 
-                    <div class="gallery-item">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Himalayan_Yogi.jpg/800px-Himalayan_Yogi.jpg"
-                            alt="Meditation in Himalayas" loading="lazy">
-                        <div class="overlay">
-                            <span>Sadhana in Silence</span>
-                        </div>
-                    </div>
-
-                    <div class="gallery-item large">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Evening_Ganga_Aarti%2C_at_Dashashwamedh_ghat%2C_Varanasi.jpg/1280px-Evening_Ganga_Aarti%2C_at_Dashashwamedh_ghat%2C_Varanasi.jpg"
-                            alt="Evening Aarti" loading="lazy">
-                        <div class="overlay">
-                            <span>Evening Aarti</span>
-                        </div>
-                    </div>
-
-                    <div class="gallery-item">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Valley_of_flowers_national_park%2C_Uttarakhand%2C_India_03_%28edit%29.jpg/800px-Valley_of_flowers_national_park%2C_Uttarakhand%2C_India_03_%28edit%29.jpg"
-                            alt="Valley of Flowers" loading="lazy">
-                        <div class="overlay">
-                            <span>Nature's Offering</span>
-                        </div>
-                    </div>
-
-                    <div class="gallery-item">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Kankhal_Haridwar.jpg/800px-Kankhal_Haridwar.jpg"
-                            alt="Ashram Life" loading="lazy">
-                        <div class="overlay">
-                            <span>Ashram Life</span>
-                        </div>
-                    </div>
+                    <div class="carousel-dots" id="dotsContainer"></div>
 
                 </div>
             </div>
@@ -538,8 +614,7 @@
 
                     <div class="impact-card">
                         <div class="card-image">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Carved_stone_pillars_at_Prem_Mandir.jpg/640px-Carved_stone_pillars_at_Prem_Mandir.jpg"
-                                alt="Temple Construction">
+                            <img src="Fund_1.jpeg" alt="Temple Construction">
                         </div>
                         <div class="card-text">
                             <h3>Building the Sanctuary</h3>
@@ -685,50 +760,48 @@
         </footer>
 
     </main>
-    <div id="darshan-modal" class="modal-overlay">
-        <div class="modal-content glass-card">
-            <span class="close-modal">&times;</span>
+    <div class="modal-overlay" id="darshan-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeDarshanModal()">&times;</span>
 
             <div class="modal-header">
-                <h2>Request Darshan</h2>
-                <p>Register for a personal meeting or group audience with Devi Ji.</p>
+                <h2>Request a Meeting</h2>
+                <p>Hari Bol! Please share your details to schedule a Darshan.</p>
             </div>
 
-            <form id="darshan-form">
+            <form onsubmit="sendDarshanRequest(event)">
+
                 <div class="input-group">
                     <label>Full Name</label>
-                    <input type="text" required placeholder="Ex: Rahul Sharma">
-                </div>
-
-                <div class="form-row">
-                    <div class="input-group">
-                        <label>Phone Number</label>
-                        <input type="tel" required placeholder="+91 98765...">
-                    </div>
-                    <div class="input-group">
-                        <label>City / Location</label>
-                        <input type="text" required placeholder="Ex: Delhi">
-                    </div>
+                    <input type="text" id="d-name" placeholder="e.g. Rahul Sharma" required>
                 </div>
 
                 <div class="input-group">
-                    <label>Preferred Mode</label>
-                    <select>
-                        <option>Personal Meeting (Private)</option>
-                        <option>Group Satsang</option>
-                        <option>Virtual Call (Zoom)</option>
-                    </select>
+                    <label>Phone Number</label>
+                    <input type="tel" id="d-phone" placeholder="+91 98765 43210" required>
                 </div>
 
                 <div class="input-group">
-                    <label>Reason / Message</label>
-                    <textarea rows="3" placeholder="Briefly describe your purpose..."></textarea>
+                    <label>Occupation</label>
+                    <input type="text" id="d-occupation" placeholder="e.g. Doctor, Student">
                 </div>
 
-                <button type="submit" class="gold-btn full-width">Submit Request</button>
+                <div class="input-group">
+                    <label>City</label>
+                    <input type="text" id="d-city" placeholder="e.g. Mumbai">
+                </div>
+
+                <div class="input-group">
+                    <label>Message (Optional)</label>
+                    <textarea id="d-msg" rows="3" placeholder="Jai Shree Radhey..."></textarea>
+                </div>
+
+                <button type="submit" class="gold-btn" style="width: 100%;">Send Request on WhatsApp</button>
             </form>
         </div>
     </div>
+
+
 
     <script src="script.js"></script>
 </body>

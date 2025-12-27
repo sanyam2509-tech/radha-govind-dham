@@ -62,12 +62,18 @@
         }
 
         /* Map Container */
+        /* Map Container */
         #map-wrapper {
             position: relative;
             width: 800px;
             height: 900px;
-            transform-origin: 32% 25%;
-            /* Zoom Focus Point */
+
+            /* CHANGED: Focus on Center of Map now, not just North */
+            transform-origin: center center;
+
+            /* Start invisible and tiny (handled by JS, but good default) */
+            opacity: 0;
+            transform: scale(0.1);
         }
 
         /* The Map Image */
@@ -405,21 +411,30 @@
         backdrop.addEventListener('click', closeEvent);
 
         // --- 3. ANIMATION (Crucial for showing pins) ---
+        // --- 3. ANIMATION (Space View -> Full India) ---
         window.onload = () => {
-            gsap.to("#map-wrapper", {
-                scale: 3.5,
-                duration: 3,
-                ease: "power2.inOut",
-                onComplete: () => {
-                    // This makes the pins visible!
-                    gsap.to(".map-marker", {
-                        opacity: 1,
-                        y: 0,
-                        stagger: 0.2,
-                        duration: 0.5
-                    });
+            // 1. Start from Space (Tiny & Invisible) -> Zoom to Full Map
+            gsap.fromTo("#map-wrapper",
+                {
+                    scale: 0.2, // Tiny "Space View" size
+                    opacity: 0
+                },
+                {
+                    scale: 1, // Full India Visible (Not zoomed into North)
+                    opacity: 1,
+                    duration: 3.5, // Slower, cinematic zoom
+                    ease: "power4.out", // Smooth landing
+                    onComplete: () => {
+                        // 2. Show the Pins AFTER map lands
+                        gsap.to(".map-marker", {
+                            opacity: 1,
+                            y: 0,
+                            stagger: 0.2,
+                            duration: 0.8
+                        });
+                    }
                 }
-            });
+            );
         };
     </script>
 

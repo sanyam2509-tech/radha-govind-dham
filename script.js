@@ -113,32 +113,80 @@ if (lightbox) {
     });
 }
 
-// 7. DARSHAN MODAL
-const darshanModal = document.getElementById('darshan-modal');
-const closeDarshanBtn = document.querySelector('.close-modal');
-if (darshanModal && closeDarshanBtn) {
-    document.querySelectorAll('.open-darshan-btn, .gold-btn').forEach(btn => {
-        if (btn.innerText.includes("Darshan") || btn.innerText.includes("Meet")) {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                darshanModal.style.display = "flex";
-            });
-        }
-    });
-    closeDarshanBtn.addEventListener('click', () => darshanModal.style.display = "none");
-    window.addEventListener('click', (e) => {
-        if (e.target == darshanModal) darshanModal.style.display = "none";
-    });
-}
+
+
 // --- SHIVIR PAYMENT LOGIC ---
 
-function updateTotal() {
-    const fee = parseInt(document.getElementById('reg-type').value) || 0;
-    const seva = parseInt(document.getElementById('reg-seva').value) || 0;
-    const total = fee + seva;
+// --- UPDATED SHIVIR REGISTRATION LOGIC (FIXED 3000) ---
 
-    // Update the display text
+// 1. Update Total Display Function
+function updateTotal() {
+    const fixedFee = 3000;
+    const extraSeva = parseInt(document.getElementById('reg-seva').value) || 0;
+    const total = fixedFee + extraSeva;
+
     document.getElementById('total-amount').innerText = "₹" + total.toLocaleString('en-IN');
+}
+
+// 2. Handle Payment Submission
+const shivirForm = document.getElementById('shivir-payment-form');
+
+if (shivirForm) {
+    shivirForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Get Values
+        const name = document.getElementById('reg-name').value;
+        const phone = document.getElementById('reg-phone').value;
+        
+        // CALCULATION: Fixed 3000 + Optional Extra
+        const fixedFee = 3000;
+        const extraSeva = parseInt(document.getElementById('reg-seva').value) || 0;
+        const totalAmount = (fixedFee + extraSeva) * 100; // Convert to Paise for Razorpay
+
+        // Configure Razorpay
+        var options = {
+            "key": "YOUR_RAZORPAY_KEY_ID", // REPLACE THIS
+            "amount": totalAmount,
+            "currency": "INR",
+            "name": "Radha Govind Dham",
+            "description": "Shivir Advance Seva",
+            "image": "https://via.placeholder.com/150",
+            
+            // SENDING DATA TO DASHBOARD
+            "notes": {
+                "Devotee Name": name,
+                "Phone": phone,
+                "Payment Type": "Fixed Advance Seva (₹3000)",
+                "Extra Donation": "₹" + extraSeva
+            },
+
+            "handler": function (response) {
+                // Success Alert
+                alert("Registration Successful! Payment ID: " + response.razorpay_payment_id);
+
+                // Optional: WhatsApp Confirmation to Admin
+                const adminNumber = "919876543210"; // REPLACE
+                const msg = `*New Shivir Registration* %F0%9F%8E%89%0A%0A` +
+                            `*Name:* ${name}%0A` +
+                            `*Phone:* ${phone}%0A` +
+                            `*Total Paid:* ₹${(fixedFee + extraSeva)}%0A` +
+                            `*Payment ID:* ${response.razorpay_payment_id}`;
+                
+                window.open(`https://wa.me/${adminNumber}?text=${msg}`, '_blank');
+            },
+            "prefill": {
+                "name": name,
+                "contact": phone
+            },
+            "theme": {
+                "color": "#FFD700"
+            }
+        };
+
+        var rzp1 = new Razorpay(options);
+        rzp1.open();
+    });
 }
 
 // Handle Form Submission
@@ -304,3 +352,244 @@ document.addEventListener('DOMContentLoaded', function () {
         displayElement.innerText = graceLines[randomIndex];
     }
 });
+// --- CAROUSEL LOGIC ---
+
+document.addEventListener('DOMContentLoaded', () => {
+    const track = document.getElementById('track');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const dotsContainer = document.getElementById('dotsContainer');
+    
+    // Get all slides
+    const slides = Array.from(track.children);
+    let currentIndex = 0;
+    let autoPlayInterval;
+    
+    // 1. Create Dots based on number of slides
+    slides.forEach((slide, index) => {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        if (index === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => {
+            stopAutoPlay(); // User clicked dot -> Stop auto
+            goToSlide(index);
+        });
+        dotsContainer.appendChild(dot);
+    });
+    
+    const dots = Array.from(dotsContainer.children);
+
+    // 2. The Main Move Function
+    function goToSlide(index) {
+        if (index < 0) index = slides.length - 1; // Loop back to end
+        if (index >= slides.length) index = 0;    // Loop back to start
+        
+        currentIndex = index;
+        
+        // Move the track
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        
+        // Update Dots
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[currentIndex].classList.add('active');
+    }
+
+    // 3. Auto Play Setup
+    function startAutoPlay() {
+        autoPlayInterval = setInterval(() => {
+            goToSlide(currentIndex + 1);
+        }, 3000); // Change every 3 seconds
+    }
+
+    function stopAutoPlay() {
+        clearInterval(autoPlayInterval);
+    }
+
+    // 4. Button Events (Stops Auto Play)
+    nextBtn.addEventListener('click', () => {
+        stopAutoPlay();
+        goToSlide(currentIndex + 1);
+    });
+
+    prevBtn.addEventListener('click', () => {
+        stopAutoPlay();
+        goToSlide(currentIndex - 1);
+    });
+
+    // 5. Touch / Swipe Support for Mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    track.addEventListener('touchstart', (e) => {
+        stopAutoPlay(); // User touched -> Stop auto
+        touchStartX = e.changedTouches[0].screenX;
+    });
+
+    track.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+
+    function handleSwipe() {
+        if (touchEndX < touchStartX - 50) {
+            goToSlide(currentIndex + 1); // Swiped Left -> Next
+        }
+        if (touchEndX > touchStartX + 50) {
+            goToSlide(currentIndex - 1); // Swiped Right -> Prev
+        }
+    }
+
+    // Start it initially!
+    startAutoPlay();
+});
+// --- DARSHAN / GREET & MEET LOGIC ---
+
+// 1. Get Elements
+const darshanModal = document.getElementById('darshan-modal');
+const closeDarshanBtn = document.querySelector('#darshan-modal .close-modal'); // Specific close button
+const darshanForm = document.getElementById('darshan-form');
+
+// 2. Open Modal Function (Call this from your buttons)
+function openMeetForm() {
+    if(darshanModal) {
+        darshanModal.style.display = "flex";
+        
+        // Optional: Animation using GSAP if you have it loaded
+        gsap.fromTo(".modal-content", 
+            {y: 50, opacity: 0}, 
+            {y: 0, opacity: 1, duration: 0.4}
+        );
+    }
+}
+
+// 3. Close Logic
+if(closeDarshanBtn) {
+    closeDarshanBtn.addEventListener('click', () => {
+        darshanModal.style.display = "none";
+    });
+}
+
+// Close if clicking outside the box
+window.addEventListener('click', (e) => {
+    if (e.target === darshanModal) {
+        darshanModal.style.display = "none";
+    }
+});
+
+// 4. Handle Form Submission
+// --- WHATSAPP FORM SUBMISSION LOGIC ---
+
+
+
+if(darshanForm) {
+    darshanForm.addEventListener('submit', (e) => {
+        e.preventDefault(); // Stop the page from reloading
+
+        // 1. Get Values from the HTML inputs
+        const name = document.getElementById('meet-name').value;
+        const phone = document.getElementById('meet-phone').value;
+        const city = document.getElementById('meet-city').value;
+        const type = document.getElementById('meet-type').value;
+        const date = document.getElementById('meet-date').value; 
+        const msg = document.getElementById('meet-msg').value;
+
+        // 2. Your Admin Phone Number (Format: CountryCode + Number, NO '+' sign)
+        // Example: 919812345678
+        const adminNumber = "919780881008"; 
+
+        // 3. Create the Pre-filled Message (using %0A for new lines)
+        const whatsappMsg = 
+            `*New Darshan Request* %F0%9F%99%8F%0A%0A` + // Hands folded emoji
+            `*Name:* ${name}%0A` +
+            `*Phone:* ${phone}%0A` +
+            `*City:* ${city}%0A` +
+            `*Type:* ${type}%0A` +
+            `*Date:* ${date}%0A` +
+            `*Note:* ${msg}`;
+
+        // 4. Open WhatsApp
+        const url = `https://wa.me/${adminNumber}?text=${whatsappMsg}`;
+        window.open(url, '_blank');
+
+        // 5. Close Modal & Reset Form
+        document.getElementById('darshan-modal').style.display = "none";
+        darshanForm.reset();
+    });
+}
+// --- DYNAMIC MENU IMAGE HOVER ---
+
+document.addEventListener('DOMContentLoaded', () => {
+    const menuImg = document.getElementById('menu-preview-img');
+    const menuCaption = document.getElementById('menu-caption');
+    const navLinks = document.querySelectorAll('.nav-item');
+    
+    // Safety check: only run if menu elements exist
+    if(menuImg && navLinks.length > 0) {
+        
+        navLinks.forEach(link => {
+            
+            // Mouse Enter: Swap Image & Text
+            link.addEventListener('mouseenter', () => {
+                const newImg = link.getAttribute('data-img');
+                const newText = link.getAttribute('data-text');
+                
+                if (newImg) {
+                    // 1. Fade Out
+                    menuImg.style.opacity = 0;
+                    if(menuCaption) menuCaption.style.opacity = 0;
+                    
+                    setTimeout(() => {
+                        // 2. Swap Content
+                        menuImg.src = newImg;
+                        if(menuCaption && newText) menuCaption.innerText = newText;
+                        
+                        // 3. Fade In
+                        menuImg.style.opacity = 1;
+                        if(menuCaption) menuCaption.style.opacity = 1;
+                    }, 200); // Wait 200ms for fade out
+                }
+            });
+            
+        });
+    }
+});
+
+// --- HELPER TO CLOSE MENU (For Page Jumps) ---
+function closeMenu() {
+    const menuOverlay = document.getElementById('menu-overlay');
+    if (menuOverlay) {
+        menuOverlay.classList.remove('active');
+    }
+}
+// --- SEND DARSHAN REQUEST TO WHATSAPP ---
+
+function sendDarshanRequest(event) {
+    event.preventDefault(); // Stops the page from reloading
+
+    // 1. Get values from the HTML IDs we just added
+    const name = document.getElementById('d-name').value;
+    const phone = document.getElementById('d-phone').value;
+    const occupation = document.getElementById('d-occupation').value;
+    const city = document.getElementById('d-city').value;
+    const msg = document.getElementById('d-msg').value;
+
+    // 2. The Phone Number to receive the message (No '+' or spaces)
+    // Using the number you provided earlier: 97808-81008
+    const adminPhone = "919780881008"; 
+
+    // 3. Format the Message nicely
+    // %0a creates a new line in WhatsApp
+    const whatsappText = 
+        `*Radhe Radhe! New Darshan Request* 🌸%0a` +
+        `--------------------------------%0a` +
+        `👤 *Name:* ${name}%0a` +
+        `📞 *Phone:* ${phone}%0a` +
+        `💼 *Occupation:* ${occupation}%0a` +
+        `VX *City:* ${city}%0a` +
+        `📝 *Message:* ${msg}%0a` +
+        `--------------------------------`;
+
+    // 4. Open WhatsApp
+    const url = `https://wa.me/${adminPhone}?text=${whatsappText}`;
+    window.open(url, '_blank');
+}
