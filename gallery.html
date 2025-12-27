@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divine Gallery | Radha Govind Dham</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Specific Styles for Full Gallery Page */
+        body { background-color: #050508; }
+        
+        .gallery-page-header {
+            padding: 100px 20px 50px;
+            text-align: center;
+        }
+        
+        .back-btn {
+            position: fixed;
+            top: 30px; left: 30px;
+            z-index: 100;
+            color: #FFD700;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            border: 1px solid #FFD700;
+            padding: 10px 25px;
+            border-radius: 30px;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            transition: 0.3s;
+        }
+        .back-btn:hover { background: #FFD700; color: black; }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+
+    <div class="gallery-page-header">
+        <h2 class="section-title">Divine Memories</h2>
+        <p class="subtitle" style="color: #aaa;">Moments of Grace, Seva, and Celebration.</p>
+    </div>
+
+    <section class="gallery-container">
+        <div class="masonry-grid">
+
+            <div class="gallery-item large">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Sunset_in_the_Himalayas.jpg/1280px-Sunset_in_the_Himalayas.jpg" alt="Himalayan Sunset">
+                <div class="overlay"><span>The Divine Peak</span></div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Golden_Temple%2C_Amritsar_03.jpg/800px-Golden_Temple%2C_Amritsar_03.jpg" alt="Temple View">
+                <div class="overlay"><span>Temple View</span></div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Himalayan_Yogi.jpg/800px-Himalayan_Yogi.jpg" alt="Sadhana">
+                <div class="overlay"><span>Deep Sadhana</span></div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/600x800" alt="Festivals">
+                <div class="overlay"><span>Festivals</span></div>
+            </div>
+
+            <div class="gallery-item large">
+                <img src="https://via.placeholder.com/800x600" alt="Community Seva">
+                <div class="overlay"><span>Community Seva</span></div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/600x600" alt="Nature">
+                <div class="overlay"><span>Nature's Beauty</span></div>
+            </div>
+
+        </div>
+    </section>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <div id="caption"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Vision | Radha Govind Dham</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@0.9.490/build/spline-viewer.js"></script>
+    
+    <style>
+        body { 
+            margin: 0; 
+            padding: 0; 
+            overflow: hidden; 
+            background-color: #050508; 
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Back Button */
+        .back-btn {
+            position: fixed;
+            top: 30px; left: 30px;
+            z-index: 100;
+            color: #FFD700;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            border: 1px solid #FFD700;
+            padding: 10px 25px;
+            border-radius: 30px;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            transition: 0.3s;
+        }
+        .back-btn:hover { background: #FFD700; color: black; }
+
+        /* The 3D Container */
+        .vision-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        /* Loading Text */
+        .loading-text {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            color: #666;
+            font-family: 'Cinzel', serif;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+
+    <div class="vision-container">
+        <p class="loading-text">Loading the Divine Vision...</p>
+        
+        <spline-viewer url="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode"></spline-viewer>
+    </div>
+
+</body>
+</html>

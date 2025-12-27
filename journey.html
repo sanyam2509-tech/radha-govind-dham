@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Journey | Radha Govind Dham</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <style>
+        body {
+            /* Allow scrolling if the map doesn't fit */
+            overflow: auto;
+
+            height: 100vh;
+            background: #050508;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Cinzel', serif;
+        }
+
+        /* Ensure the map wrapper has breathing room */
+        #map-wrapper {
+            position: relative;
+            width: 800px;
+            height: 900px;
+            transform-origin: 32% 25%;
+
+            /* Scale down slightly on smaller screens */
+            transform: scale(0.9);
+        }
+
+        /* Back Button */
+        .back-btn {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 100;
+            color: #FFD700;
+            text-decoration: none;
+            border: 1px solid #FFD700;
+            padding: 10px 25px;
+            border-radius: 30px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #FFD700;
+            color: black;
+        }
+
+        /* Map Container */
+        #map-wrapper {
+            position: relative;
+            width: 800px;
+            height: 900px;
+            transform-origin: 32% 25%;
+            /* Zoom Focus Point */
+        }
+
+        /* The Map Image */
+        .india-map-img {
+            width: 100%;
+            /* Gold Filter */
+            filter: invert(1) sepia(1) saturate(1000%) hue-rotate(0deg) brightness(0.8) contrast(1.2);
+            opacity: 0.4;
+        }
+
+        /* --- STYLISH CALLOUT PINS --- */
+        .map-marker {
+            position: absolute;
+            width: 0;
+            height: 0;
+            /* It's a point in space */
+            cursor: pointer;
+            opacity: 0;
+            /* Hidden until JS animates it */
+            z-index: 10;
+        }
+
+        /* The Glowing Dot */
+        .pin-head {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 14px;
+            height: 14px;
+            background: #FFD700;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #FFD700;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            transition: 0.3s;
+        }
+
+        .map-marker:hover .pin-head {
+            transform: translate(-50%, -50%) scale(1.4);
+            background: white;
+        }
+
+        /* The Dotted Connector Line */
+        .pin-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 0;
+            border-top: 2px dotted rgba(255, 215, 0, 0.7);
+            width: 60px;
+            transform-origin: 0 0;
+            /* Rotate from the dot */
+            pointer-events: none;
+        }
+
+        /* The Text Label */
+        .pin-label {
+            position: absolute;
+            background: rgba(10, 10, 18, 0.9);
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            padding: 5px 10px;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            transition: 0.3s;
+        }
+
+        .pin-label small {
+            display: block;
+            color: #FFD700;
+            font-size: 0.6rem;
+            letter-spacing: 1px;
+            margin-top: 2px;
+        }
+
+        /* --- ALIGNMENT STYLES --- */
+
+        /* --- ALIGNMENT STYLES (THE FIX) --- */
+
+        /* 1. LEFT SIDE PINS (Punjab/Himachal) */
+        .left-align .pin-line {
+            transform: rotate(-150deg);
+            /* Points Up-Left */
+            width: 80px;
+            /* Longer line to get clear of map */
+        }
+
+        .left-align .pin-label {
+            right: 75px;
+            top: -45px;
+            text-align: right;
+        }
+
+        /* 2. RIGHT SIDE - FANNING OUT THE STACK */
+
+        /* Uklana: Point UP-Right to make space */
+        .fan-up .pin-line {
+            transform: rotate(-45deg);
+            width: 80px;
+        }
+
+        .fan-up .pin-label {
+            left: 60px;
+            top: -60px;
+        }
+
+        /* Delhi: Point STRAIGHT-Right */
+        .fan-flat .pin-line {
+            transform: rotate(0deg);
+            width: 70px;
+        }
+
+        .fan-flat .pin-label {
+            left: 75px;
+            top: -15px;
+            /* Aligned with dot */
+        }
+
+        /* Vrindavan: Point DOWN-Right */
+        .fan-down .pin-line {
+            transform: rotate(45deg);
+            width: 80px;
+        }
+
+        .fan-down .pin-label {
+            left: 60px;
+            top: 40px;
+        }
+
+        /* --- POPUP CARD STYLES --- */
+        .event-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            width: 90%;
+            max-width: 450px;
+            background: rgba(10, 10, 18, 0.95);
+            border: 1px solid #FFD700;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+            z-index: 200;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .event-modal.active {
+            opacity: 1;
+            pointer-events: all;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .modal-city {
+            color: #FFD700;
+            font-size: 1.8rem;
+            margin: 0 0 5px 0;
+        }
+
+        .modal-date {
+            color: #888;
+            font-family: sans-serif;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .modal-desc {
+            color: #ddd;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .modal-gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .modal-img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 150;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.3s;
+        }
+
+        .modal-backdrop.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+
+    <div class="modal-backdrop" id="backdrop"></div>
+
+    <div id="map-wrapper">
+        <img src="map.svg" class="india-map-img" alt="India Map">
+
+        <div class="map-marker left-align" style="top: 17%; left: 32%;" onclick="openEvent('chail')">
+            <div class="pin-head"></div>
+            <div class="pin-line"></div>
+            <div class="pin-label">Chail<br><small>THE DHAM</small></div>
+        </div>
+
+        <div class="map-marker left-align" style="top: 21%; left: 29%;" onclick="openEvent('ludhiana')">
+            <div class="pin-head"></div>
+            <div class="pin-line"></div>
+            <div class="pin-label">Ludhiana<br><small>PUNJAB</small></div>
+        </div>
+
+        <div class="map-marker fan-up" style="top: 24%; left: 30%;" onclick="openEvent('uklana')">
+            <div class="pin-head"></div>
+            <div class="pin-line"></div>
+            <div class="pin-label">Uklana<br><small>HARYANA</small></div>
+        </div>
+
+        <div class="map-marker fan-flat" style="top: 27%; left: 33%;" onclick="openEvent('delhi')">
+            <div class="pin-head"></div>
+            <div class="pin-line"></div>
+            <div class="pin-label">Delhi<br><small>CAPITAL</small></div>
+        </div>
+
+        <div class="map-marker fan-down" style="top: 30%; left: 35%;" onclick="openEvent('vrindavan')">
+            <div class="pin-head"></div>
+            <div class="pin-line"></div>
+            <div class="pin-label">Vrindavan<br><small>HOLY LAND</small></div>
+        </div>
+    </div>
+
+    <div class="event-modal" id="info-card">
+        <span class="close-modal" onclick="closeEvent()">&times;</span>
+        <h2 class="modal-city" id="card-city">City</h2>
+        <span class="modal-date" id="card-date">Date</span>
+        <p class="modal-desc" id="card-desc">Description...</p>
+        <div class="modal-gallery">
+            <img src="" class="modal-img" id="img1">
+            <img src="" class="modal-img" id="img2">
+        </div>
+    </div>
+
+    <script>
+        // --- 1. DATA (Update your text here) ---
+        const eventData = {
+            "chail": {
+                city: "Radha Govind Dham",
+                date: "Est. 2018",
+                desc: "The headquarters in the Himalayas. This is where Devi Ji resides and conducts annual Sadhana Shivirs.",
+                img1: "images/chail_view.jpg",
+                img2: "images/meditation.jpg"
+            },
+            "ludhiana": {
+                city: "Ludhiana Satsang",
+                date: "November 2024",
+                desc: "A grand 3-day discourse on 'Gita Gyan'. Over 500 devotees gathered to hear the sweet nectar of wisdom.",
+                img1: "https://via.placeholder.com/300x200",
+                img2: "https://via.placeholder.com/300x200"
+            },
+            "uklana": {
+                city: "Geeta Bhawan, Uklana",
+                date: "October 2024",
+                desc: "A deeply emotional homecoming. Devi Ji visited her hometown region, blessing the local families.",
+                img1: "https://via.placeholder.com/300x200",
+                img2: "https://via.placeholder.com/300x200"
+            },
+            "delhi": {
+                city: "New Delhi Event",
+                date: "Jan 2024",
+                desc: "New Year celebrations and spiritual discourse in the capital.",
+                img1: "https://via.placeholder.com/300x200",
+                img2: "https://via.placeholder.com/300x200"
+            },
+            "vrindavan": {
+                city: "Vrindavan Parikrama",
+                date: "Annual Event",
+                desc: "Devotees joining Devi Ji for the 84-kose parikrama of Braj.",
+                img1: "https://via.placeholder.com/300x200",
+                img2: "https://via.placeholder.com/300x200"
+            }
+        };
+
+        // --- 2. MODAL LOGIC ---
+        const modal = document.getElementById('info-card');
+        const backdrop = document.getElementById('backdrop');
+
+        function openEvent(cityKey) {
+            const data = eventData[cityKey];
+            if (data) {
+                document.getElementById('card-city').innerText = data.city;
+                document.getElementById('card-date').innerText = data.date;
+                document.getElementById('card-desc').innerText = data.desc;
+                // Add error checking for images
+                document.getElementById('img1').src = data.img1 || 'https://via.placeholder.com/300';
+                document.getElementById('img2').src = data.img2 || 'https://via.placeholder.com/300';
+
+                modal.classList.add('active');
+                backdrop.classList.add('active');
+            }
+        }
+
+        function closeEvent() {
+            modal.classList.remove('active');
+            backdrop.classList.remove('active');
+        }
+        backdrop.addEventListener('click', closeEvent);
+
+        // --- 3. ANIMATION (Crucial for showing pins) ---
+        window.onload = () => {
+            gsap.to("#map-wrapper", {
+                scale: 3.5,
+                duration: 3,
+                ease: "power2.inOut",
+                onComplete: () => {
+                    // This makes the pins visible!
+                    gsap.to(".map-marker", {
+                        opacity: 1,
+                        y: 0,
+                        stagger: 0.2,
+                        duration: 0.5
+                    });
+                }
+            });
+        };
+    </script>
+
+</body>
+
+</html>
