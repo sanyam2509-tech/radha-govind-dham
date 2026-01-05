@@ -1228,11 +1228,13 @@ body {
 
 .amenity-card {
     background: rgba(255, 255, 255, 0.02);
+   backdrop-filter: blur(3px);
     border: 1px solid rgba(255, 255, 255, 0.05);
     padding: 40px 25px;
     border-radius: 15px;
     transition: 0.3s;
     text-align: center;
+    /* opacity: 50%; */
 }
 
 .amenity-card:hover {
@@ -1240,7 +1242,17 @@ body {
     border-color: var(--gold);
     transform: translateY(-5px);
 }
-
+.amenity-card h3 {
+    font-family: var(--font-head);
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+.amenity-card p {
+    color: rgba(255, 255, 255, 0.687);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
 .icon-circle {
     width: 60px;
     height: 60px;
@@ -1254,18 +1266,9 @@ body {
     color: var(--gold);
 }
 
-.amenity-card h3 {
-    font-family: var(--font-head);
-    color: white;
-    font-size: 1.2rem;
-    margin-bottom: 15px;
-}
 
-.amenity-card p {
-    color: #888;
-    font-size: 0.95rem;
-    line-height: 1.6;
-}
+
+
 
 /* Mobile Responsive */
 @media (max-width: 900px) {
@@ -2230,6 +2233,7 @@ body {
     filter: sepia(0%) brightness(1.1);
     transform: scale(1.02);
 }
+
 /* =========================================
    MOBILE TIMELINE FIX (RESPONSIVE)
    ========================================= */
@@ -2243,7 +2247,8 @@ body {
 
     /* 2. Move the Vertical Line to the Left Edge */
     .timeline-line {
-        left: 30px !important; /* Line sits near left edge */
+        left: 30px !important;
+        /* Line sits near left edge */
         transform: none !important;
     }
 
@@ -2251,18 +2256,20 @@ body {
     .timeline-item {
         width: 100% !important;
         left: 0 !important;
-        padding-left: 70px !important; /* Make space for the line/dot */
+        padding-left: 70px !important;
+        /* Make space for the line/dot */
         padding-right: 20px !important;
         margin-bottom: 50px;
-        
+
         /* Stack content vertically */
-        flex-direction: column; 
+        flex-direction: column;
         align-items: flex-start;
     }
 
     /* 4. Fix the Dots (Align to the new Line position) */
     .timeline-dot {
-        left: 21px !important; /* Centered on the 30px line */
+        left: 21px !important;
+        /* Centered on the 30px line */
         right: auto !important;
         top: 0 !important;
     }
@@ -2270,13 +2277,13 @@ body {
     /* 5. Fix the "Opposite" Images */
     .timeline-opposite-img {
         /* Stop floating absolutely */
-        position: static !important; 
-        
+        position: static !important;
+
         /* Make it fill the width below the text */
         width: 100% !important;
         height: 200px !important;
         margin-top: 20px;
-        
+
         /* Reset offsets */
         left: auto !important;
         right: auto !important;
@@ -2288,9 +2295,796 @@ body {
         text-align: left !important;
         width: 100% !important;
     }
-    
+
     /* Remove the weird gaps from left/right classes */
-    .timeline-item.left, .timeline-item.right {
+    .timeline-item.left,
+    .timeline-item.right {
         justify-content: flex-start !important;
     }
 }
+
+/* =========================================
+   FINAL MOBILE POLISH (ADD TO BOTTOM OF CSS)
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    /* --- 1. GLOBAL TEXT SIZING --- */
+    html {
+        font-size: 14px;
+    }
+
+    /* Slightly smaller base text */
+
+    .section-title,
+    .guru-title,
+    .gallery-header h2 {
+        font-size: 2rem !important;
+        /* Prevent huge headers */
+        line-height: 1.2;
+    }
+
+    /* --- 2. NAVIGATION BAR --- */
+    .glass-nav {
+        width: 95%;
+        /* Wider on mobile */
+        padding: 10px 20px;
+        top: 10px;
+    }
+
+    .logo {
+        font-size: 1rem;
+    }
+
+    /* --- 3. HERO SECTION --- */
+    .hero-text h1 {
+        font-size: 2.5rem !important;
+        /* Fits portrait mode */
+    }
+
+    .location {
+        font-size: 1.2rem !important;
+    }
+
+    /* --- 4. BIO PAGES (Maharaj Ji / Devi Ji) --- */
+    .bio-header {
+        height: 50vh;
+        /* Shorter header on mobile */
+        background-position: center top;
+    }
+
+    .bio-title-card {
+        width: 90%;
+        padding: 20px !important;
+        /* Reduce padding */
+        margin-bottom: 20px;
+    }
+
+    .bio-title-card h1 {
+        font-size: 1.8rem !important;
+    }
+
+    .bio-content {
+        padding: 0 15px 50px !important;
+    }
+
+    /* --- 5. VIDEO GALLERY FIX --- */
+    .video-grid {
+        /* Force single column so videos aren't tiny */
+        grid-template-columns: 1fr !important;
+        padding: 0 15px;
+    }
+
+    /* --- 6. SHIVIR PAYMENT FORM --- */
+    .shivir-form .input-row {
+        flex-direction: column;
+        /* Stack inputs */
+        gap: 15px;
+    }
+
+    .input-group {
+        width: 100% !important;
+        /* Full width inputs */
+    }
+
+    /* --- 7. FOOTER ADJUSTMENTS --- */
+    .footer-content {
+        padding: 0 20px 40px;
+        gap: 30px;
+    }
+}
+
+/* =========================================
+   MOBILE FIXES: TIMELINE & NAVBAR
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    /* 1. SOLID NAVBAR (Fixes the messy overlap) */
+    .glass-nav {
+        background: #0a0a12 !important;
+        /* Solid Dark Background */
+        border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+        backdrop-filter: none !important;
+        padding: 15px 20px;
+        width: 90%;
+        top: 10px;
+    }
+
+    /* 2. TIMELINE CONTAINER PADDING */
+    .timeline-container {
+        padding-top: 40px;
+        /* Push content down so it doesn't hit nav */
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    /* 3. TIMELINE ITEM (Vertical Stack) */
+    .timeline-item {
+        flex-direction: column !important;
+        /* Force stack */
+        align-items: flex-start !important;
+        width: 100% !important;
+        padding-left: 60px !important;
+        /* Space for the line */
+        padding-right: 20px !important;
+        margin-bottom: 60px;
+        /* Space between events */
+        left: 0 !important;
+    }
+
+    /* 4. THE VERTICAL LINE */
+    .timeline-line {
+        left: 25px !important;
+        /* Move line to left edge */
+        transform: none !important;
+    }
+
+    /* 5. THE DOTS */
+    .timeline-dot {
+        left: 16px !important;
+        /* Center on the line (25px - 9px) */
+        top: 0 !important;
+        right: auto !important;
+    }
+
+    /* 6. CONTENT CARD */
+    .timeline-content {
+        width: 100% !important;
+        text-align: left !important;
+        margin-bottom: 15px;
+        /* Space between Text and Image */
+    }
+
+    /* 7. THE IMAGES (Fix alignment) */
+    .timeline-opposite-img {
+        position: static !important;
+        /* Stop floating */
+        width: 100% !important;
+        /* Full width of the content area */
+        height: 200px !important;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-top: 10px;
+
+        /* Reset any weird desktop offsets */
+        left: auto !important;
+        right: auto !important;
+        transform: none !important;
+    }
+
+    /* Remove any weird gaps from desktop classes */
+    .timeline-item.left,
+    .timeline-item.right {
+        justify-content: flex-start !important;
+    }
+}
+
+/* =========================================
+   FIRST TIME VISITOR PATH
+   ========================================= */
+
+.visitor-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 40px auto 0;
+}
+
+.visitor-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 40px 30px;
+    text-align: left;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover Effect */
+.visitor-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--gold);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Featured (Middle) Card */
+.visitor-card.featured {
+    background: rgba(255, 215, 0, 0.05);
+    /* Slight Gold Tint */
+    border-color: rgba(255, 215, 0, 0.3);
+}
+
+.visitor-icon {
+    font-size: 2.5rem;
+    color: var(--gold);
+    margin-bottom: 20px;
+}
+
+.visitor-card h3 {
+    font-family: var(--font-head);
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.visitor-card p {
+    color: #aaa;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    min-height: 60px;
+    /* Aligns buttons */
+}
+
+/* The Link Style */
+.text-link {
+    color: var(--gold);
+    text-decoration: none;
+    font-family: var(--font-head);
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.text-link:hover {
+    gap: 15px;
+    /* Arrow moves on hover */
+    color: #fff;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 900px) {
+    .visitor-grid {
+        grid-template-columns: 1fr;
+        /* Stack cards */
+        max-width: 500px;
+    }
+
+    .visitor-card {
+        text-align: center;
+        padding: 30px;
+    }
+
+    .text-link {
+        justify-content: center;
+    }
+}
+
+/* =========================================
+   UPDATES & TRUST SECTION
+   ========================================= */
+
+/* --- UPDATES GRID --- */
+.updates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+.update-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: left;
+    transition: 0.3s;
+}
+
+.update-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold);
+}
+
+.update-img {
+    position: relative;
+    height: 200px;
+}
+
+.update-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.date-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--gold);
+    color: black;
+    padding: 5px 10px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    border-radius: 4px;
+}
+
+.update-text {
+    padding: 20px;
+}
+
+.update-text h3 {
+    color: white;
+    font-family: var(--font-head);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.update-text p {
+    color: #aaa;
+    font-size: 0.95rem;
+}
+
+/* --- TRUST & MAP STRIP --- */
+.trust-layout {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 400px;
+}
+
+.trust-info {
+    flex: 1;
+    min-width: 300px;
+    padding: 60px 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.map-frame {
+    flex: 1.5;
+    min-width: 300px;
+    min-height: 400px;
+    /* filter: grayscale(100%) invert(90%); Makes map dark/cool */
+}
+
+.trust-badge {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid var(--gold);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    max-width: 350px;
+}
+
+.trust-badge i {
+    font-size: 2rem;
+    color: var(--gold);
+}
+
+.trust-badge strong {
+    display: block;
+    color: var(--gold);
+    font-size: 1.1rem;
+}
+
+.trust-badge span {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.address-text {
+    color: #e0e0e0;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+/* Mobile Adjust */
+@media (max-width: 768px) {
+    .trust-layout {
+        flex-direction: column;
+    }
+
+    .map-frame {
+        height: 300px;
+        min-height: 300px;
+    }
+
+    .updates-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =======================================================
+   MOBILE RESPONSIVE FIXES (PASTE AT END OF CSS)
+   ======================================================= */
+
+/* 1. GLOBAL RESET FOR MOBILE */
+* {
+    box-sizing: border-box;
+    /* Prevents padding from adding to width */
+}
+
+@media (max-width: 768px) {
+
+    html,
+    body {
+        width: 100%;
+        overflow-x: hidden;
+        /* Stops horizontal scroll */
+    }
+
+    .panel {
+        padding: 60px 20px;
+        /* Reduce padding */
+    }
+
+    /* 2. HEADER & INTRO TEXT */
+    .hero-text h1 {
+        font-size: 2.5rem !important;
+        /* Shrink Hero Text */
+        line-height: 1.2;
+    }
+
+    .intro-text.line-2 {
+        font-size: 3rem !important;
+        /* Shrink Hindi Intro */
+    }
+
+    .glimmer-text {
+        font-size: 3rem !important;
+    }
+
+    .location {
+        font-size: 1.2rem !important;
+    }
+
+    /* 3. FLATTEN ALL GRIDS (Amenities, Updates, Visitor) */
+    .amenities-grid,
+    .visitor-grid,
+    .updates-grid,
+    .impact-grid,
+    .masonry-grid {
+        grid-template-columns: 1fr !important;
+        /* Stack vertically */
+        gap: 30px;
+        width: 100%;
+    }
+
+    /* 4. FLATTEN FLEX LAYOUTS (Panels, Footer) */
+    .panel-content,
+    .footer-content,
+    .trust-layout,
+    .stats-row,
+    .teaser-container {
+        flex-direction: column !important;
+        text-align: center;
+        width: 100%;
+        padding: 0 !important;
+    }
+
+    .panel-content.reverse {
+        flex-direction: column !important;
+        /* Don't reverse on mobile */
+    }
+
+    /* 5. FIX TIMELINE (The Tricky Part) */
+    .timeline-container {
+        padding-left: 0;
+        padding-right: 0;
+        max-width: 100%;
+    }
+
+    /* Move line to the far left */
+    .timeline-line {
+        left: 20px !important;
+        transform: none !important;
+    }
+
+    /* Force all items to align left */
+    .timeline-item {
+        width: 100% !important;
+        left: 0 !important;
+        padding-left: 60px !important;
+        /* Space for the line */
+        padding-right: 0 !important;
+        text-align: left !important;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start !important;
+    }
+
+    /* Move dots to the new line position */
+    .timeline-dot {
+        left: 11px !important;
+        /* Center on the 20px line */
+        right: auto !important;
+    }
+
+    /* Fix the timeline images */
+    .timeline-opposite-img {
+        position: relative !important;
+        width: 100% !important;
+        height: 200px !important;
+        left: auto !important;
+        right: auto !important;
+        margin-top: 20px;
+        transform: none !important;
+    }
+
+    /* 6. SHIVIR & FORMS */
+    .shivir-container {
+        flex-direction: column !important;
+    }
+
+    .shivir-image {
+        height: 250px;
+        width: 100%;
+    }
+
+    .shivir-form .input-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .input-group input,
+    .input-group select {
+        width: 100% !important;
+        /* Fix inputs overflowing */
+    }
+
+    /* 7. CAROUSEL & GALLERY */
+    .carousel-container {
+        height: 250px;
+        /* Smaller height for mobile */
+    }
+
+    .gallery-item {
+        width: 100%;
+    }
+
+    /* 8. FOOTER MAP & IFRAMES */
+    .map-frame {
+        width: 100%;
+        min-height: 300px;
+        margin-top: 30px;
+    }
+
+    iframe {
+        max-width: 100% !important;
+    }
+
+    /* 9. PORTRAIT IMAGES */
+    .portrait-frame {
+        width: 100%;
+        max-width: 300px;
+        /* Prevent it getting too wide */
+        height: auto;
+        aspect-ratio: 3/4;
+        margin: 0 auto 30px auto;
+    }
+}
+
+/* =========================================
+   LEGAL LINKS STYLES
+   ========================================= */
+
+.legal-links {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.legal-links a {
+    color: #888;
+    /* Subtle Gray */
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: 0.3s;
+    font-family: var(--font-body);
+}
+
+.legal-links a:hover {
+    color: var(--gold);
+    /* Gold on Hover */
+    text-decoration: underline;
+}
+
+.separator {
+    color: #444;
+    /* Dark divider line */
+}
+
+/* MOBILE ADJUSTMENT */
+@media (max-width: 768px) {
+    .footer-bottom {
+        flex-direction: column;
+        /* Stack them vertically */
+        gap: 15px;
+        text-align: center;
+    }
+
+    .legal-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        /* Allow wrapping on very small screens */
+    }
+}
+/* =========================================
+   GLOBAL FIXED BACKGROUND
+   ========================================= */
+
+/* 1. The Fixed Image Layer */
+.global-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Puts it behind everything */
+    
+    /* MOUNTAIN IMAGE */
+    background-image: url('images/background_1.jpeg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* STYLE: Dark & Ghostly */
+    opacity: 0.2; /* Adjust visibility (0.1 to 0.3) */
+    /* filter: grayscale(100%); /* Black & White */
+} */
+
+/* 2. THE FIX: Make Sections Transparent 
+   (So they don't hide the mountain) */
+body {
+    background-color: #0a0a12; /* Fallback color */
+}
+
+section, footer, .hero-section, .about-section, .timeline-section {
+    background: transparent !important; /* Force transparency */
+    /* If text is hard to read, use a semi-transparent dark tint instead: */
+    /* background: rgba(10, 10, 18, 0.8) !important; */
+}
+/* =========================================
+   KRIPALU PADMA TRUST SECTION
+   ========================================= */
+
+.trust-section {
+    padding: 80px 20px;
+    position: relative;
+}
+
+.trust-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two Columns */
+    gap: 40px;
+    margin-top: 40px;
+}
+
+/* THE CARDS (Glass Effect) */
+.trust-card {
+    background: rgba(20, 20, 30, 0.6); /* Semi-transparent dark */
+    backdrop-filter: blur(10px);       /* Blurs the mountain behind it */
+    border: 1px solid rgba(255, 215, 0, 0.2); /* Faint Gold Border */
+    padding: 40px;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.trust-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* PRESIDENT CARD SPECIFICS */
+.leader-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: #000;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.trust-card h3 {
+    font-family: var(--font-head);
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.honorific {
+    color: var(--gold);
+    font-style: italic;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.bio-text {
+    color: #ccc;
+    line-height: 1.8;
+}
+
+/* MISSION LIST STYLES */
+.mission-list {
+    list-style: none;
+    padding: 0;
+}
+
+.mission-list li {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    align-items: flex-start;
+}
+
+.mission-list i {
+    color: var(--gold);
+    font-size: 1.2rem;
+    margin-top: 5px; /* Aligns icon with text */
+}
+
+.mission-list span {
+    color: #ccc;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.mission-list strong {
+    color: #fff;
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+    .trust-grid {
+        grid-template-columns: 1fr; /* Stack vertically on phone */
+    }
+    
+    .trust-card {
+        padding: 30px 20px;
+    }
+}
+/* =========================================
+   CUSTOM RADHEY SYMBOL
+   ========================================= */
+
+.radhey-symbol {
+    font-family: 'Poppins', sans-serif; /* Clean, bold font */
+    font-weight: 800;
+    font-size: 1.6rem; /* Adjusted size to fit the box */
+    color: var(--gold);
+    line-height: 1;
+    display: inline-block;
+    transform: translateY(-2px); /* Slight alignment fix */
+    white-space: nowrap; /* Ensures it stays on one line */
+}
+
+/* If you prefer English "Radhey Radhey", use this font-size instead: */
+/* font-size: 0.9rem; */

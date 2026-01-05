@@ -17,9 +17,8 @@
 
     <style>
         body {
-            /* Allow scrolling if the map doesn't fit */
-            overflow: auto;
-
+            overflow: hidden;
+            /* Lock scroll so map stays fixed */
             height: 100vh;
             background: #050508;
             margin: 0;
@@ -29,74 +28,51 @@
             font-family: 'Cinzel', serif;
         }
 
-        /* Ensure the map wrapper has breathing room */
-        #map-wrapper {
-            position: relative;
-            width: 800px;
-            height: 900px;
-            transform-origin: 32% 25%;
-
-            /* Scale down slightly on smaller screens */
-            transform: scale(0.9);
-        }
-
-        /* Back Button */
+        /* Back Button - Moved down slightly to not hit status bar */
         .back-btn {
             position: fixed;
-            top: 30px;
-            left: 30px;
+            top: 20px;
+            left: 20px;
             z-index: 100;
             color: #FFD700;
             text-decoration: none;
             border: 1px solid #FFD700;
-            padding: 10px 25px;
+            padding: 8px 20px;
             border-radius: 30px;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.8);
+            /* Darker bg for contrast */
             backdrop-filter: blur(5px);
-            transition: 0.3s;
+            font-size: 0.8rem;
         }
 
-        .back-btn:hover {
-            background: #FFD700;
-            color: black;
-        }
-
-        /* Map Container */
-        /* Map Container */
+        /* --- MAP CONTAINER --- */
         #map-wrapper {
-            position: relative;
+            position: absolute;
             width: 800px;
             height: 900px;
 
-            /* CHANGED: Focus on Center of Map now, not just North */
+            /* DEFAULT (Desktop) */
             transform-origin: center center;
-
-            /* Start invisible and tiny (handled by JS, but good default) */
             opacity: 0;
             transform: scale(0.1);
         }
 
-        /* The Map Image */
         .india-map-img {
             width: 100%;
-            /* Gold Filter */
             filter: invert(1) sepia(1) saturate(1000%) hue-rotate(0deg) brightness(0.8) contrast(1.2);
             opacity: 0.4;
         }
 
-        /* --- STYLISH CALLOUT PINS --- */
+        /* --- PINS & LABELS --- */
         .map-marker {
             position: absolute;
             width: 0;
             height: 0;
-            /* It's a point in space */
             cursor: pointer;
             opacity: 0;
-            /* Hidden until JS animates it */
             z-index: 10;
         }
 
-        /* The Glowing Dot */
         .pin-head {
             position: absolute;
             top: 0;
@@ -111,12 +87,7 @@
             transition: 0.3s;
         }
 
-        .map-marker:hover .pin-head {
-            transform: translate(-50%, -50%) scale(1.4);
-            background: white;
-        }
-
-        /* The Dotted Connector Line */
+        /* Dotted Line */
         .pin-line {
             position: absolute;
             top: 0;
@@ -125,11 +96,10 @@
             border-top: 2px dotted rgba(255, 215, 0, 0.7);
             width: 60px;
             transform-origin: 0 0;
-            /* Rotate from the dot */
             pointer-events: none;
         }
 
-        /* The Text Label */
+        /* Label Box */
         .pin-label {
             position: absolute;
             background: rgba(10, 10, 18, 0.9);
@@ -140,7 +110,6 @@
             font-size: 0.85rem;
             white-space: nowrap;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            transition: 0.3s;
         }
 
         .pin-label small {
@@ -151,16 +120,10 @@
             margin-top: 2px;
         }
 
-        /* --- ALIGNMENT STYLES --- */
-
-        /* --- ALIGNMENT STYLES (THE FIX) --- */
-
-        /* 1. LEFT SIDE PINS (Punjab/Himachal) */
+        /* DESKTOP ALIGNMENTS */
         .left-align .pin-line {
             transform: rotate(-150deg);
-            /* Points Up-Left */
             width: 80px;
-            /* Longer line to get clear of map */
         }
 
         .left-align .pin-label {
@@ -169,9 +132,6 @@
             text-align: right;
         }
 
-        /* 2. RIGHT SIDE - FANNING OUT THE STACK */
-
-        /* Uklana: Point UP-Right to make space */
         .fan-up .pin-line {
             transform: rotate(-45deg);
             width: 80px;
@@ -182,7 +142,6 @@
             top: -60px;
         }
 
-        /* Delhi: Point STRAIGHT-Right */
         .fan-flat .pin-line {
             transform: rotate(0deg);
             width: 70px;
@@ -191,10 +150,8 @@
         .fan-flat .pin-label {
             left: 75px;
             top: -15px;
-            /* Aligned with dot */
         }
 
-        /* Vrindavan: Point DOWN-Right */
         .fan-down .pin-line {
             transform: rotate(45deg);
             width: 80px;
@@ -205,23 +162,87 @@
             top: 40px;
         }
 
-        /* --- POPUP CARD STYLES --- */
+
+        /* --- MOBILE RESPONSIVE FIX (The Important Part) --- */
+        @media (max-width: 768px) {
+
+            #map-wrapper {
+                /* 1. Center the Map on Screen */
+                left: 50% !important;
+                top: 50% !important;
+
+                /* 2. Scale it UP so it fits width (0.55 is good for phones) */
+                /* We translate -50% to center the element itself */
+                transform: translate(-50%, -50%) scale(0.55) !important;
+
+                transform-origin: center center !important;
+                margin: 0 !important;
+            }
+
+            /* 3. Fix the "Cluster" of pins overlapping */
+            /* We extend the lines and rotate them to create space */
+
+            .pin-line {
+                width: 100px !important;
+            }
+
+            /* Longer lines push text away */
+
+            /* Uklana (Top) - Push Up */
+            .fan-up .pin-line {
+                transform: rotate(-80deg) !important;
+            }
+
+            .fan-up .pin-label {
+                left: 20px !important;
+                top: -110px !important;
+            }
+
+            /* Delhi (Middle) - Push Right */
+            .fan-flat .pin-line {
+                width: 120px !important;
+                transform: rotate(-10deg) !important;
+            }
+
+            .fan-flat .pin-label {
+                left: 125px !important;
+                top: -20px !important;
+            }
+
+            /* Vrindavan (Bottom) - Push Down */
+            .fan-down .pin-line {
+                transform: rotate(70deg) !important;
+            }
+
+            .fan-down .pin-label {
+                left: 40px !important;
+                top: 100px !important;
+            }
+
+            /* Increase text size slightly to counter the map scaling */
+            .pin-label {
+                font-size: 1.1rem !important;
+                padding: 8px 12px !important;
+            }
+        }
+
+        /* --- MODAL STYLES (No Change) --- */
         .event-modal {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) scale(0.8);
-            width: 90%;
+            width: 85%;
             max-width: 450px;
             background: rgba(10, 10, 18, 0.95);
             border: 1px solid #FFD700;
-            padding: 30px;
+            padding: 25px;
             border-radius: 15px;
             box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
             z-index: 200;
             opacity: 0;
             pointer-events: none;
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: 0.4s;
         }
 
         .event-modal.active {
@@ -241,23 +262,21 @@
 
         .modal-city {
             color: #FFD700;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             margin: 0 0 5px 0;
         }
 
         .modal-date {
             color: #888;
-            font-family: sans-serif;
             font-size: 0.9rem;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             display: block;
         }
 
         .modal-desc {
             color: #ddd;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
-            line-height: 1.6;
+            font-size: 1rem;
+            line-height: 1.5;
             margin-bottom: 20px;
         }
 
@@ -269,7 +288,7 @@
 
         .modal-img {
             width: 100%;
-            height: 120px;
+            height: 100px;
             object-fit: cover;
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
@@ -280,7 +299,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.8);
             z-index: 150;
             opacity: 0;
             pointer-events: none;
@@ -291,6 +310,11 @@
             opacity: 1;
             pointer-events: all;
         }
+
+
+
+       
+
     </style>
 </head>
 

@@ -3,27 +3,53 @@ gsap.registerPlugin(ScrollTrigger);
 // 1. INTRO ANIMATION
 // --- INTRO SEQUENCE ANIMATION ---
 
+// 1. INTRO SEQUENCE ANIMATION (+ MUSIC)
+
 window.addEventListener('load', () => {
     
-    // 1. Reveal "Jagadguru Shri Kripalu Ji Maharaj"
+    // A. Attempt to Play Music
+    const audio = document.getElementById('intro-audio');
+    if(audio) {
+        audio.volume = 1.0; // Start at full volume
+        // Browser Policy: Autoplay might be blocked if user hasn't clicked yet.
+        // We catch the error just in case.
+        audio.play().catch(error => console.log("Autoplay blocked by browser:", error));
+    }
+
+    // B. Reveal "Jagadguru Shri Kripalu Ji Maharaj"
     setTimeout(() => {
         const line1 = document.querySelector('.line-1');
-        if(line1) line1.classList.add('visible');
+        if (line1) line1.classList.add('visible');
     }, 500); // Starts after 0.5s
 
-    // 2. Reveal "Radha Govind Dham"
+    // C. Reveal "Radha Govind Dham"
     setTimeout(() => {
         const line2 = document.querySelector('.line-2');
-        if(line2) line2.classList.add('visible');
+        if (line2) line2.classList.add('visible');
     }, 1500); // Starts after 1.5s
 
-    // 3. Fade Out the Black Screen & Remove it
+    // D. Fade Out (Visuals + Audio)
     setTimeout(() => {
         const introScreen = document.getElementById('intro-sequence');
-        if(introScreen) {
-            introScreen.style.opacity = '0'; // Fade out
-            
-            // Wait for fade to finish, then remove from DOM
+        
+        // 1. Fade out Visuals
+        if (introScreen) {
+            introScreen.style.opacity = '0'; 
+
+            // 2. Fade out Audio (Smoothly over 1 second)
+            if(audio) {
+                let fadeAudio = setInterval(() => {
+                    if (audio.volume > 0.1) {
+                        audio.volume -= 0.1;
+                    } else {
+                        clearInterval(fadeAudio);
+                        audio.pause();
+                        audio.currentTime = 0;
+                    }
+                }, 100); // Lower volume every 100ms
+            }
+
+            // 3. Remove from DOM after fade completes
             setTimeout(() => {
                 introScreen.style.display = 'none';
             }, 1000);
@@ -129,62 +155,74 @@ function updateTotal() {
 }
 
 // 2. Handle Payment Submission
+// --- SHIVIR REGISTRATION PAYMENT (UPDATED WITH RECEIPT) ---
+
 const shivirForm = document.getElementById('shivir-payment-form');
 
 if (shivirForm) {
     shivirForm.addEventListener('submit', function (e) {
         e.preventDefault();
 
-        // Get Values
+        // 1. Get Values
         const name = document.getElementById('reg-name').value;
+        const email = document.getElementById('reg-email').value; // NEW
         const phone = document.getElementById('reg-phone').value;
-        
-        // CALCULATION: Fixed 3000 + Optional Extra
+
+        if (!name || !phone || !email) {
+            alert("Please fill in all details.");
+            return;
+        }
+
+        // 2. Calculate Amount
         const fixedFee = 3000;
         const extraSeva = parseInt(document.getElementById('reg-seva').value) || 0;
-        const totalAmount = (fixedFee + extraSeva) * 100; // Convert to Paise for Razorpay
+        const totalAmountINR = fixedFee + extraSeva;
+        const totalAmountPaise = totalAmountINR * 100;
 
-        // Configure Razorpay
+        // 3. Razorpay Options
         var options = {
-            "key": "YOUR_RAZORPAY_KEY_ID", // REPLACE THIS
-            "amount": totalAmount,
+            "key": CONFIG.RAZORPAY_KEY_ID, // Using your Config file
+            "amount": totalAmountPaise,
             "currency": "INR",
             "name": "Radha Govind Dham",
-            "description": "Shivir Advance Seva",
-            "image": "https://via.placeholder.com/150",
-            
-            // SENDING DATA TO DASHBOARD
-            "notes": {
-                "Devotee Name": name,
-                "Phone": phone,
-                "Payment Type": "Fixed Advance Seva (₹3000)",
-                "Extra Donation": "₹" + extraSeva
-            },
-
-            "handler": function (response) {
-                // Success Alert
-                alert("Registration Successful! Payment ID: " + response.razorpay_payment_id);
-
-                // Optional: WhatsApp Confirmation to Admin
-                const adminNumber = "919876543210"; // REPLACE
-                const msg = `*New Shivir Registration* %F0%9F%8E%89%0A%0A` +
-                            `*Name:* ${name}%0A` +
-                            `*Phone:* ${phone}%0A` +
-                            `*Total Paid:* ₹${(fixedFee + extraSeva)}%0A` +
-                            `*Payment ID:* ${response.razorpay_payment_id}`;
-                
-                window.open(`https://wa.me/${adminNumber}?text=${msg}`, '_blank');
-            },
+            "description": "Shivir Registration (Winter 2025)",
+            "image": "images/logo.png",
             "prefill": {
                 "name": name,
+                "email": email, // Now Razorpay will send email too!
                 "contact": phone
             },
-            "theme": {
-                "color": "#FFD700"
+            "theme": { "color": "#FFD700" },
+
+            "handler": function (response) {
+                // A. Show Success Alert
+                alert("Payment Successful! Downloading Receipt...");
+
+                // B. GENERATE PDF RECEIPT (Your Custom Slip)
+                generatePDFReceipt(name, totalAmountINR, response.razorpay_payment_id, email);
+
+                // C. Send WhatsApp to Admin
+                const adminPhone = "919780881008";
+                const msg =
+                    `*New Shivir Registration* 🎉\n` +
+                    `-------------------\n` +
+                    `👤 Name: ${name}\n` +
+                    `📧 Email: ${email}\n` +
+                    `📞 Phone: ${phone}\n` +
+                    `💰 Paid: ₹${totalAmountINR}\n` +
+                    `🆔 Txn ID: ${response.razorpay_payment_id}`;
+
+                // Open WhatsApp after a short delay so PDF download starts first
+                setTimeout(() => {
+                    window.open(`https://wa.me/${adminPhone}?text=${encodeURIComponent(msg)}`, '_blank');
+                }, 1000);
             }
         };
 
         var rzp1 = new Razorpay(options);
+        rzp1.on('payment.failed', function (response) {
+            alert("Payment Failed: " + response.error.description);
+        });
         rzp1.open();
     });
 }
@@ -236,43 +274,89 @@ function setAmount(val) {
 }
 
 // Handle Donation Submission
+// =========================================
+//  DONATION LOGIC + PAN CARD VALIDATION
+// =========================================
+
 const donateForm = document.getElementById('donation-form');
+
 if (donateForm) {
     donateForm.addEventListener('submit', function (e) {
         e.preventDefault();
 
+        // 1. Get Values
         const name = document.getElementById('donate-name').value;
         const email = document.getElementById('donate-email').value;
         const phone = document.getElementById('donate-phone').value;
         const amount = document.getElementById('donate-amount').value;
+        
+        // Get PAN and force it to Uppercase
+        const panInput = document.getElementById('donate-pan');
+        const panValue = panInput.value.trim().toUpperCase();
+        const panError = document.getElementById('pan-error');
 
-        if (!amount || amount <= 0) { alert("Please enter a valid amount"); return; }
+        // 2. Validate Amount
+        if (!amount || amount <= 0) { 
+            alert("Please enter a valid amount"); 
+            return; 
+        }
 
+        // 3. VALIDATE PAN CARD (The Logic)
+        // Regex: 5 Letters + 4 Digits + 1 Letter (e.g., ABCDE1234F)
+        const panRegex = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
+
+        if (panValue !== "") {
+            // If user entered something, check if it's valid
+            if (!panRegex.test(panValue)) {
+                // INVALID: Show error and stop everything
+                panInput.style.borderColor = "#ff6b6b"; // Red Border
+                panError.style.display = "block";       // Show Error Text
+                panError.innerText = "Invalid Format: Must be 5 Letters, 4 Digits, 1 Letter.";
+                return; // STOP! Do not open Razorpay
+            } else {
+                // VALID: Clear errors
+                panInput.style.borderColor = "rgba(255, 255, 255, 0.2)";
+                panError.style.display = "none";
+            }
+        }
+
+        // 4. If Validation Passes -> Open Razorpay
         var options = {
             "key": "YOUR_RAZORPAY_KEY_ID", // REPLACE THIS!
-            "amount": amount * 100, // Amount in paise
+            "amount": amount * 100, 
             "currency": "INR",
             "name": "Kripalu Padma Trust",
             "description": "Donation - Gift of Seva",
-            "image": "https://via.placeholder.com/150", // Your Logo URL
+            "image": "images/logo.png",
             "handler": function (response) {
-                // 1. Payment Successful Alert
                 alert("Payment Successful! Payment ID: " + response.razorpay_payment_id);
-
-                // 2. Generate PDF Receipt
-                generatePDFReceipt(name, amount, response.razorpay_payment_id, email);
+                // Pass the PAN to your receipt generator if needed
+                generatePDFReceipt(name, amount, response.razorpay_payment_id, email, panValue);
             },
             "prefill": {
                 "name": name,
-                "email": email, // Important for Razorpay's auto-email
+                "email": email,
                 "contact": phone
             },
             "theme": { "color": "#FFD700" }
         };
 
         var rzp1 = new Razorpay(options);
+        rzp1.on('payment.failed', function (response){
+             alert("Payment Failed");
+        });
         rzp1.open();
     });
+    
+    // Optional: Real-time validation (Clear error as they type)
+    const panInput = document.getElementById('donate-pan');
+    if(panInput) {
+        panInput.addEventListener('input', function() {
+            this.value = this.value.toUpperCase(); // Auto-capitalize
+            document.getElementById('pan-error').style.display = 'none'; // Hide error while typing
+            this.style.borderColor = "rgba(255, 255, 255, 0.2)";
+        });
+    }
 }
 
 // Function to Generate PDF Receipt
@@ -359,12 +443,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     const dotsContainer = document.getElementById('dotsContainer');
-    
+
     // Get all slides
     const slides = Array.from(track.children);
     let currentIndex = 0;
     let autoPlayInterval;
-    
+
     // 1. Create Dots based on number of slides
     slides.forEach((slide, index) => {
         const dot = document.createElement('div');
@@ -376,19 +460,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         dotsContainer.appendChild(dot);
     });
-    
+
     const dots = Array.from(dotsContainer.children);
 
     // 2. The Main Move Function
     function goToSlide(index) {
         if (index < 0) index = slides.length - 1; // Loop back to end
         if (index >= slides.length) index = 0;    // Loop back to start
-        
+
         currentIndex = index;
-        
+
         // Move the track
         track.style.transform = `translateX(-${currentIndex * 100}%)`;
-        
+
         // Update Dots
         dots.forEach(dot => dot.classList.remove('active'));
         dots[currentIndex].classList.add('active');
@@ -451,19 +535,19 @@ const darshanForm = document.getElementById('darshan-form');
 
 // 2. Open Modal Function (Call this from your buttons)
 function openMeetForm() {
-    if(darshanModal) {
+    if (darshanModal) {
         darshanModal.style.display = "flex";
-        
+
         // Optional: Animation using GSAP if you have it loaded
-        gsap.fromTo(".modal-content", 
-            {y: 50, opacity: 0}, 
-            {y: 0, opacity: 1, duration: 0.4}
+        gsap.fromTo(".modal-content",
+            { y: 50, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.4 }
         );
     }
 }
 
 // 3. Close Logic
-if(closeDarshanBtn) {
+if (closeDarshanBtn) {
     closeDarshanBtn.addEventListener('click', () => {
         darshanModal.style.display = "none";
     });
@@ -481,7 +565,7 @@ window.addEventListener('click', (e) => {
 
 
 
-if(darshanForm) {
+if (darshanForm) {
     darshanForm.addEventListener('submit', (e) => {
         e.preventDefault(); // Stop the page from reloading
 
@@ -490,15 +574,15 @@ if(darshanForm) {
         const phone = document.getElementById('meet-phone').value;
         const city = document.getElementById('meet-city').value;
         const type = document.getElementById('meet-type').value;
-        const date = document.getElementById('meet-date').value; 
+        const date = document.getElementById('meet-date').value;
         const msg = document.getElementById('meet-msg').value;
 
         // 2. Your Admin Phone Number (Format: CountryCode + Number, NO '+' sign)
         // Example: 919812345678
-        const adminNumber = "919780881008"; 
+        const adminNumber = "919780881008";
 
         // 3. Create the Pre-filled Message (using %0A for new lines)
-        const whatsappMsg = 
+        const whatsappMsg =
             `*New Darshan Request* %F0%9F%99%8F%0A%0A` + // Hands folded emoji
             `*Name:* ${name}%0A` +
             `*Phone:* ${phone}%0A` +
@@ -522,34 +606,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuImg = document.getElementById('menu-preview-img');
     const menuCaption = document.getElementById('menu-caption');
     const navLinks = document.querySelectorAll('.nav-item');
-    
+
     // Safety check: only run if menu elements exist
-    if(menuImg && navLinks.length > 0) {
-        
+    if (menuImg && navLinks.length > 0) {
+
         navLinks.forEach(link => {
-            
+
             // Mouse Enter: Swap Image & Text
             link.addEventListener('mouseenter', () => {
                 const newImg = link.getAttribute('data-img');
                 const newText = link.getAttribute('data-text');
-                
+
                 if (newImg) {
                     // 1. Fade Out
                     menuImg.style.opacity = 0;
-                    if(menuCaption) menuCaption.style.opacity = 0;
-                    
+                    if (menuCaption) menuCaption.style.opacity = 0;
+
                     setTimeout(() => {
                         // 2. Swap Content
                         menuImg.src = newImg;
-                        if(menuCaption && newText) menuCaption.innerText = newText;
-                        
+                        if (menuCaption && newText) menuCaption.innerText = newText;
+
                         // 3. Fade In
                         menuImg.style.opacity = 1;
-                        if(menuCaption) menuCaption.style.opacity = 1;
+                        if (menuCaption) menuCaption.style.opacity = 1;
                     }, 200); // Wait 200ms for fade out
                 }
             });
-            
+
         });
     }
 });
@@ -563,33 +647,64 @@ function closeMenu() {
 }
 // --- SEND DARSHAN REQUEST TO WHATSAPP ---
 
+// --- SEND DARSHAN REQUEST TO WHATSAPP (FIXED EMOJIS) ---
+
+// --- SEND DARSHAN REQUEST TO WHATSAPP (FINAL FIX) ---
+
 function sendDarshanRequest(event) {
     event.preventDefault(); // Stops the page from reloading
 
-    // 1. Get values from the HTML IDs we just added
+    // 1. Get values from the HTML inputs
     const name = document.getElementById('d-name').value;
     const phone = document.getElementById('d-phone').value;
     const occupation = document.getElementById('d-occupation').value;
     const city = document.getElementById('d-city').value;
     const msg = document.getElementById('d-msg').value;
 
-    // 2. The Phone Number to receive the message (No '+' or spaces)
-    // Using the number you provided earlier: 97808-81008
-    const adminPhone = "919780881008"; 
+    // 2. The Phone Number (No '+' or spaces)
+    const adminPhone = "919780881008";
 
-    // 3. Format the Message nicely
-    // %0a creates a new line in WhatsApp
-    const whatsappText = 
-        `*Radhe Radhe! New Darshan Request* 🌸%0a` +
-        `--------------------------------%0a` +
-        `👤 *Name:* ${name}%0a` +
-        `📞 *Phone:* ${phone}%0a` +
-        `💼 *Occupation:* ${occupation}%0a` +
-        `VX *City:* ${city}%0a` +
-        `📝 *Message:* ${msg}%0a` +
+    // 3. Construct the Message using standard newlines (\n)
+    // Note: We use \n instead of %0a here, because the encoder handles it.
+    const rawText =
+        `*Radhe Radhe! New Darshan Request* 🌸\n` +
+        `--------------------------------\n` +
+        `👤 *Name:* ${name}\n` +
+        `📞 *Phone:* ${phone}\n` +
+        `💼 *Occupation:* ${occupation}\n` +
+        `📍 *City:* ${city}\n` +
+        `📝 *Message:* ${msg}\n` +
         `--------------------------------`;
 
-    // 4. Open WhatsApp
-    const url = `https://wa.me/${adminPhone}?text=${whatsappText}`;
+    // 4. THE FIX: Encode the entire string
+    // This converts emojis into safe codes (like %F0%9F...) automatically
+    const encodedText = encodeURIComponent(rawText);
+
+    // 5. Open WhatsApp
+    const url = `https://wa.me/${adminPhone}?text=${encodedText}`;
     window.open(url, '_blank');
 }
+// --- SMOOTH SCROLLING SETUP (LENIS) ---
+const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smooth: true,
+});
+
+function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+}
+requestAnimationFrame(raf);
+
+// Connect Lenis to GSAP ScrollTrigger
+lenis.on('scroll', ScrollTrigger.update);
+gsap.ticker.add((time) => {
+    lenis.raf(time * 1000);
+});
+gsap.ticker.lagSmoothing(0);
+
+
+
+
+

@@ -1,26 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sushri Braj Bhuvaneshwari Devi Ji | Biography</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Sushri Braj Bhuvneshwari Devi Ji | Biography</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@400;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <link rel="stylesheet" href="style.css">
 
     <style>
         /* Styles reused from Maharaj Ji's page for consistency */
-        body { background-color: #0a0a12; }
+        /* 1. Make body transparent so we can see the layer behind it */
+        body {
+            background-color: transparent;
+            /* OR just delete this line entirely */
+        }
+
+        /* 2. Define the Gold Color (Just in case it's missing) */
+        :root {
+            --gold: #FFD700;
+        }
 
         .bio-header {
             height: 60vh;
-            /* Replace with a high-quality photo of Devi Ji */
-            background: radial-gradient(circle at center, rgba(0,0,0,0.3), #0a0a12), url('https://via.placeholder.com/1920x1080?text=Devi+Ji+Portrait') no-repeat center top/cover;
+            background: radial-gradient(circle at center, rgba(0, 0, 0, 0.3), #0a0a12), url('images/deviji_header.jpg') no-repeat center top/cover;
+
             display: flex;
             align-items: flex-end;
-            justify-content: center;
+            /* Keeps box at the bottom */
+
+            /* CHANGED: Align box to the LEFT */
+            justify-content: flex-start;
+
+            /* ADDED: Match the 5% margin of your body text */
+            padding-left: 5%;
             padding-bottom: 50px;
             position: relative;
         }
@@ -31,7 +49,7 @@
             padding: 30px 50px;
             text-align: center;
             max-width: 800px;
-            box-shadow: 0 0 50px rgba(0,0,0,0.8);
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
         }
 
         .bio-content {
@@ -49,7 +67,7 @@
             color: var(--gold);
             font-size: 2rem;
             margin-top: 50px;
-            border-bottom: 1px solid rgba(255,215,0,0.2);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
             padding-bottom: 10px;
         }
 
@@ -64,7 +82,8 @@
 
         .back-btn {
             position: fixed;
-            top: 30px; left: 30px;
+            top: 30px;
+            left: 30px;
             z-index: 100;
             color: #FFD700;
             text-decoration: none;
@@ -72,159 +91,392 @@
             border: 1px solid #FFD700;
             padding: 10px 25px;
             border-radius: 30px;
-            background: rgba(0,0,0,0.6);
+            background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(5px);
             transition: 0.3s;
         }
-        .back-btn:hover { background: #FFD700; color: black; }
+
+        .back-btn:hover {
+            background: #FFD700;
+            color: black;
+        }
+
         /* --- VIDEO GALLERY STYLES --- */
 
-.video-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Auto-responsive columns */
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            /* Auto-responsive columns */
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .video-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .video-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* The Magic Wrapper for Responsive Video */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-card h3 {
+            color: var(--gold);
+            font-family: var(--font-head);
+            font-size: 1.2rem;
+            padding: 20px;
+            margin: 0;
+        }
+
+        /* ========================
+   ADD TO YOUR CSS
+   ======================== */
+
+        /* 1. Ensure Text sits on top of images */
+        .bio-content {
+            /* Limit width to 55% so it doesn't hit the image on the right */
+            max-width: 55%;
+
+            /* Align to the left (5% margin from edge) */
+            margin: 50px 0 100px 5%;
+
+            /* Standard Text Styling */
+            color: #e0e0e0;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            /* Slightly larger for readability */
+            line-height: 1.8;
+            text-align: justify;
+            /* Makes the left-block look neat */
+
+            position: relative;
+            z-index: 10;
+        }
+
+        /* 2. The Fixed Side Images */
+        .divine-frame {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .guard-img {
+            position: absolute;
+            bottom: 0;
+
+            /* Make her slightly smaller so she doesn't dominate the screen */
+            height: 85vh;
+            /* Reduced from 70vh */
+
+            width: auto;
+            opacity: 1;
+            /* Keep full visibility since it's a photo */
+            filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.8));
+            /* Dark shadow for depth */
+            transition: opacity 2s ease-in-out;
+        }
+
+        .left-guard {
+            left: -30px;
+            transform: scaleX(-1);
+        }
+
+        .right-guard {
+            right: -40px;
+        }
+
+        @media (max-width: 1024px) {
+            .divine-frame {
+                display: none;
+            }
+
+            .bio-content {
+                max-width: 90%;
+                /* Use full screen on mobile */
+                margin: 50px auto;
+                /* Center it */
+            }
+
+            .bio-header {
+                justify-content: center;
+                /* Back to center */
+                padding-left: 0;
+            }
+
+            /* Hide on Mobile */
+        }
+
+        /* 3. Particle Background */
+        #particle-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at center, #1a1a2e 0%, #000000 100%);
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background-color: var(--gold);
+            border-radius: 50%;
+            opacity: 0;
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(0.5);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.8;
+            }
+
+            80% {
+                opacity: 0.4;
+            }
+
+            100% {
+                transform: translateY(-110vh) scale(1.2);
+                opacity: 0;
+            }
+        }
+        .bio-video-container {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    text-align: left; /* Aligns with the text */
 }
 
-.video-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 215, 0, 0.2);
-    border-radius: 15px;
-    overflow: hidden;
-    transition: 0.3s;
-    text-align: center;
-}
-
-.video-card:hover {
-    border-color: var(--gold);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
-
-/* The Magic Wrapper for Responsive Video */
-.video-wrapper {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-    height: 0;
-    overflow: hidden;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-.video-wrapper iframe {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.video-card h3 {
-    color: var(--gold);
+.video-title {
     font-family: var(--font-head);
-    font-size: 1.2rem;
-    padding: 20px;
-    margin: 0;
+    color: var(--gold);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    display: inline-block;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+    padding-bottom: 5px;
+}
+
+.bio-video-frame {
+    border: 1px solid var(--gold);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Deep shadow */
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.bio-video-frame:hover {
+    transform: scale(1.02); /* Slight zoom on hover */
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); /* Gold glow */
 }
     </style>
 </head>
-<body>
 
+<body>
+    <div id="particle-container"></div>
+
+    <div class="divine-frame">
+        <!-- <img src="images/deviji_portrait.png" class="guard-img left-guard" alt="H.H. Raseshwari Devi Ji"> -->
+        <img src="images/didi_mji.png" class="guard-img right-guard" alt="H.H. Raseshwari Devi Ji">
+    </div>
     <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
 
     <header class="bio-header">
         <div class="bio-title-card">
-            <h1 class="guru-title" style="margin: 0;">Sushri Braj Bhuvaneshwari Devi Ji</h1>
-            <p style="color: #aaa; margin-top: 10px; text-transform: uppercase; letter-spacing: 2px;">"Our Didi"</p>
+            <h1 class="guru-title" style="margin: 0;">Sushri Braj Bhuvneshwari Devi Ji</h1>
+            <p style="color: #aaa; margin-top: 10px; text-transform: uppercase; letter-spacing: 2px;">"Our Didi Ji"</p>
         </div>
     </header>
 
     <article class="bio-content">
-        
+
         <p>
-            The moment the name <strong>Jagadguru Shri Kripalu Ji Maharaj</strong> is uttered, the divine form of Radha Krishna naturally manifests in one's heart. Shri Maharaj Ji spent his entire life distributing causeless grace upon the souls of this Kaliyuga. To ensure that this stream of devotion reached every corner of the world, he inspired his own spiritual extensions to dedicate their lives to the propagation of Bhakti.
+            The moment the name <strong>Jagadguru Shri Kripalu Ji Maharaj</strong> is uttered, the divine form of Radha
+            Krishna naturally manifests in one's heart. Shri Maharaj Ji spent his entire life distributing akarn
+            kripa upon the souls of this Kaliyuga. To ensure that this stream of devotion reached every corner of the
+            world, he inspired his own spiritual extensions to dedicate their lives to the propagation of Bhakti.
         </p>
         <p>
-            Our beloved Didi, <strong>Sushri Braj Bhuvaneshwari Devi Ji</strong>, is one such divine soul—a dedicated preacher whose very identity is surrendered to the service of her Master.
+            Our beloved Didi, <strong>Sushri Braj Bhuvneshwari Devi Ji</strong>, is one such divine soul—a dedicated
+            preacher whose very identity is surrendered to the service of her Master , Jagadguru Shri Kripalu Ji
+            Maharaj.
         </p>
 
         <div class="highlight-box">
-            "It is difficult to introduce Didi Ji in words, for in her conduct, her speech, and her every action, one sees only Shri Maharaj Ji. She is a pure reflection of his Grace."
+            "It is difficult to introduce Didi Ji in words, for in her conduct, her speech, and her every action, one
+            sees only Shri Maharaj Ji. She is a pure reflection of his Grace."
         </div>
 
         <h2>Early Divine Life</h2>
         <p>
-            Didi Ji appeared in this material world on <strong>September 22, 1971</strong>, in the city of Lucknow, Uttar Pradesh. She was born into a family that was already drenched in devotion; her parents were exclusive devotees of Shri Maharaj Ji, and her three sisters and two brothers also grew up as dedicated <em>satsangis</em>.
+            Didi Ji appeared in this material world on <strong>September 22, 1971</strong>, in the city of Lucknow,
+            Uttar Pradesh. She was born into a family that was already drenched in devotion; her parents were exclusive
+            devotees of Shri Maharaj Ji, and her three sisters and two brothers also grew up as dedicated
+            <em>satsangis</em>.
         </p>
         <p>
-            The spiritual elevation of her family is evident from a profound incident in 1978. When Didi Ji’s mother was in the service of Shri Maharaj Ji, he gave her a divine command:
+            The spiritual elevation of her family is evident from a profound incident in 1978. When Didi Ji’s mother was
+            in the service of Shri Maharaj Ji, he gave her a divine command:
             <br><br>
-            <em>"There are six of my devotees in your home. Do not harbor any worldly attachment towards them. Raise them only as a matter of duty, for they belong to God."</em>
+            <em>"There are six of my devotees in your home. Do not harbor any worldly attachment towards them. Raise
+                them only as a matter of duty, for they belong to Me."</em>
         </p>
 
         <h2>Education & Renunciation</h2>
         <p>
-            Following Maharaj Ji's guidance, Didi Ji excelled in her academics. She completed her B.A., M.A., and M.Phil with distinction. However, while pursuing her Ph.D., a wave of <strong>Sahaj Vairagya</strong> (natural detachment) overcame her. Realizing that the ultimate knowledge lies not in books but in the feet of the Guru, she left her academic pursuits to walk the path of renunciation.
+            Following Maharaj Ji's guidance, Didi Ji excelled in her academics. She completed her B.A., M.A., and M.Phil
+            with distinction. While serving as a lecturer at Lucknow University, she realized that true and ultimate
+            knowledge is attained not through books, but at the sacred feet of Hari Guru. Following this realization,
+            she renounced her academic career and embraced the path of renunciation.
         </p>
 
         <h2>The Mission Begins</h2>
         <p>
-            On the auspicious occasion of <strong>Diwali, 1998</strong>, Shri Maharaj Ji formally declared her as his Pracharika (Preacher) and bestowed upon her the name <strong>"Braj Bhuvaneshwari."</strong>
+            On the auspicious occasion of <strong>Diwali, 1998</strong>, Shri Maharaj Ji formally declared her as his
+            Pracharika (Preacher) and bestowed upon her the name <strong>"Braj Bhuvneshwari."</strong>
         </p>
+        <!-- add a video now  -->
+         <div class="bio-video-container">
+        <h3 class="video-title">A Life of Service</h3>
+        
+        <div class="video-wrapper bio-video-frame">
+            <iframe src="Video/didi_1.mp4" 
+                    title="Devi Ji Mission" frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+            </iframe>
+        </div>
+    </div>
         <p>
-            Since then, she has been a torchbearer of his philosophy. To establish a center for devotion, she constructed the divine ashram <strong>"Shri Kripalu Kunj"</strong> in Bathinda, Punjab, under Maharaj Ji's command. Expanding this vision further to the Himalayas, she established <strong>Radha Govind Dham</strong> in Chail, creating a sanctuary for seekers worldwide.
+            Since then, she has been a torchbearer of shri Maharaj Ji philosophy. As per shri Maharaj ji direction , she
+            constructed the divine ashram <strong>"Shri Kripalu Kunj"</strong> in Bathinda, Punjab. Expanding this
+            vision further to the Himalayas, she is setting up
+           
+            <strong>Radha Govind Dham</strong>
+            in Chail, creating a sanctuary for seekers worldwide.
         </p>
 
     </article>
-    <section id="video-gallery" class="centered-panel" style="padding-bottom: 80px;">
-    
-    <div class="gallery-header">
-        <h2 class="section-title">Divine Discourses</h2>
-        <p class="section-subtitle">Watch the latest Satsang and Kirtan by Didi Ji</p>
-    </div>
+    <section id="media-section" class="centered-panel" style="padding-bottom: 80px;">
 
-    <div class="video-grid">
-        
-        <div class="video-card">
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/R6PmTQ9EU0Y" 
-                        title="Didi Ji Satsang" frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                </iframe>
-            </div>
-            <h3>धन्य धन्य ब्रजनार माधो</h3>
+        <div class="gallery-header">
+            <h2 class="section-title">Divine Discourses</h2>
+            <p class="section-subtitle">Watch the latest Satsang and Kirtan by Didi Ji</p>
         </div>
 
-        <div class="video-card">
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/G2l_l29Y8fs" 
-                        title="Kirtan Bliss" frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                </iframe>
-            </div>
-            <h3>Jagadguruttam Diwas 2024 Celebration & Distribution</h3>
-        </div>
+        <div class="video-grid">
 
-        <div class="video-card">
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/oBkJ-C3Qb98" 
-                        title="Gita Gyan" frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/R6PmTQ9EU0Y" title="Didi Ji Satsang" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen>
-                </iframe>
+                    </iframe>
+                </div>
+                <h3>धन्य धन्य ब्रजनार माधो</h3>
             </div>
-            <h3>श्रद्धा ? || Devotion ?</h3>
-        </div>
 
-    </div>
-</section>
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/G2l_l29Y8fs" title="Kirtan Bliss" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <h3>Jagadguruttam Diwas 2024 Celebration & Distribution</h3>
+            </div>
+
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/oBkJ-C3Qb98" title="Gita Gyan" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <h3>श्रद्धा ? || Devotion ?</h3>
+            </div>
+
+        </div>
+    </section>
 
     <footer style="text-align: center; padding: 50px; border-top: 1px solid #333; color: #666;">
         <p>© 2025 Radha Govind Dham. All Rights Reserved.</p>
         <p>Jai Shri Radhe</p>
     </footer>
+    <script>
+        // 1. PARTICLES GENERATOR
+        function initParticles() {
+            const container = document.getElementById('particle-container');
+            if (!container) return;
 
+            for (let i = 0; i < 40; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                const size = Math.random() * 5 + 2 + 'px';
+                particle.style.width = size; particle.style.height = size;
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.animationDuration = (Math.random() * 15 + 10) + 's';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // 2. SCROLL FADE (Hides images when reaching videos)
+        window.addEventListener('scroll', () => {
+            const guards = document.querySelector('.divine-frame');
+            const stopTarget = document.getElementById('media-section'); // Ensure your video section has this ID
+
+            if (guards && stopTarget) {
+                const targetPosition = stopTarget.getBoundingClientRect().top;
+                const screenHeight = window.innerHeight;
+
+                // Start fading 200px before the section arrives
+                if (targetPosition < screenHeight + 200) {
+                    guards.style.opacity = '0';
+                } else {
+                    guards.style.opacity = '0.8';
+                }
+            }
+        });
+
+        // Run on Load
+        window.addEventListener('DOMContentLoaded', initParticles);
+    </script>
 </body>
+
 </html>

@@ -46,6 +46,10 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.3rem;
             line-height: 1.8;
+
+            /* ADD THESE TO KEEP TEXT ABOVE IMAGES */
+            position: relative;
+            z-index: 10;
         }
 
         .bio-content h2 {
@@ -139,10 +143,246 @@
             padding: 20px;
             margin: 0;
         }
+
+        /* =========================================
+   DIVINE PARTICLES BACKGROUND
+   ========================================= */
+
+        #particle-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            /* Behind text */
+            background: radial-gradient(circle at center, #1a1a2e 0%, #000000 100%);
+            /* Deep vignette */
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            bottom: -10px;
+            /* Start slightly below screen */
+            background-color: var(--gold);
+            /* Uses your gold color */
+            border-radius: 50%;
+            opacity: 0;
+            /* Start hidden */
+            animation: floatUp linear infinite;
+            box-shadow: 0 0 10px var(--gold);
+            /* Glowing effect */
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(0.5);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.8;
+                /* Fade in */
+            }
+
+            80% {
+                opacity: 0.4;
+                /* Start fading out */
+            }
+
+            100% {
+                transform: translateY(-110vh) scale(1.2);
+                /* Float to top */
+                opacity: 0;
+            }
+        }
+
+        /* =========================================
+   DIVINE SIDE FRAMES (MAHARAJ JI)
+   ========================================= */
+
+        .divine-frame {
+            position: fixed;
+            /* Stays stuck to screen */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            /* Let clicks pass through to text */
+            z-index: 1;
+            /* Sits behind text (or use 10 if you want it on top of background) */
+            overflow: hidden;
+        }
+
+        .guard-img {
+            position: absolute;
+            bottom: 0;
+            /* Aligned to bottom */
+            height: 85vh;
+            /* Takes up 85% of screen height */
+            width: auto;
+            opacity: 1;
+            /* Adjust visibility (0.8 is strong, 0.3 is subtle) */
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+            /* Golden Glow */
+            transition: opacity 2s ease-in-out;
+        }
+
+        /* LEFT IMAGE (Facing Right/Inward) */
+        .left-guard {
+            left: 0;
+            /* Slight offset to push it to edge */
+        }
+
+        /* RIGHT IMAGE (Mirrored to Face Left/Inward) */
+        .right-guard {
+            right: 0;
+            
+            /* THE MAGIC: Flips the image horizontally */
+        }
+
+        /* CONTENT ADJUSTMENT: Ensure text doesn't hit the images */
+        .maharaj-content-container {
+            max-width: 800px;
+            /* Restrict text width so it stays in center */
+            margin: 0 auto;
+            /* Center the text block */
+            position: relative;
+            z-index: 5;
+            /* Text sits ON TOP of images */
+        }
+
+        /* MOBILE: HIDE THEM (Screen too small) */
+        @media (max-width: 1024px) {
+            .divine-frame {
+                display: none;
+            }
+        }
+        /* =========================================
+   DIVINE MONUMENTS (VERTICAL LIST LAYOUT)
+   ========================================= */
+
+.monuments-grid {
+    display: flex;
+    flex-direction: column; /* Stacks cards vertically */
+    gap: 50px; /* Space between each temple */
+    max-width: 1000px; /* Controls width so they don't get too wide */
+    margin: 0 auto;
+}
+
+/* THE WIDE CARD (Laptop View) */
+.monument-card {
+    display: flex; /* Makes Image and Text sit side-by-side */
+    flex-direction: row; 
+    align-items: center; /* Centers text vertically */
+    
+    background: rgba(255, 255, 255, 0.03); /* Glass Effect */
+    border: 1px solid rgba(255, 215, 0, 0.2); /* Gold Border */
+    border-radius: 15px;
+    overflow: hidden;
+    transition: 0.4s ease;
+    text-align: left;
+    min-height: 300px;
+}
+
+/* Hover Effect */
+.monument-card:hover {
+    transform: translateX(10px); /* Slides slightly right instead of up */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    border-color: var(--gold);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Image Section (Left Side) */
+.monument-img {
+    width: 45%; /* Image takes 45% of width */
+    height: 350px; /* Taller height for grandeur */
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0; /* Prevents image from shrinking */
+}
+
+.monument-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.6s ease;
+}
+
+.monument-card:hover .monument-img img {
+    transform: scale(1.1); /* Slow zoom */
+}
+
+/* Location Tag */
+.overlay-location {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    background: rgba(0, 0, 0, 0.8);
+    color: var(--gold);
+    padding: 6px 15px;
+    font-size: 0.9rem;
+    border-radius: 20px;
+    font-weight: bold;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+/* Text Section (Right Side) */
+.monument-text {
+    width: 55%; /* Text takes remaining space */
+    padding: 40px;
+}
+
+.monument-text h3 {
+    font-family: var(--font-head);
+    color: var(--gold);
+    font-size: 2rem; /* Larger Title */
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 15px;
+}
+
+.temple-desc {
+    color: #ccc;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* --- MOBILE RESPONSIVE (Switch back to Stacked) --- */
+@media (max-width: 900px) {
+    .monument-card {
+        flex-direction: column; /* Image Top, Text Bottom */
+    }
+    
+    .monument-img {
+        width: 100%;
+        height: 250px;
+    }
+    
+    .monument-text {
+        width: 100%;
+        padding: 30px 20px;
+    }
+
+    .monument-card:hover {
+        transform: translateY(-5px); /* On mobile, move up, not right */
+    }
+}
     </style>
+
 </head>
 
 <body>
+    <div class="divine-frame">
+        <img src="images/smj_left_f.png" class="guard-img left-guard" alt="Maharaj Ji">
+
+        <img src="images/smj_right_f.png" class="guard-img right-guard" alt="Maharaj Ji">
+    </div>
+    <div id="particle-container"></div>
 
     <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
 
@@ -159,22 +399,20 @@
         <p>
             Jagadguru Shri Kripalu Ji Maharaj was not just a Guru; he was the very embodiment of Divine Love
             (Premanand). In an era dominated by materialism, he descended to reconcile the conflicting philosophies of
-            the world and reveal the simplest, most accessible path to God Realization for the modern age.
+            the world and reveal the simplest, most accessible path to Shri Radha Krishna Realization for the modern age.
         </p>
 
         <h2>The Divine Appearance</h2>
         <p>
             He appeared on the auspicious night of **Sharad Purnima** in October 1922, in the small village of Mangarh,
-            near Allahabad. From his childhood, his divine nature was evident. Although he completed his formal
-            education in Kashi (Varanasi) in merely a few years—mastering Sanskrit grammar, Vedas, and scriptures
-            effortlessly—his true mission was to distribute the bliss of Bhakti.
+            near Prayagraj (Allahabad). From his childhood, his divine nature was evident. 
         </p>
 
         <h2>The Title of Jagadguru</h2>
         <p>
             In 1957, at the tender age of 34, he addressed the **Kashi Vidvat Parishat**, the supreme body of 500
-            scholars in Varanasi. He spoke for ten days in complex Sanskrit, citing thousands of scriptures from memory
-            without referring to a single book.
+            scholars in Varanasi. He spoke for nine days in complex Sanskrit, quoting vedas , shastras and other hindu scriptures without even seen one .
+           
         </p>
         <div class="highlight-box">
             "We are stunned. He is not merely a scholar; he is the personification of the Vedas. We declare him as
@@ -184,7 +422,7 @@
         <p>
             He became the **5th Original Jagadguru** in history, following the lineage of Adi Shankaracharya,
             Nimbarkacharya, Ramanujacharya, and Madhvacharya. He was merely 34, while previous Jagadgurus received this
-            title much later in life.
+            title much later in life. Shri Kripalu Ji Maharaj did not oppose the teachings of any previous Jagadguru; rather, he harmonized and synthesized all of them.
         </p>
 
         <h2>His Philosophy: Roopdhyan</h2>
@@ -201,7 +439,7 @@
         </p>
         <ul style="list-style: none; padding: 0;">
             <li style="margin-bottom: 10px;"><i class="fa-solid fa-book"
-                    style="color:var(--gold); margin-right: 10px;"></i> <strong>Prem Ras Madira:</strong> 1008
+                    style="color:var(--gold); margin-right: 10px;"></i> <strong>Prem Ras Madira:</strong> <strong>1008</strong>
                 devotional songs (pads) describing the pastimes of Radha Krishna.</li>
             <li style="margin-bottom: 10px;"><i class="fa-solid fa-book"
                     style="color:var(--gold); margin-right: 10px;"></i> <strong>Prem Ras Siddhant:</strong> The
@@ -211,15 +449,62 @@
                 wisdom for daily life.</li>
         </ul>
 
-        <div style="text-align: center; margin-top: 60px;">
-            <img src="https://d34vm3j4h7f97z.cloudfront.net/original/4X/c/f/2/cf293bd7dfd3abfbc657907fe0ebf8aca779dbfa.jpeg"
-                style="width: 100%; border-radius: 10px; border: 1px solid var(--gold);" alt="Prem Mandir">
-            <p style="font-size: 0.9rem; color: #888; margin-top: 10px;">Prem Mandir, Vrindavan - A monument of his
-                Grace.</p>
+       <section id="monuments" class="panel dark-panel centered-panel">
+    <div class="panel-content column-layout">
+        
+        <div class="section-header" style="text-align: center; margin-bottom: 50px;">
+            <h2 class="section-title">The Eternal Gifts</h2>
+            <p class="section-subtitle">Three divine temples established by Shri Maharaj Ji to preserve Bhakti for eternity.</p>
+            <div class="gold-divider" style="margin: 20px auto; width: 80px; height: 3px; background: var(--gold);"></div>
         </div>
 
+        <div class="monuments-grid">
+            
+            <div class="monument-card">
+                <div class="monument-img">
+                    <img src="images/pm.png" alt="Prem Mandir Vrindavan">
+                    <div class="overlay-location"><i class="fa-solid fa-location-dot"></i> Vrindavan</div>
+                </div>
+                <div class="monument-text">
+                    <h3>Prem Mandir</h3>
+                    <p class="temple-desc">
+                        The <strong>"Temple of Divine Love."</strong> Constructed entirely of Italian marble, this architectural marvel depicts the pastimes of Radha Krishna and stands as a beacon of Bhakti for the entire world.
+                    </p>
+                </div>
+            </div>
+
+            <div class="monument-card">
+                <div class="monument-img">
+                    <img src="images/BM.png" alt="Bhakti Mandir Mangarh">
+                    <div class="overlay-location"><i class="fa-solid fa-location-dot"></i> Bhakti Dham, Mangarh</div>
+                </div>
+                <div class="monument-text">
+                    <h3>Bhakti Mandir</h3>
+                    <p class="temple-desc">
+                        Established at the birthplace of Shri Maharaj Ji. This divine temple is the foundation of the mission, symbolizing the grace of the Guru and the sanctity of the Holy Name.
+                    </p>
+                </div>
+            </div>
+
+            <div class="monument-card">
+                <div class="monument-img">
+                    <img src="images/KM.png" alt="Kirti Mandir Barsana">
+                    <div class="overlay-location"><i class="fa-solid fa-location-dot"></i> Rangeeli Mahal, Barsana</div>
+                </div>
+                <div class="monument-text">
+                    <h3>Kirti Mandir</h3>
+                    <p class="temple-desc">
+                        The only temple in the world dedicated to <strong>Kirti Maiya</strong> (Mother of Shri Radha). A unique masterpiece of red stone and white marble, representing the playful joy of Barsana.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
     </article>
-    <section id="video-gallery" class="centered-panel" style="padding-bottom: 80px;">
+    <section id="media-section" class="centered-panel" style="padding-bottom: 80px;">
 
         <div class="gallery-header">
             <h2 class="section-title">Divine Discourses</h2>
@@ -240,12 +525,12 @@
 
             <div class="video-card">
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/gJt2-mS5vj4" title="Kirtan Bliss" frameborder="0"
+                    <iframe src="https://www.youtube.com/embed/Jtt0jXN8ANs" title="Kirtan Bliss" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen>
                     </iframe>
                 </div>
-                <h3>Is it right to sin for God's sake ?</h3>
+                <h3>Relief From Sorrow Through Devotion</h3>
             </div>
 
             <div class="video-card">
@@ -264,6 +549,75 @@
     <footer style="text-align: center; padding: 50px; border-top: 1px solid #333; color: #666;">
         <p>© 2025 Radha Govind Dham. All Rights Reserved.</p>
     </footer>
+    <script>
+        // =========================================
+        //  DIVINE PARTICLES GENERATOR
+        // =========================================
+
+        function initParticles() {
+            const container = document.getElementById('particle-container');
+
+            // Only run this if the container exists (i.e., we are on maharaj.html)
+            if (!container) return;
+
+            const particleCount = 40; // Number of particles (don't go too high for mobile)
+
+            for (let i = 0; i < particleCount; i++) {
+                createParticle(container);
+            }
+        }
+
+        function createParticle(container) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+
+            // Random Size (Tiny specks vs larger glows)
+            const size = Math.random() * 5 + 2 + 'px'; // 2px to 7px
+            particle.style.width = size;
+            particle.style.height = size;
+
+            // Random Position (Left to Right)
+            particle.style.left = Math.random() * 100 + 'vw';
+
+            // Random Duration (Slow vs Fast)
+            const duration = Math.random() * 15 + 10 + 's'; // 10s to 25s
+            particle.style.animationDuration = duration;
+
+            // Random Delay (So they don't all start at once)
+            particle.style.animationDelay = Math.random() * 20 + 's';
+
+            container.appendChild(particle);
+        }
+
+        // Run on Load
+        window.addEventListener('DOMContentLoaded', initParticles);
+        // =========================================
+        //  HIDE MAHARAJ JI GUARDS ON SCROLL
+        // =========================================
+
+        // =========================================
+        //  ULTRA-SMOOTH FADE ON SCROLL
+        // =========================================
+
+        window.addEventListener('scroll', () => {
+            const guards = document.querySelector('.divine-frame');
+            const stopTarget = document.getElementById('media-section'); // or 'stop-point'
+
+            if (guards && stopTarget) {
+                // Get position
+                const targetPosition = stopTarget.getBoundingClientRect().top;
+                const screenHeight = window.innerHeight;
+
+                // LOGIC: Start fading 200px BEFORE the section actually enters
+                // This gives the 2-second transition time to finish smoothly
+                if (targetPosition < screenHeight + 200) {
+                    guards.style.opacity = '0'; // Fade out
+                } else {
+                    guards.style.opacity = '0.8'; // Fade back in (match your CSS opacity)
+                }
+            }
+        });
+    </script>
 
 </body>
 
