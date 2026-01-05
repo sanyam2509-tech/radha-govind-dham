@@ -178,7 +178,7 @@ if (shivirForm) {
 
         // Razorpay Options
         var options = {
-            "key": "YOUR_RAZORPAY_KEY_ID", // 🔴 REPLACE WITH REAL KEY
+            "key": "rzp_test_S0Av0qrREMPtyN", // 🔴 REPLACE WITH REAL KEY
             "amount": totalAmountPaise,
             "currency": "INR",
             "name": "Radha Govind Dham",
@@ -279,7 +279,7 @@ if (donateForm) {
 
         // Razorpay Options
         var options = {
-            "key": "YOUR_RAZORPAY_KEY_ID", // 🔴 REPLACE WITH REAL KEY
+            "key": "rzp_test_S0Av0qrREMPtyN", // 🔴 REPLACE WITH REAL KEY
             "amount": amount * 100,
             "currency": "INR",
             "name": "Kripalu Padma Trust",
