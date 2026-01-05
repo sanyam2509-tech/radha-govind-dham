@@ -44,10 +44,15 @@
     <main id="content">
 
         <nav class="glass-nav">
-            <div class="logo">Radha Govind Dham</div>
-            <div class="menu-btn"><i class="fa-solid fa-bars-staggered"></i></div>
-
-        </nav>
+    <div class="logo">Radha Govind Dham</div>
+    
+    <div style="display: flex; align-items: center; gap: 15px;">
+        <a href="hindi.html" class="lang-btn" style="text-decoration:none; color: var(--gold); border: 1px solid var(--gold); padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; font-family: sans-serif; transition: 0.3s;">
+            HINDI
+        </a>
+        <div class="menu-btn"><i class="fa-solid fa-bars-staggered"></i></div>
+    </div>
+</nav>
         <div id="menu-overlay">
             <div class="close-menu"><i class="fa-solid fa-xmark"></i></div>
 
@@ -94,13 +99,13 @@
                         <a href="#shivir-section" class="nav-item" onclick="closeMenu()" data-img="images/join_us.jpg"
                             data-text='"Transform Your Life"'>
                             Join Us <span class="sub-text">Sadhana Shivir Registration</span>
-                            
+
 
                         </a>
                     </li>
 
                     <li>
-                        <a href="#donate-section" class="nav-item donate-link" onclick="closeMenu()"
+                        <a href="donate.html" class="nav-item donate-link" onclick="closeMenu()"
                             data-img="images/logo.jpg" data-text='"The Joy of Giving"'>
                             Donate <span class="sub-text">Support the Mission</span>
                         </a>
@@ -232,7 +237,8 @@
                     <div class="timeline-dot"></div>
 
                     <div class="timeline-content glass-card">
-                        <span class="year">1922</span>
+                        <span class="year">5 October 1922
+                        </span>
                         <h3>The Divine Appearance</h3>
                         <p style="font-size: 1.1rem;">Appeared on Sharad Purnima night in Mangarh. From childhood, his
                             divine radiance captivated
@@ -246,7 +252,7 @@
                     <div class="timeline-dot"></div>
 
                     <div class="timeline-content glass-card">
-                        <span class="year">1957</span>
+                        <span class="year">January 14, 1957</span>
                         <h3>Honored as Jagadgurottam</h3>
                         <p style="font-size: 1.1rem;">At just 34 years old, the scholars of Kashi Vidvat Parishat
                             unanimously honored him as the
@@ -352,7 +358,13 @@
                             his <em>Pracharika</em> and bestowed upon her the divine name <strong>"Braj
                                 Bhuvneshwari"</strong>.</p>
                     </div>
-                    <img src="images/kripalu_kunj.png" alt="Mangarh" class="timeline-opposite-img">
+
+
+
+                    <video class="timeline-opposite-img" controls playsinline poster="images/video_thumbnail.jpg">
+                        <source src="Video/timeline_didi.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
 
                 </div>
 
@@ -377,7 +389,7 @@
                                 Dham</strong> in Chail, a
                             sanctuary in the Himalayas for deep Sadhana and solitude.</p>
                     </div>
-                    <img src="images/timeline_5.png" alt="Mangarh" class="timeline-opposite-img">
+                    <img src="images/timeline_himalaya.jpg" alt="Mangarh" class="timeline-opposite-img">
                 </div>
 
             </div>
@@ -387,7 +399,19 @@
                     <i class="fa-solid fa-user-graduate"></i> Read Full Biography
                 </a>
             </div>
-            <button onclick="openMeetForm()" class="gold-btn">Greet and Meet Didi Ji</button>
+            <div class="guidance-container">
+                <div class="guidance-content">
+                    <h3><i class="fa-solid fa-hands-praying"></i> Seek Divine Guidance</h3>
+                    <p>
+                        Do you have spiritual doubts weighing on your heart? <br>
+                        Connect directly with Didi Ji to resolve your questions and find clarity on the path of
+                        devotion.
+                    </p>
+                    <button onclick="openMeetForm()" class="gold-btn glow-btn">
+                        Request a Personal Meeting
+                    </button>
+                </div>
+            </div>
 
 
         </section>
@@ -401,13 +425,14 @@
                     <p class="section-subtitle">A spiritual township spread across the pristine hills of Chail.</p>
                 </div>
 
+
                 <div class="stats-row">
                     <div class="stat-box">
                         <span class="stat-number">1.35</span>
                         <span class="stat-label">Acres of Land</span>
                     </div>
                     <div class="stat-box">
-                        <span class="stat-number">1900</span>
+                        <span class="stat-number">6000+</span>
                         <span class="stat-label">Ft. Elevation</span>
                     </div>
                     <div class="stat-box">
@@ -416,61 +441,109 @@
                         <span class="stat-label">world's highest Cricket Stadium</span>
                     </div>
                 </div>
+                <section id="gallery" class="panel dark-panel column-layout">
+                    <div class="gallery-container">
 
-                <div class="amenities-grid">
 
-                    <div class="amenity-card">
-                        <div class="icon-circle"><i class="fa-solid fa-place-of-worship"></i></div>
-                        <h3>Sadhna Bhavan</h3>
-                        <p>The spiritual heart of the Dham. A spacious, unified hall dedicated to both Satsang and
-                            Meditation.
-                            This sacred space is graced by the divine presence of the <strong>Yugal Jodi (Radha
-                                Krishna)</strong>
-                            and <strong>Jagadguru Shri Kripalu Ji Maharaj</strong>, creating a powerful atmosphere for
-                            deep contemplation and Roop Dhyan.
-                        </p>
+                        <div class="carousel-container">
+
+                            <div class="carousel-track" id="track">
+
+                                <div class="carousel-slide">
+                                    <img src="images/glimpse_1.JPG" alt="Divine Moment 1" loading="lazy">
+                                    <div class="slide-caption">
+                                        <h3>Satsang Bliss</h3>
+                                        <p>Devotees immersed in the nectar of kirtan.</p>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-slide">
+                                    <img src="images/glimpse_2.JPG" alt="Divine Moment 2" loading="lazy">
+                                    <div class="slide-caption">
+                                        <h3>Darshan</h3>
+                                        <p>A moment of divine connection.</p>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-slide">
+                                    <img src="images/glimpse_3.JPG" alt="Divine Moment 3" loading="lazy">
+                                    <div class="slide-caption">
+                                        <h3>Seva</h3>
+                                        <p>Selfless service is the highest worship.</p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <button class="carousel-btn prev-btn" id="prevBtn"><i
+                                    class="fa-solid fa-chevron-left"></i></button>
+                            <button class="carousel-btn next-btn" id="nextBtn"><i
+                                    class="fa-solid fa-chevron-right"></i></button>
+
+                            <div class="carousel-dots" id="dotsContainer"></div>
+
+                        </div>
                     </div>
 
-                    <div class="amenity-card">
-                        <div class="icon-circle"><i class="fa-solid fa-bed"></i></div>
-                        <h3>Devotee Niwas</h3>
-                        <p>A peaceful retreat nestled in the silence of the hills. Here, you stay far away from the
-                            chaos and crowd of the city, waking up to the sound of birds and the fresh Himalayan breeze.
-                            It is not just a stay; it is an immersion in serenity..</p>
-                    </div>
 
-                    <div class="amenity-card">
-                        <div class="icon-circle"><i class="fa-solid fa-tree"></i></div>
-                        <h3>Sadhana Vatikas</h3>
-                        <p>Lush green meditation gardens with designated silence zones, overlooking the Himalayan peaks
-                            for deep contemplation.</p>
-                    </div>
-
-                    <div class="amenity-card">
-                        <div class="icon-circle"><i class="fa-solid fa-utensils"></i></div>
-                        <h3>Prasadam Hall</h3>
-                        <p>Not just a meal, but Divine Grace. Devotees receive pure, sattvic <strong>Mahaprasad</strong>
-                            daily, cooked with devotion and offered to Shri Radha Govind.</p>
-                    </div>
-
-                    <div class="amenity-card">
-                        <div class="icon-circle"><i class="fa-solid fa-person-praying"></i></div>
-                        <h3>Yoga Natural Retreat</h3>
-                        <p>Rejuvenate your mind, body, and soul with daily yoga sessions and naturopathy therapies
-                            amidst the healing air of the Himalayas.
-                        </p>
-                    </div>
-
-                    <div class="amenity-card">
-                        <div class="icon-circle"><i class="fa-solid fa-book-journal-whills"></i></div>
-                        <h3>Jagadgurottam Bhaktiyog Vedant Darshan</h3>
-                        <p>A center of divine wisdom housing the monumental literature of Shri Maharaj Ji, reconciling
-                            all world scriptures into the simple path of <strong>Bhakti Yoga</strong>.</p>
-                    </div>
-
-                </div>
 
             </div>
+        </section>
+
+        <div class="amenities-grid">
+
+            <div class="amenity-card">
+                <div class="icon-circle"><i class="fa-solid fa-place-of-worship"></i></div>
+                <h3>Sadhna Bhavan</h3>
+                <p>The spiritual heart of the Dham. A spacious, unified hall dedicated to both Satsang and
+                    Meditation.
+                    This sacred space is graced by the divine presence of the <strong>Yugal Jodi (Radha
+                        Krishna)</strong>
+                    and <strong>Jagadguru Shri Kripalu Ji Maharaj</strong>, creating a powerful atmosphere for
+                    deep contemplation and Roop Dhyan.
+                </p>
+            </div>
+
+            <div class="amenity-card">
+                <div class="icon-circle"><i class="fa-solid fa-bed"></i></div>
+                <h3>Devotee Niwas</h3>
+                <p>A peaceful retreat nestled in the silence of the hills. Here, you stay far away from the
+                    chaos and crowd of the city, waking up to the sound of birds and the fresh Himalayan breeze.
+                    It is not just a stay; it is an immersion in serenity..</p>
+            </div>
+
+            <div class="amenity-card">
+                <div class="icon-circle"><i class="fa-solid fa-tree"></i></div>
+                <h3>Sadhana Vatikas</h3>
+                <p>Lush green meditation gardens with designated silence zones, overlooking the Himalayan peaks
+                    for deep contemplation.</p>
+            </div>
+
+            <div class="amenity-card">
+                <div class="icon-circle"><i class="fa-solid fa-utensils"></i></div>
+                <h3>Prasadam Hall</h3>
+                <p>Not just a meal, but Divine Grace. Devotees receive pure, sattvic <strong>Mahaprasad</strong>
+                    daily, cooked with devotion and offered to Shri Radha Govind.</p>
+            </div>
+
+            <div class="amenity-card">
+                <div class="icon-circle"><i class="fa-solid fa-person-praying"></i></div>
+                <h3>Yoga Natural Retreat</h3>
+                <p>Rejuvenate your mind, body, and soul with daily yoga sessions and naturopathy therapies
+                    amidst the healing air of the Himalayas.
+                </p>
+            </div>
+
+            <div class="amenity-card">
+                <div class="icon-circle"><i class="fa-solid fa-book-journal-whills"></i></div>
+                <h3>Jagadgurottam Bhaktiyog Vedant Darshan</h3>
+                <p>A center of divine wisdom housing the monumental literature of Shri Maharaj Ji, reconciling
+                    all world scriptures into the simple path of <strong>Bhakti Yoga</strong>.</p>
+            </div>
+
+        </div>
+
+        </div>
         </section>
 
         <section id="future-teaser" class="panel dark-panel centered-panel">
@@ -614,234 +687,47 @@
             </div>
         </section> -->
 
+        <section id="donate-cta" class="panel dark-panel centered-panel"
+            style="background: linear-gradient(to bottom, #000000, #0a0a12); border-top: 1px solid rgba(255,215,0,0.1);">
 
-
-
-
-
-
-
-
-        </section>
-
-        <section id="gallery" class="panel dark-panel column-layout">
-            <div class="gallery-container">
-                <div class="gallery-header">
-                    <h2>Glimpses of Grace</h2>
-                    <p>The serenity of Chail and the vibrancy of Devotion.</p>
-                </div>
-
-                <div class="carousel-container">
-
-                    <div class="carousel-track" id="track">
-
-                        <div class="carousel-slide">
-                            <img src="images/glimpse_1.JPG" alt="Divine Moment 1" loading="lazy">
-                            <div class="slide-caption">
-                                <h3>Satsang Bliss</h3>
-                                <p>Devotees immersed in the nectar of kirtan.</p>
-                            </div>
-                        </div>
-
-                        <div class="carousel-slide">
-                            <img src="images/glimpse_2.JPG" alt="Divine Moment 2" loading="lazy">
-                            <div class="slide-caption">
-                                <h3>Darshan</h3>
-                                <p>A moment of divine connection.</p>
-                            </div>
-                        </div>
-
-                        <div class="carousel-slide">
-                            <img src="images/glimpse_3.JPG" alt="Divine Moment 3" loading="lazy">
-                            <div class="slide-caption">
-                                <h3>Seva</h3>
-                                <p>Selfless service is the highest worship.</p>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <button class="carousel-btn prev-btn" id="prevBtn"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button class="carousel-btn next-btn" id="nextBtn"><i
-                            class="fa-solid fa-chevron-right"></i></button>
-
-                    <div class="carousel-dots" id="dotsContainer"></div>
-
-                </div>
-            </div>
-
-
-
-            </div>
-        </section>
-        </div>
-        </section>
-        <section id="trust" class="panel dark-panel">
             <div class="panel-content column-layout">
 
-                <div class="trust-header">
-                    <h2>Your Seva in Action</h2>
-                    <p>We believe in complete transparency. Here is how your contributions are transforming lives and
-                        building the Dham.</p>
+                <div class="section-header" style="text-align: center;">
+                    <p class="subtitle"
+                        style="color: var(--gold); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px;">
+                        The Gift of Seva</p>
+                    <h2 class="section-title" style="font-size: 3rem; margin-bottom: 20px;">Become a Pillar of Support
+                    </h2>
+                    <div class="gold-divider"
+                        style="margin: 0 auto 30px auto; width: 100px; height: 3px; background: var(--gold);"></div>
                 </div>
 
-                <div class="impact-grid">
+                <p
+                    style="max-width: 800px; color: #ccc; font-size: 1.2rem; line-height: 1.8; margin-bottom: 40px; text-align: center;">
+                    "The wealth given in the service of God and Guru is the only true wealth." <br><br>
+                    Radha Govind Dham is rising solely through the love of devotees like you.
+                    Your contribution is not just a donation; it is an <strong>offering</strong> that builds a sanctuary
+                    for thousands of seekers,
+                    feeds the hungry.
+                </p>
 
-                    <div class="impact-card">
-                        <div class="card-image">
-                            <img src="images/Fund_1.jpeg" alt="Temple Construction" loading="lazy">
-                        </div>
-                        <div class="card-text">
-                            <h3>Building the Sanctuary</h3>
-                            <p>Every donation helps procure stone, marble, and labor for the main Temple structure. We
-                                are currently finalizing the inner sanctum (Garbhagriha) where the deities will reside.
-                            </p>
-                        </div>
-                    </div>
+                <a href="donate.html" class="gold-btn big-btn glow-effect"
+                    style="text-decoration: none; padding: 20px 50px; font-size: 1.2rem;">
+                    <i class="fa-solid fa-hand-holding-heart"></i> Make an Offering Now
+                </a>
 
-                    <div class="impact-card">
-                        <div class="card-image">
-                            <img src="images/prasad.jpeg" alt="Annadanam" loading="lazy">
-                        </div>
-                        <div class="card-text">
-                            <h3>Annadanam (Prasad)</h3>
-                            <p>No one leaves the Ashram hungry. Funds ensure that daily Bhog is offered to the Lord and
-                                distributed as Prasad to all devotees, visitors, and the local needy population.</p>
-                        </div>
-                    </div>
+                <div
+                    style="margin-top: 30px; display: flex; gap: 40px; justify-content: center; color: #888; font-size: 0.9rem;">
 
-
-
-                    <div class="impact-card">
-                        <div class="card-image">
-                            <img src="images/winter-min.jpg" alt="Winter" loading="lazy">
-                        </div>
-                        <div class="card-text">
-                            
-                            <h3>Winter Warmth Drive</h3>
-                            <p>Distributed 1000+ clothes to the needy people of Bathinda ,Punjab.
-                            </p>
-                        </div>
-                    </div>
-
-
+                    <span style="display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-bolt"
+                            style="color: var(--gold);"></i> Instant Receipt</span>
+                    <span style="display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-lock"
+                            style="color: var(--gold);"></i> Secure Payment</span>
                 </div>
+
             </div>
         </section>
-        <section id="trust-info" class="trust-section">
-            <div class="container">
 
-                <div class="section-header center">
-                    <h1 class="gold-text">Kripalu Padma Trust</h1>
-                    <div class="divider-gold"></div>
-                    <p class="subtitle">The Guiding Force behind Radha Govind Dham</p>
-                </div>
-
-                <div class="trust-grid">
-
-                    <div class="trust-card leader-card">
-                        <div class="card-content">
-                            <div class="leader-badge">President</div>
-                            <h3>Sushri Braj Bhuvneshwari Devi Ji</h3>
-                            <p class="honorific">(Affectionately known as Didi Ji)</p>
-
-                            <p class="bio-text">
-                                One of the foremost preachers of Jagadguru Shri Kripalu Ji Maharaj, she continues her
-                                selfless service by building Radha Govind Dham at Chail and nurturing a spiritual Ashram
-                                in Bathinda, Punjab, for seekers on the path of devotion.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="trust-card mission-card">
-                        <h3>Our Mission</h3>
-                        <ul class="mission-list">
-                            <li>
-                                <i class="fa-solid fa-hands-praying"></i>
-                                <span><strong>Spiritual Upliftment:</strong> To promote spiritual growth through
-                                    satsang, meditation, sādhanā shivirs, and the study of sacred scriptures, fostering
-                                    moral and ethical living for all.</span>
-                            </li>
-                            <li>
-                                <i class="fa-solid fa-hand-holding-heart"></i>
-                                <span><strong>Philanthropy & Seva:</strong> To serve society through charitable
-                                    activities including education, healthcare, food distribution, financial assistance,
-                                    and support for the needy with a spirit of selfless seva.</span>
-                            </li>
-                            <li>
-                                <i class="fa-solid fa-gopuram"></i>
-                                <span><strong>Preservation:</strong> To preserve and promote spiritual heritage,
-                                    scriptures, teachings, and sacred spaces for the benefit of present and future
-                                    generations.</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-        <section id="donate" class="panel dark-panel">
-            <div class="panel-content column-layout">
-                <div class="donate-header">
-                    <h2>The Gift of Seva</h2>
-                    <p>Your contribution builds the bricks of Radha Govind Dham. Your contribution supports the
-                        charitable activities of the Trust.</p>
-                </div>
-
-                <div class="donation-container shivir-form" style="max-width: 500px; margin: 0 auto;">
-                    <form id="donation-form">
-
-                        <div class="input-group">
-                            <label>Amount (₹)</label>
-                            <div class="amount-presets">
-                                <span class="preset-btn" onclick="setAmount(501)">₹501</span>
-                                <span class="preset-btn" onclick="setAmount(1100)">₹1100</span>
-                                <span class="preset-btn" onclick="setAmount(2100)">₹2100</span>
-                                <span class="preset-btn" onclick="setAmount(5100)">₹5100</span>
-                            </div>
-                            <input type="number" id="donate-amount" placeholder="Or enter custom amount" required
-                                min="1">
-                        </div>
-
-                        <div class="input-group">
-                            <label>Full Name</label>
-                            <input type="text" id="donate-name" placeholder="Name for Receipt" required>
-                        </div>
-
-                        <div class="input-group">
-                            <label>Email ID (For Receipt)</label>
-                            <input type="email" id="donate-email" placeholder="devotee@example.com" required>
-                        </div>
-
-                        <div class="input-group">
-                            <label>Phone Number</label>
-                            <input type="tel" id="donate-phone" placeholder="+91..." required>
-                        </div>
-                        <div class="input-group">
-                            <label>PAN Card</label>
-                            <input type="text" id="donate-pan" placeholder="ABCDE1234F" maxlength="10"
-                                style="text-transform: uppercase;">
-                            <small class="pan-note">
-                                PAN collected for internal trust records only. No 80G benefit applicable.
-                            </small>
-                            <small id="pan-error"
-                                style="color: #ff6b6b; font-size: 0.8rem; display: none; margin-top: 5px;">
-                                <i class="fa-solid fa-circle-exclamation"></i> Invalid PAN Card Format
-                            </small>
-                        </div>
-
-                        <button type="submit" class="gold-btn full-width">
-                            Donate Now <i class="fa-solid fa-heart"></i>
-                        </button>
-                    </form>
-
-                    <p style="margin-top: 20px; font-size: 0.8rem; color: #888;">
-                        <i class="fa-solid fa-shield-halved"></i> Secure Payment via Razorpay. You will receive an
-                        instant receipt via email.
-                    </p>
-                </div>
-            </div>
-        </section>
 
         <div id="lightbox" class="lightbox">
             <span class="close-lightbox">&times;</span>
@@ -862,8 +748,7 @@
                     <div class="update-card">
                         <div class="update-img">
                             <span class="date-badge">Aug 16, 2025</span>
-                            <img src="images/janamasthmi-min.jpg" alt="Janmashtami"
-                                loading="lazy">
+                            <img src="images/janamasthmi-min.jpg" alt="Janmashtami" loading="lazy">
                         </div>
                         <div class="update-text">
                             <h3>Janmashtami Celebration</h3>
@@ -891,8 +776,7 @@
                     <div class="update-card">
                         <div class="update-img">
                             <span class="date-badge">Jan 14, 2025</span>
-                            <img src="images/lohri-min.jpg" alt="Lohri"
-                                loading="lazy">
+                            <img src="images/lohri-min.jpg" alt="Lohri" loading="lazy">
                         </div>
                         <div class="update-text">
                             <h3>Lohri Celebration</h3>
@@ -904,7 +788,7 @@
             </div>
         </section>
 
-        <section id="location-trust" style="background: #08080c; border-top: 1px solid #222; padding: 0;">
+        <!-- <section id="location-trust" style="background: #08080c; border-top: 1px solid #222; padding: 0;">
             <div class="trust-layout">
 
                 <div class="trust-info">
@@ -921,7 +805,8 @@
 
                     <p class="address-text">
                         <i class="fa-solid fa-location-dot" style="color:var(--gold)"></i>
-                        Radha Govind Dham , Nagali, Himachal Pradesh
+                        Radha Govind Dham ,<br>
+                        Nagali, chail , solan ,Himachal Pradesh
                     </p>
 
                     <p class="address-text">
@@ -946,7 +831,7 @@
                 </div>
 
             </div>
-        </section>
+        </section> -->
 
         <footer id="site-footer">
             <div class="footer-content">
@@ -979,10 +864,11 @@
 
                 <div class="footer-col">
                     <h4>Contact Us</h4>
-                    <p><i class="fa-solid fa-location-dot"></i> Radha Govind Dham , Nagali<br>Himachal Pradesh, India
+                    <p><i class="fa-solid fa-location-dot"></i> Radha Govind Dham , Nagali<br> Chail , Solan ,Himachal
+                        Pradesh, India
                     </p>
                     <p><i class="fa-solid fa-phone"></i> +91 97808 81008</p>
-                    <p><i class="fa-solid fa-envelope"></i> kripalurgdham.in</p>
+                    <p><i class="fa-solid fa-envelope"></i> kripalurgdham@gmail.com</p>
                 </div>
 
                 <div class="footer-col newsletter-col">
@@ -1009,7 +895,7 @@
                 </div>
 
 
-                <p>Designed with <i class="fa-solid fa-heart" style="color: red;"></i> for Devi Ji.</p>
+                <p>Designed with <i class="fa-solid fa-heart" style="color: red;"></i> for Shri Maharaj Ji .</p>
             </div>
 
         </footer>

@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>कृपालु राधा गोविंद धाम, चायल - आधिकारिक वेबसाइट</title>
+
+    <meta name="description"
+        content="चायल, हिमाचल प्रदेश में स्थित कृपालु राधा गोविंद धाम में आपका स्वागत है। देवी जी और श्री कृपालु जी महाराज की शिक्षाओं को समर्पित एक आध्यात्मिक आश्रम।">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Yatra+One&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Hindi Specific Font Overrides */
+        h1, h2, h3, .intro-text, .menu-quote, .logo {
+            font-family: 'Yatra One', cursive !important;
+        }
+        body {
+            font-family: 'Cormorant Garamond', serif; /* Keeps body readable */
+        }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.29/dist/lenis.min.js"></script>
+</head>
+
+<body>
+    <div class="global-bg"></div>
+
+    <div id="intro-sequence">
+        <div class="intro-content">
+            <h2 class="intro-text line-1">जगद्गुरु श्री कृपालु जी महाराज</h2>
+            <h1 class="intro-text line-2">राधा गोविंद धाम</h1>
+        </div>
+    </div>
+
+    <main id="content">
+
+        <nav class="glass-nav">
+            <div class="logo">राधा गोविंद धाम</div>
+            
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <a href="index.html" class="lang-btn" style="text-decoration:none; color: var(--gold); border: 1px solid var(--gold); padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; font-family: sans-serif; transition: 0.3s;">
+                    ENG
+                </a>
+                <div class="menu-btn"><i class="fa-solid fa-bars-staggered"></i></div>
+            </div>
+        </nav>
+
+        <div id="menu-overlay">
+            <div class="close-menu"><i class="fa-solid fa-xmark"></i></div>
+
+            <div class="menu-content">
+                <div class="menu-left">
+                    <img id="menu-preview-img" src="images/logo.jpg" alt="Preview"
+                        style="width: 250px; height: 350px; object-fit: cover; border-radius: 10px; border: 1px solid var(--gold); opacity: 0.8; transition: 0.3s;">
+
+                    <p class="menu-quote" id="menu-caption">"दिव्य बाँसुरी की पुकार।"</p>
+                </div>
+
+                <ul class="nav-links">
+                    <li>
+                        <a href="hindi.html" class="nav-item" data-img="images/logo.jpg"
+                            data-text='"दिव्य बाँसुरी की पुकार।"'>
+                            मुख्य पृष्ठ <span class="sub-text">आरम्भ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="maharajji_hindi.html" class="nav-item" data-img="images/maharaj_potrait2.jpg"
+                            data-text='"पंचम मूल जगद्गुरु"'>
+                            प्रेरणा स्रोत <span class="sub-text">श्री महाराज जी</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="deviji_hindi.html" class="nav-item" data-img="images/founder.JPG"
+                            data-text='"कृपा की प्रतिमूर्ति"'>
+                            संस्थापक <span class="sub-text">सुश्री देवी जी</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="journey.html" class="nav-item" data-img="images/chail_view.JPG"
+                            data-text='"शांति का धाम"'>
+                            हमारा धाम <span class="sub-text">हमारे केंद्र</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#shivir-section" class="nav-item" onclick="closeMenu()" data-img="images/join_us.jpg"
+                            data-text='"जीवन रूपांतरण"'>
+                            साधना शिविर <span class="sub-text">पंजीकरण करें</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="donate.html" class="nav-item donate-link" onclick="closeMenu()"
+                            data-img="images/logo.jpg" data-text='"सेवा का आनंद"'>
+                            सहयोग राशि <span class="sub-text">मिशन का समर्थन करें</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="menu-footer">
+                <a href="https://www.youtube.com/@ShreeKripaluKunj">YouTube</a>
+                <a href="https://www.facebook.com/ShreeKripaluKunj/">Facebook</a>
+                <a href="https://www.instagram.com/shreekripalukunj/">Instagram</a>
+            </div>
+        </div>
+
+        <section class="hero-section">
+            <div class="hero-bg"></div>
+            <div class="hero-text">
+                <div style="text-align: center; padding: 40px 20px;">
+                    <p style="font-family: sans-serif; font-size: 14px; text-transform: uppercase; letter-spacing: 3px; color: #FFD700; margin-bottom: 10px; font-weight: 500;">
+                        परम पूजनीय
+                    </p>
+                    <h1 style="font-family: 'Yatra One', cursive; font-size: 48px; line-height: 1.2; color: #d97706; margin: 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); font-weight: 500;">
+                        सुश्री ब्रज भुवनेश्वरी देवी जी
+                    </h1>
+                    <p style="color: #ccc; margin-top: 5px;">के पावन सानिध्य में</p>
+                </div>
+                <h1 class="glimmer-text" style="font-size: 50px;">राधा गोविंद धाम</h1>
+                <p class="location" style="font-size: 25px;">चायल, हिमाचल प्रदेश</p>
+                <p class="status-note">
+                    वर्तमान में निर्माणाधीन • पूर्ण होने पर उद्घाटन
+                </p>
+
+                <a href="#kripalu" class="scroll-down-btn">
+                    <i class="fa-solid fa-arrow-down-long"></i>
+                </a>
+            </div>
+        </section>
+
+        <section id="start-journey" class="panel dark-panel centered-panel"
+            style="padding: 60px 20px; background: linear-gradient(to bottom, #0a0a12, #111); border-bottom: 1px solid rgba(255,215,0,0.1);">
+
+            <div class="panel-content column-layout">
+                <div class="visitor-header">
+                    <p class="subtitle" style="margin-bottom: 10px;">राधा गोविंद धाम में पहली बार?</p>
+                    <h2 class="section-title" style="font-size: 2.5rem;">अपनी आध्यात्मिक यात्रा यहाँ से शुरू करें</h2>
+                    <p class="section-subtext">
+                        कृपालु पद्मा ट्रस्ट की एक पहल, जो आध्यात्मिक उत्थान, सेवा और भक्ति परंपराओं के संरक्षण के लिए समर्पित है।
+                    </p>
+                </div>
+
+                <div class="visitor-grid">
+                    <div class="visitor-card">
+                        <div class="visitor-icon"><i class="fa-solid fa-user-graduate"></i></div>
+                        <h3>गुरु कौन हैं?</h3>
+                        <p>पंचम मूल जगद्गुरु श्री कृपालु जी महाराज के जीवन और दर्शन के बारे में जानें।</p>
+                        <a href="maharajji_hindi.html" class="text-link">जीवनी पढ़ें <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+
+                    <div class="visitor-card featured">
+                        <div class="visitor-icon"><i class="fa-solid fa-mountain-sun"></i></div>
+                        <h3>आश्रम की सुविधाएं</h3>
+                        <p>हिमालय की गोद में आपकी आंतरिक यात्रा का समर्थन करने के लिए डिज़ाइन किया गया एक पवित्र स्थान।</p>
+                        <a href="#amenities" class="text-link">सुविधाएं देखें <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+
+                    <div class="visitor-card">
+                        <div class="visitor-icon"><span class="radhey-symbol">राधे राधे</span></div>
+                        <h3>साधना कैसे करें?</h3>
+                        <p>रूपध्यान साधना का सार जानें और हमारे आगामी साधना शिविरों में शामिल हों।</p>
+                        <a href="#shivir" class="text-link">शिविर में शामिल हों <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="kripalu" class="legacy-section">
+            <div class="guru-header">
+                <div class="guru-portrait-container">
+                    <div class="halo"></div>
+                    <img src="images/smji in guru pose no petals-2.png" alt="Jagadguru Shri Kripalu Ji Maharaj" class="guru-portrait">
+                </div>
+                <h2 class="guru-title">जगद्गुरु श्री कृपालु जी महाराज</h2>
+                <p class="guru-subtitle">विश्व के पंचम मूल जगद्गुरु | समस्त शास्त्रों के समन्वयक</p>
+                <p class="guru-bio">
+                    उनका अवतरण संसार को भगवद प्रेम के सागर में डुबोने के लिए हुआ। उनका दर्शन विश्व के सभी शास्त्रों के विरोधाभासी विचारों का समन्वय करता है और ईश्वर प्राप्ति का सबसे सरल मार्ग प्रकट करता है: <em>रागानुगा भक्ति</em> (निस्वार्थ प्रेम)।
+                </p>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+
+                <div class="timeline-item left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-card">
+                        <span class="year">5 अक्टूबर 1922</span>
+                        <h3>दिव्य प्राकट्य</h3>
+                        <p style="font-size: 1.1rem;">शरद पूर्णिमा की रात्रि मनगढ़ में प्राकट्य हुआ। बचपन से ही उनकी दिव्य आभा ने सभी को मंत्रमुग्ध कर दिया।</p>
+                    </div>
+                    <img src="images/smj_janam2.png" alt="Mangarh" class="timeline-opposite-img">
+                </div>
+
+                <div class="timeline-item right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-card">
+                        <span class="year">14 जनवरी 1957</span>
+                        <h3>जगद्गुरुत्तम की उपाधि</h3>
+                        <p style="font-size: 1.1rem;">मात्र 34 वर्ष की आयु में, काशी विद्वत परिषद के विद्वानों ने उन्हें सर्वसम्मति से <strong>पंचम मूल जगद्गुरु</strong> के रूप में सम्मानित किया।</p>
+                    </div>
+                    <img src="images/kashi_vidvat.jpg" alt="Kashi" class="timeline-opposite-img">
+                </div>
+
+                <div class="timeline-item left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-card">
+                        <span class="year">शास्त्र</span>
+                        <h3>ज्ञान का सागर</h3>
+                        <p style="font-size: 1.1rem;">उन्होंने <em>प्रेम रस मदिरा</em> और <em>राधा गोविंद गीत</em> जैसी अद्भुत रचनाओं के माध्यम से वेदों के ज्ञान को जन-साधारण के लिए सरल बना दिया।</p>
+                    </div>
+                    <img src="images/image.png" alt="Scriptures" class="timeline-opposite-img">
+                </div>
+
+                <div class="timeline-item right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-card">
+                        <span class="year">विरासत</span>
+                        <h3>संसार को उपहार</h3>
+                        <p style="font-size: 1.1rem;">उन्होंने भक्ति की महिमा को अनंत काल तक सुरक्षित रखने के लिए <strong>प्रेम मंदिर</strong> (वृंदावन) और कीर्ति मंदिर जैसे दिव्य स्मारकों की स्थापना की।</p>
+                    </div>
+                    <img src="images/prem_mandir.png" alt="Prem Mandir" class="timeline-opposite-img">
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 60px; padding-bottom: 40px;">
+                <a href="maharajji_hindi.html" class="gold-btn big-btn">
+                    <i class="fa-solid fa-book-open"></i> पूरी जीवनी पढ़ें
+                </a>
+            </div>
+        </section>
+
+        <section id="deviji" class="legacy-section" style="background: linear-gradient(to bottom, #0a0a12, #1a1a2e);">
+            <div class="guru-header">
+                <div class="guru-portrait-container">
+                    <div class="halo" style="animation-delay: 1s;"></div>
+                    <img src="images/didi_portrait3.png" alt="Sushri Bhuvneshwari Devi Ji" class="guru-portrait">
+                </div>
+                <h2 class="guru-title">सुश्री ब्रज भुवनेश्वरी देवी जी</h2>
+                <p class="guru-subtitle">कृपा का प्रतिबिंब | समर्पित प्रचारिका</p>
+                <p class="guru-bio">
+                    "जिनके आचरण, वाणी और प्रत्येक क्रिया में केवल श्री महाराज जी के दर्शन होते हैं।"<br>
+                    वह समर्पण की प्रतिमूर्ति हैं। अपने गुरु के आदेशानुसार <em>भक्ति योग</em> का रस बांटने के लिए उन्होंने सांसारिक शिक्षा और जीवन का त्याग कर दिया।
+                </p>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+
+                <div class="timeline-item left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-card">
+                        <span class="year">1971</span>
+                        <h3>दिव्य जन्म</h3>
+                        <p style="font-size: 1.1rem;"><strong>22 सितंबर</strong> को लखनऊ में एक ऐसे परिवार में जन्म हुआ जहाँ माता-पिता पहले से ही श्री महाराज जी के अनन्य भक्त थे।</p>
+                    </div>
+                    <img src="images/didi_1.png" alt="Mangarh" class="timeline-opposite-img">
+                </div>
+
+                <div class="timeline-item right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-card">
+                        <span class="year">प्रारंभिक जीवन</span>
+                        <h3>शिक्षा और वैराग्य</h3>
+                        <p style="font-size: 1.1rem;">उन्होंने एम.ए. और एम.फिल. में उत्कृष्टता प्राप्त की। हालांकि, पीएचडी करते समय <em>सहज वैराग्य</em> का रंग चढ़ गया और उन्होंने गुरु सेवा के लिए इसे बीच में ही छोड़ दिया।</p>
+                    </div>
+                    <img src="images/didi_2.png" alt="Mangarh" class="timeline-opposite-img">
+                </div>
+
+                <div class="timeline-item left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-card">
+                        <span class="year">1998</span>
+                        <h3>दिव्य आदेश</h3>
+                        <p style="font-size: 1.1rem;"><strong>दीपावली</strong> के शुभ दिन, श्री महाराज जी ने औपचारिक रूप से उन्हें अपनी <em>प्रचारिका</em> घोषित किया और <strong>"ब्रज भुवनेश्वरी"</strong> नाम प्रदान किया।</p>
+                    </div>
+                    <video class="timeline-opposite-img" controls playsinline poster="images/video_thumbnail.jpg">
+                        <source src="Video/timeline_didi.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+
+                <div class="timeline-item right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-card">
+                        <span class="year">मिशन</span>
+                        <h3>कृपालु पद्मा ट्रस्ट</h3>
+                        <p style="font-size: 1.1rem;">महाराज जी के आदेश का पालन करते हुए, उन्होंने बठिंडा (पंजाब) में अपना पहला केंद्र, <strong>श्री कृपालु कुंज</strong> स्थापित किया।</p>
+                    </div>
+                    <img src="images/timeline_4.jpeg" alt="Mangarh" class="timeline-opposite-img">
+                </div>
+
+                <div class="timeline-item left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-card">
+                        <h3>हिमालयन विजन</h3>
+                        <p style="font-size: 1.1rem;">मिशन का विस्तार करते हुए, उन्होंने चायल (हिमालय) में <strong>राधा गोविंद धाम</strong> की स्थापना की, जो गहन साधना और एकांत के लिए एक आश्रय स्थल है।</p>
+                    </div>
+                    <img src="images/timeline_himalaya.jpg" alt="Mangarh" class="timeline-opposite-img">
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 60px; padding-bottom: 40px;">
+                <a href="deviji_hindi.html" class="gold-btn big-btn">
+                    <i class="fa-solid fa-user-graduate"></i> पूर्ण जीवनी पढ़ें
+                </a>
+            </div>
+
+            <div class="guidance-container">
+                <div class="guidance-content">
+                    <h3><i class="fa-solid fa-hands-praying"></i> दिव्य मार्गदर्शन प्राप्त करें</h3>
+                    <p>
+                        क्या आपके मन में कोई आध्यात्मिक जिज्ञासा है? <br>
+                        भक्ति मार्ग पर स्पष्टता पाने और अपने प्रश्नों के समाधान के लिए दीदी जी से सीधे संपर्क करें।
+                    </p>
+                    <button onclick="openMeetForm()" class="gold-btn glow-btn">
+                        व्यक्तिगत भेंट का अनुरोध करें
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="amenities" class="panel dark-panel centered-panel">
+            <div class="panel-content column-layout">
+                <div class="amenities-header">
+                    <h2 class="section-title">धाम एक नज़र में</h2>
+                    <p class="section-subtitle">चायल की प्राचीन पहाड़ियों में फैला एक आध्यात्मिक नगर।</p>
+                </div>
+
+                <div class="stats-row">
+                    <div class="stat-box">
+                        <span class="stat-number">1.35</span>
+                        <span class="stat-label">एकड़ भूमि</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">6000+</span>
+                        <span class="stat-label">फीट ऊंचाई</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">1 घंटा+</span>
+                        <span class="stat-label">विश्व के सबसे ऊंचे क्रिकेट स्टेडियम तक</span>
+                        <span class="stat-label">निजी ट्रेक</span>
+                    </div>
+                </div>
+
+                <section id="gallery" class="panel dark-panel column-layout">
+                    <div class="gallery-container">
+                        <div class="carousel-container">
+                            <div class="carousel-track" id="track">
+                                <div class="carousel-slide">
+                                    <img src="images/glimpse_1.JPG" alt="Divine Moment 1" loading="lazy">
+                                    <div class="slide-caption">
+                                        <h3>सत्संग आनंद</h3>
+                                        <p>कीर्तन के रस में डूबे भक्त।</p>
+                                    </div>
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="images/glimpse_2.JPG" alt="Divine Moment 2" loading="lazy">
+                                    <div class="slide-caption">
+                                        <h3>दर्शन</h3>
+                                        <p>दिव्य मिलन का एक क्षण।</p>
+                                    </div>
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="images/glimpse_3.JPG" alt="Divine Moment 3" loading="lazy">
+                                    <div class="slide-caption">
+                                        <h3>सेवा</h3>
+                                        <p>निस्वार्थ सेवा ही सर्वोच्च पूजा है।</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="carousel-btn prev-btn" id="prevBtn"><i class="fa-solid fa-chevron-left"></i></button>
+                            <button class="carousel-btn next-btn" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
+                            <div class="carousel-dots" id="dotsContainer"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="amenities-grid">
+                    <div class="amenity-card">
+                        <div class="icon-circle"><i class="fa-solid fa-place-of-worship"></i></div>
+                        <h3>साधना भवन</h3>
+                        <p>धाम का आध्यात्मिक हृदय। सत्संग और ध्यान दोनों के लिए समर्पित एक विशाल हॉल। यह पवित्र स्थान <strong>युगल जोड़ी (राधा कृष्ण)</strong> और <strong>जगद्गुरु श्री कृपालु जी महाराज</strong> की दिव्य उपस्थिति से सुशोभित है।</p>
+                    </div>
+
+                    <div class="amenity-card">
+                        <div class="icon-circle"><i class="fa-solid fa-bed"></i></div>
+                        <h3>भक्त निवास</h3>
+                        <p>पहाड़ियों की शांति में बसा एक विश्राम स्थल। यहाँ आप शहर की भीड़-भाड़ से दूर, पक्षियों की चहचहाहट और ताजी हिमालयी हवा के साथ जागते हैं।</p>
+                    </div>
+
+                    <div class="amenity-card">
+                        <div class="icon-circle"><i class="fa-solid fa-tree"></i></div>
+                        <h3>साधना वाटिका</h3>
+                        <p>गहन चिंतन के लिए हिमालय की चोटियों को निहारते हुए, निर्दिष्ट मौन क्षेत्रों के साथ हरे-भरे ध्यान उद्यान।</p>
+                    </div>
+
+                    <div class="amenity-card">
+                        <div class="icon-circle"><i class="fa-solid fa-utensils"></i></div>
+                        <h3>प्रसादम हॉल</h3>
+                        <p>केवल भोजन नहीं, बल्कि भगवद कृपा। भक्तों को प्रतिदिन शुद्ध, सात्विक <strong>महाप्रसाद</strong> प्राप्त होता है, जिसे भक्ति भाव से पकाया जाता है और श्री राधा गोविंद को भोग लगाया जाता है।</p>
+                    </div>
+
+                    <div class="amenity-card">
+                        <div class="icon-circle"><i class="fa-solid fa-person-praying"></i></div>
+                        <h3>योग और प्राकृतिक चिकित्सा</h3>
+                        <p>हिमालय की उपचारात्मक हवा के बीच दैनिक योग सत्रों और प्राकृतिक चिकित्सा उपचारों के साथ अपने मन, शरीर और आत्मा को पुनर्जीवित करें।</p>
+                    </div>
+
+                    <div class="amenity-card">
+                        <div class="icon-circle"><i class="fa-solid fa-book-journal-whills"></i></div>
+                        <h3>जगद्गुरुत्तम भक्तियोग वेदांत दर्शन</h3>
+                        <p>श्री महाराज जी के विशाल साहित्य को संजोए हुए दिव्य ज्ञान का केंद्र, जो सभी विश्व शास्त्रों का समन्वय <strong>भक्ति योग</strong> के सरल मार्ग में करता है।</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="future-teaser" class="panel dark-panel centered-panel">
+            <div class="panel-content column-layout">
+                <div class="shivir-header">
+                    <p class="shivir-subtitle">भविष्य की योजना</p>
+                    <h2 class="section-title">भविष्य का अनुभव करें</h2>
+                    <div class="gold-divider" style="margin: 20px auto;"></div>
+                </div>
+
+                <p style="color: #ccc; margin-bottom: 40px;">
+                    फेज II विस्तार के वर्चुअल मॉडल के अंदर कदम रखें।
+                </p>
+
+                <a href="vision.html" class="gold-btn big-btn">
+                    <i class="fa-solid fa-cube"></i> 3D वॉकथ्रू लॉन्च करें
+                </a>
+            </div>
+        </section>
+
+        <section id="shivir" class="panel dark-panel shivir-section">
+            <div class="shivir-container">
+                <div class="shivir-image">
+                    <div class="shivir-overlay">
+                        <span class="badge-status">पंजीकरण खुला है</span>
+                    </div>
+                    <img src="images/image copy.png" alt="Meditation Retreat">
+                </div>
+
+                <div class="shivir-details">
+                    <div class="shivir-header">
+                        <p class="shivir-subtitle">वार्षिक शीतकालीन शिविर 2025</p>
+                        <h2 class="shivir-title">हिमालयन सोल डिटॉक्स (आत्म शुद्धि)</h2>
+                        <div class="gold-divider"></div>
+                    </div>
+
+                    <div class="shivir-info-grid">
+                        <div class="info-item">
+                            <i class="fa-regular fa-calendar-check"></i>
+                            <div>
+                                <strong>20 - 25 अक्टूबर</strong>
+                                <span>५ दिवसीय मौन साधना</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <div>
+                                <strong>राधा गोविंद धाम</strong>
+                                <span>चायल, हिमाचल</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="shivir-desc">
+                        संसार से नाता तोड़ें और अपनी आत्मा से जुड़ें। हिमालय की गोद में रूपध्यान, वैदिक ज्ञान और आंतरिक शुद्धि के 5 दिनों के लिए दीदी जी के साथ जुड़ें।
+                    </p>
+
+                    <form id="shivir-payment-form" class="shivir-form">
+                        <div class="input-row">
+                            <input type="text" id="reg-name" placeholder="आपका पूरा नाम" required>
+                            <input type="email" id="reg-email" placeholder="ईमेल (रसीद के लिए)" required>
+                        </div>
+                        <div class="input-row">
+                            <input type="tel" id="reg-phone" placeholder="व्हाट्सएप नंबर" required>
+                        </div>
+
+                        <div class="input-row" style="display: flex; gap: 20px; align-items: flex-end;">
+                            <div class="input-group" style="flex: 1; min-width: 0;">
+                                <label style="color: #aaa; font-size: 0.8rem; display: block; margin-bottom: 8px;">
+                                    पंजीकरण सहयोग
+                                </label>
+                                <input type="text" value="₹3,000" readonly style="background: rgba(255, 215, 0, 0.1); color: #FFD700; border: 1px solid #FFD700; font-weight: bold; cursor: not-allowed; width: 100%; box-sizing: border-box; height: 50px;">
+                            </div>
+
+                            <div class="input-group" style="flex: 1; min-width: 0;">
+                                <label style="color: #aaa; font-size: 0.8rem; display: block; margin-bottom: 8px;">
+                                    अतिरिक्त सेवा (वैकल्पिक)
+                                </label>
+                                <input type="number" id="reg-seva" placeholder="₹0" min="0" oninput="updateTotal()" style="width: 100%; box-sizing: border-box; height: 50px;">
+                            </div>
+                        </div>
+
+                        <div class="payment-summary">
+                            <span>कुल देय राशि:</span>
+                            <span id="total-amount" class="amount-highlight">₹3,000</span>
+                        </div>
+
+                        <button type="submit" class="gold-btn full-width">
+                            भुगतान और पंजीकरण करें <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="donate-cta" class="panel dark-panel centered-panel"
+            style="background: linear-gradient(to bottom, #000000, #0a0a12); border-top: 1px solid rgba(255,215,0,0.1);">
+
+            <div class="panel-content column-layout">
+                <div class="section-header" style="text-align: center;">
+                    <p class="subtitle" style="color: var(--gold); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px;">
+                        सेवा का उपहार
+                    </p>
+                    <h2 class="section-title" style="font-size: 3rem; margin-bottom: 20px;">धर्म के रक्षक बनें</h2>
+                    <div class="gold-divider" style="margin: 0 auto 30px auto; width: 100px; height: 3px; background: var(--gold);"></div>
+                </div>
+
+                <p style="max-width: 800px; color: #ccc; font-size: 1.2rem; line-height: 1.8; margin-bottom: 40px; text-align: center;">
+                    "ईश्वर और गुरु की सेवा में दिया गया धन ही सच्चा धन है।" <br><br>
+                    राधा गोविंद धाम केवल आप जैसे भक्तों के प्रेम से ही ऊपर उठ रहा है। 
+                    आपका योगदान केवल दान नहीं है; यह एक <strong>भेंट</strong> है जो हजारों साधकों के लिए एक अभयारण्य बनाती है और भूखों को भोजन कराती है।
+                </p>
+
+                <a href="donate.html" class="gold-btn big-btn glow-effect" style="text-decoration: none; padding: 20px 50px; font-size: 1.2rem;">
+                    <i class="fa-solid fa-hand-holding-heart"></i> अभी सहयोग राशि दें
+                </a>
+
+                <div style="margin-top: 30px; display: flex; gap: 40px; justify-content: center; color: #888; font-size: 0.9rem;">
+                    <span style="display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-file-invoice" style="color: var(--gold);"></i> 80G कर छूट</span>
+                    <span style="display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-bolt" style="color: var(--gold);"></i> त्वरित रसीद</span>
+                    <span style="display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-lock" style="color: var(--gold);"></i> सुरक्षित भुगतान</span>
+                </div>
+            </div>
+        </section>
+
+        <div id="lightbox" class="lightbox">
+            <span class="close-lightbox">×</span>
+            <img class="lightbox-content" id="lightbox-img">
+            <div id="caption"></div>
+        </div>
+
+        <section id="updates" class="panel dark-panel centered-panel">
+            <div class="panel-content column-layout">
+                <div class="gallery-header">
+                    <p class="subtitle">पारदर्शिता और आनंद</p>
+                    <h2 class="section-title">हाल की दिव्य गतिविधियाँ</h2>
+                    <div class="gold-divider" style="margin: 20px auto;"></div>
+                </div>
+
+                <div class="updates-grid">
+                    <div class="update-card">
+                        <div class="update-img">
+                            <span class="date-badge">16 अगस्त 2025</span>
+                            <img src="images/janamasthmi-min.jpg" alt="Janmashtami" loading="lazy">
+                        </div>
+                        <div class="update-text">
+                            <h3>जन्माष्टमी उत्सव</h3>
+                            <p>अत्यंत हर्षोल्लास के साथ श्री कृष्ण का दिव्य प्राकट्य उत्सव। भक्त मध्यरात्रि की <strong>आरती</strong>, निरंतर <strong>कीर्तन</strong> और भव्य 'अभिषेक' के लिए एकत्रित हुए।</p>
+                        </div>
+                    </div>
+
+                    <div class="update-card">
+                        <div class="update-img">
+                            <span class="date-badge">1 जनवरी 2025</span>
+                            <img src="images/new_year.jpeg" alt="Satsang" loading="lazy">
+                        </div>
+                        <div class="update-text">
+                            <h3>नव वर्ष महासत्संग</h3>
+                            <p>200 से अधिक भक्त वर्ष की शुरुआत राधा गोविंद के दिव्य नाम के साथ करने के लिए एकत्रित हुए।</p>
+                        </div>
+                    </div>
+
+                    <div class="update-card">
+                        <div class="update-img">
+                            <span class="date-badge">14 जनवरी 2025</span>
+                            <img src="images/lohri-min.jpg" alt="Lohri" loading="lazy">
+                        </div>
+                        <div class="update-text">
+                            <h3>लोहड़ी उत्सव</h3>
+                            <p>चायल के स्थानीय समुदाय के साथ भक्ति की गर्माहट का उत्सव।</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer id="site-footer">
+            <div class="footer-content">
+                <div class="footer-col brand-col">
+                    <h3 class="footer-logo">राधा गोविंद धाम</h3>
+                    <p>हिमालय में दिव्य प्रेम और ध्यान का एक अभयारण्य, जो जगद्गुरु श्री कृपालु जी महाराज से प्रेरित है।</p>
+                    <div class="social-icons">
+                        <a href="https://www.youtube.com/@ShreeKripaluKunj" class="social-btn"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/ShreeKripaluKunj/" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/shreekripalukunj/" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>त्वरित लिंक</h4>
+                    <ul>
+                        <li><a href="#kripalu">प्रेरणा स्रोत</a></li>
+                        <li><a href="#deviji">संस्थापक</a></li>
+                        <li><a href="#amenities">आश्रम की सुविधाएं</a></li>
+                        <li><a href="#shivir">साधना शिविर</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>संपर्क करें</h4>
+                    <p><i class="fa-solid fa-location-dot"></i> राधा गोविंद धाम, नागाली<br> चायल, सोलन, हिमाचल प्रदेश, भारत</p>
+                    <p><i class="fa-solid fa-phone"></i> +91 97808 81008</p>
+                    <p><i class="fa-solid fa-envelope"></i> kripalurgdham@gmail.com</p>
+                </div>
+
+                <div class="footer-col newsletter-col">
+                    <h4>जुड़े रहें</h4>
+                    <p>आगामी शिविरों और दैनिक प्रेरणा पर अपडेट प्राप्त करें।</p>
+                    <form action="https://api.web3forms.com/submit" method="POST" class="newsletter-form">
+                        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                        <input type="email" name="email" placeholder="आपका ईमेल पता" required>
+                        <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 कृपालु पद्मा ट्रस्ट। सर्वाधिकार सुरक्षित।</p>
+                <div class="legal-links">
+                    <a href="privacy.html">गोपनीयता नीति</a>
+                    <span class="separator">|</span>
+                    <a href="terms.html">नियम और शर्तें</a>
+                    <span class="separator">|</span>
+                    <a href="refund.html">धनवापसी नीति</a>
+                </div>
+                <p>श्री महाराज जी के लिए  <i class="fa-solid fa-heart" style="color: red;"></i> के साथ डिज़ाइन किया गया।</p>
+            </div>
+        </footer>
+
+    </main>
+
+    <div class="modal-overlay" id="darshan-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeDarshanModal()">×</span>
+            <div class="modal-header">
+                <h2>भेंट का अनुरोध करें</h2>
+                <p>हरि बोल! दर्शन का समय निर्धारित करने के लिए कृपया अपना विवरण साझा करें।</p>
+            </div>
+            <form onsubmit="sendDarshanRequest(event)">
+                <div class="input-group">
+                    <label>पूरा नाम</label>
+                    <input type="text" id="d-name" placeholder="जैसे: राहुल शर्मा" required>
+                </div>
+                <div class="input-group">
+                    <label>फ़ोन नंबर</label>
+                    <input type="tel" id="d-phone" placeholder="+91 98765 43210" required>
+                </div>
+                <div class="input-group">
+                    <label>व्यवसाय</label>
+                    <input type="text" id="d-occupation" placeholder="जैसे: डॉक्टर, छात्र">
+                </div>
+                <div class="input-group">
+                    <label>शहर</label>
+                    <input type="text" id="d-city" placeholder="जैसे: मुंबई">
+                </div>
+                <div class="input-group">
+                    <label>संदेश (वैकल्पिक)</label>
+                    <textarea id="d-msg" rows="3" placeholder="जय श्री राधे..."></textarea>
+                </div>
+                <button type="submit" class="gold-btn" style="width: 100%;">व्हाट्सएप पर अनुरोध भेजें</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        let script = document.createElement('script');
+                        script.type = 'module';
+                        script.src = 'https://unpkg.com/@splinetool/viewer@0.9.490/build/spline-viewer.js';
+                        document.body.appendChild(script);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+            let target = document.querySelector('#future-teaser');
+            if (target) observer.observe(target);
+        });
+    </script>
+    <audio id="intro-audio" src="intro_audio.mp3" preload="auto"></audio>
+</body>
+</html>

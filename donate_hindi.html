@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>सहयोग राशि - कृपालु पद्मा ट्रस्ट | राधा गोविंद धाम</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@400;600;700&family=Yatra+One&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
+    <style>
+        /* Hindi Font Overrides */
+        h1, h2, h3, .section-title, .subtitle, .bio-title-card h1 {
+            font-family: 'Yatra One', cursive !important;
+        }
+
+        /* PAGE SPECIFIC FIXES */
+        .donate-header-bg {
+            height: 60vh;
+            background:
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)),
+                url('images/background_1.jpeg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 100px;
+            text-align: center;
+        }
+
+        main { background: transparent; }
+        section { background: transparent !important; }
+
+        .trust-card,
+        .impact-card,
+        .donation-container {
+            background: rgba(20, 20, 30, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 215, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="global-bg"></div>
+    
+    <nav class="glass-nav">
+        <div class="logo"><a href="hindi.html" style="color:var(--gold); text-decoration:none;">राधा गोविंद धाम</a></div>
+        
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <a href="donate.html" class="lang-btn" style="text-decoration:none; color: var(--gold); border: 1px solid var(--gold); padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; font-family: sans-serif; transition: 0.3s;">
+                ENG
+            </a>
+            <div class="menu-btn"><i class="fa-solid fa-bars-staggered"></i></div>
+        </div>
+    </nav>
+
+    <div id="menu-overlay">
+        <div class="close-menu"><i class="fa-solid fa-xmark"></i></div>
+
+        <div class="menu-content">
+            <div class="menu-left">
+                <img id="menu-preview-img" src="images/logo.jpg" alt="Preview"
+                    style="width: 250px; height: 350px; object-fit: cover; border-radius: 10px; border: 1px solid var(--gold); opacity: 0.8; transition: 0.3s;">
+
+                <p class="menu-quote" id="menu-caption">"दिव्य बाँसुरी की पुकार।"</p>
+            </div>
+
+            <ul class="nav-links">
+                <li>
+                    <a href="hindi.html" class="nav-item" data-img="images/logo.jpg"
+                        data-text='"दिव्य बाँसुरी की पुकार।"'>
+                        मुख्य पृष्ठ <span class="sub-text">आरम्भ</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="maharajji_hindi.html" class="nav-item" data-img="images/maharaj_potrait2.jpg"
+                        data-text='"पंचम मूल जगद्गुरु"'>
+                        प्रेरणा स्रोत <span class="sub-text">श्री महाराज जी</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="deviji_hindi.html" class="nav-item" data-img="images/founder.JPG"
+                        data-text='"कृपा की प्रतिमूर्ति"'>
+                        संस्थापक <span class="sub-text">सुश्री देवी जी</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="journey.html" class="nav-item" data-img="images/chail_view.JPG"
+                        data-text='"शांति का धाम"'>
+                        हमारा धाम <span class="sub-text">हमारे केंद्र</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="hindi.html#shivir-section" class="nav-item" onclick="closeMenu()" data-img="images/join_us.jpg"
+                        data-text='"जीवन रूपांतरण"'>
+                        साधना शिविर <span class="sub-text">पंजीकरण करें</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="donate_hindi.html" class="nav-item donate-link" onclick="closeMenu()"
+                        data-img="images/logo.jpg" data-text='"सेवा का आनंद"'>
+                        सहयोग राशि <span class="sub-text">मिशन का समर्थन करें</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="menu-footer">
+            <a href="https://www.youtube.com/@ShreeKripaluKunj">YouTube</a>
+            <a href="https://www.facebook.com/ShreeKripaluKunj/">Facebook</a>
+            <a href="https://www.instagram.com/shreekripalukunj/">Instagram</a>
+        </div>
+    </div>
+
+    <header class="donate-header-bg">
+        <div class="bio-title-card"
+            style="background: rgba(0,0,0,0.6); padding: 30px 50px; border: 1px solid var(--gold); border-radius: 10px;">
+            <h1 style="color: var(--gold); margin: 0; font-size: 3rem;">सेवा का उपहार</h1>
+            <p style="color: #e0e0e0; letter-spacing: 3px; margin-top: 10px; font-size: 1.1rem;">कृपालु पद्मा ट्रस्ट</p>
+        </div>
+    </header>
+
+    <main>
+        <section id="trust-info" class="trust-section" style="padding-top: 60px;">
+            <div class="container">
+                <div class="section-header center" style="text-align:center; margin-bottom:50px;">
+                    <h1 class="gold-text" style="color:var(--gold);">कृपालु पद्मा ट्रस्ट</h1>
+                    <div class="divider-gold"
+                        style="width:100px; height:2px; background:var(--gold); margin:10px auto;"></div>
+                    <p class="subtitle" style="color:#aaa;">राधा गोविंद धाम की प्रेरक शक्ति</p>
+                </div>
+
+                <div class="trust-card leader-card">
+                    <div class="card-content">
+                        <div class="leader-badge">अध्यक्ष</div>
+                        <h3>सुश्री ब्रज भुवनेश्वरी देवी जी</h3>
+                        <p class="honorific">(स्रेह से दीदी जी के नाम से जानी जाती हैं)</p>
+
+                        <p class="bio-text">
+                            जगद्गुरु श्री कृपालु जी महाराज की प्रमुख प्रचारिकाओं में से एक, वह चायल में राधा गोविंद धाम का निर्माण करके और बठिंडा, पंजाब में साधकों के लिए एक आध्यात्मिक आश्रम का पोषण करके अपनी निस्वार्थ सेवा जारी रखे हुए हैं।
+                        </p>
+                    </div>
+                </div>
+
+                <div class="trust-card mission-card">
+                    <h3>हमारा उद्देश्य</h3>
+                    <ul class="mission-list">
+                        <li>
+                            <i class="fa-solid fa-hands-praying"></i>
+                            <span><strong>आध्यात्मिक उत्थान:</strong> सत्संग, ध्यान, साधना शिविरों और पवित्र शास्त्रों के अध्ययन के माध्यम से आध्यात्मिक विकास को बढ़ावा देना।</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-hand-holding-heart"></i>
+                            <span><strong>परोपकार और सेवा:</strong> निस्वार्थ सेवा की भावना के साथ शिक्षा, स्वास्थ्य देखभाल, भोजन वितरण और जरूरतमंदों की सहायता करना।</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-gopuram"></i>
+                            <span><strong>संरक्षण:</strong> वर्तमान और भविष्य की पीढ़ियों के लाभ के लिए आध्यात्मिक विरासत, शास्त्रों और पवित्र स्थानों को संरक्षित करना।</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="trust" class="panel dark-panel">
+            <div class="panel-content column-layout">
+                <div class="trust-header">
+                    <h2>आपकी सेवा कार्य रूप में</h2>
+                    <p>हम पूर्ण पारदर्शिता में विश्वास करते हैं। यहाँ बताया गया है कि आपका योगदान कैसे जीवन बदल रहा है और धाम का निर्माण कर रहा है।</p>
+                </div>
+
+                <div class="impact-grid">
+                    <div class="impact-card">
+                        <div class="card-image">
+                            <img src="images/Fund_1.jpeg" alt="Temple Construction" loading="lazy">
+                        </div>
+                        <div class="card-text">
+                            <h3>धाम का निर्माण</h3>
+                            <p>हर दान मुख्य मंदिर संरचना के लिए पत्थर, संगमरमर और श्रम की व्यवस्था करने में मदद करता है। हम वर्तमान में गर्भगृह को अंतिम रूप दे रहे हैं जहाँ विग्रह विराजमान होंगे।</p>
+                        </div>
+                    </div>
+
+                    <div class="impact-card">
+                        <div class="card-image">
+                            <img src="images/prasad.jpeg" alt="Annadanam" loading="lazy">
+                        </div>
+                        <div class="card-text">
+                            <h3>अन्नदान (प्रसाद)</h3>
+                            <p>आश्रम से कोई भी भूखा नहीं जाता। यह सुनिश्चित किया जाता है कि भगवान को दैनिक भोग लगाया जाए और सभी भक्तों, आगंतुकों और जरूरतमंदों को प्रसाद वितरित किया जाए।</p>
+                        </div>
+                    </div>
+
+                    <div class="impact-card">
+                        <div class="card-image">
+                            <img src="images/winter-min.jpg" alt="Winter" loading="lazy">
+                        </div>
+                        <div class="card-text">
+                            <h3>शीतकालीन वस्त्र वितरण</h3>
+                            <p>बठिंडा, पंजाब के जरूरतमंद लोगों को 1000 से अधिक कपड़े वितरित किए गए।</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="donate" class="panel dark-panel" style="background:#050508;">
+            <div class="panel-content column-layout">
+                <div class="donate-header" style="text-align:center;">
+                    <h2 style="color:var(--gold);">सहयोग राशि दें</h2>
+                    <p style="color:#aaa; margin-bottom:40px;">80G के तहत कर छूट (Tax Exemption) उपलब्ध है।</p>
+                </div>
+
+                <div class="donation-container shivir-form"
+                    style="max-width: 500px; margin: 0 auto; background:rgba(255,255,255,0.02); padding:40px; border-radius:15px; border:1px solid rgba(255,215,0,0.2);">
+                    <form id="donation-form">
+
+                        <div class="input-group">
+                            <label>राशि (₹)</label>
+                            <div class="amount-presets">
+                                <span class="preset-btn" onclick="setAmount(501)">₹501</span>
+                                <span class="preset-btn" onclick="setAmount(1100)">₹1100</span>
+                                <span class="preset-btn" onclick="setAmount(2100)">₹2100</span>
+                                <span class="preset-btn" onclick="setAmount(5100)">₹5100</span>
+                            </div>
+                            <input type="number" id="donate-amount" placeholder="या अन्य राशि दर्ज करें" required min="1">
+                        </div>
+
+                        <div class="input-group">
+                            <label>पूरा नाम</label>
+                            <input type="text" id="donate-name" placeholder="रसीद के लिए नाम" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label>ईमेल आईडी</label>
+                            <input type="email" id="donate-email" placeholder="devotee@example.com" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label>फ़ोन नंबर</label>
+                            <input type="tel" id="donate-phone" placeholder="+91..." required>
+                        </div>
+
+                        <div class="input-group">
+                            <label>पैन कार्ड (कर छूट के लिए)</label>
+                            <input type="text" id="donate-pan" placeholder="ABCDE1234F" maxlength="10"
+                                style="text-transform: uppercase;">
+                            <small id="pan-error"
+                                style="color: #ff6b6b; font-size: 0.8rem; display: none; margin-top: 5px;">
+                                <i class="fa-solid fa-circle-exclamation"></i> अमान्य पैन प्रारूप
+                            </small>
+                        </div>
+
+                        <div class="input-group">
+                            <label>पैन कार्ड की कॉपी अपलोड करें</label>
+                            <input type="file" id="pan-upload" accept="image/*,.pdf"
+                                style="padding: 10px; background: rgba(255,255,255,0.1); width: 100%;">
+                        </div>
+
+                        <button type="submit" class="gold-btn full-width" style="margin-top:20px;">
+                            अभी सहयोग राशि दें <i class="fa-solid fa-heart"></i>
+                        </button>
+                    </form>
+
+                    <p style="margin-top: 20px; font-size: 0.8rem; color: #888; text-align:center;">
+                        <i class="fa-solid fa-shield-halved"></i> रेजरपे (Razorpay) द्वारा सुरक्षित भुगतान।
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="site-footer">
+        <div class="footer-content">
+
+            <div class="footer-col brand-col">
+                <h3 class="footer-logo">राधा गोविंद धाम</h3>
+                <p>हिमालय में दिव्य प्रेम और ध्यान का एक अभयारण्य, जो जगद्गुरु श्री कृपालु जी महाराज से प्रेरित है।</p>
+                <div class="social-icons">
+                    <a href="https://www.youtube.com/@ShreeKripaluKunj" class="social-btn"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://www.facebook.com/ShreeKripaluKunj/" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/shreekripalukunj/" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>त्वरित लिंक</h4>
+                <ul>
+                    <li><a href="maharajji_hindi.html">प्रेरणा स्रोत</a></li>
+                    <li><a href="deviji_hindi.html">संस्थापक</a></li>
+                    <li><a href="hindi.html#amenities">आश्रम की सुविधाएं</a></li>
+                    <li><a href="hindi.html#shivir-section">साधना शिविर</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>संपर्क करें</h4>
+                <p><i class="fa-solid fa-location-dot"></i> राधा गोविंद धाम, नागाली<br>हिमाचल प्रदेश, भारत</p>
+                <p><i class="fa-solid fa-phone"></i> +91 97808 81008</p>
+                <p><i class="fa-solid fa-envelope"></i> kripalurgdham.in</p>
+            </div>
+
+            <div class="footer-col newsletter-col">
+                <h4>जुड़े रहें</h4>
+                <p>आगामी शिविरों और दैनिक प्रेरणा पर अपडेट प्राप्त करें।</p>
+                <form action="https://api.web3forms.com/submit" method="POST" class="newsletter-form">
+                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                    <input type="email" name="email" placeholder="आपका ईमेल पता" required>
+                    <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 कृपालु पद्मा ट्रस्ट। सर्वाधिकार सुरक्षित।</p>
+
+            <div class="legal-links">
+                <a href="privacy.html">गोपनीयता नीति</a>
+                <span class="separator">|</span>
+                <a href="terms.html">नियम और शर्तें</a>
+                <span class="separator">|</span>
+                <a href="refund.html">धनवापसी नीति</a>
+            </div>
+
+            <p>श्री महाराज जी के लिए <i class="fa-solid fa-heart" style="color: red;"></i> के साथ डिज़ाइन किया गया।</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

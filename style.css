@@ -1085,7 +1085,11 @@ body {
 /* Dots on the line */
 .timeline-dot {
     position: absolute;
-    top: 30px;
+    
+    /* CHANGED: Move to vertical center */
+    top: 50%; 
+    transform: translateY(-50%);
+    
     width: 15px;
     height: 15px;
     background: var(--bg-dark);
@@ -1136,6 +1140,7 @@ body {
     }
 }
 
+
 /* Fix for the last item in timeline */
 .timeline-item.center-end {
     width: 100%;
@@ -1147,14 +1152,8 @@ body {
 }
 
 .center-end .timeline-dot {
-    left: 50%;
-    transform: translateX(-50%);
-    top: -20px;
-    /* Moves dot above the card */
-    width: 20px;
-    height: 20px;
-    background: var(--gold);
-    /* Make this one special/gold */
+    top: -20px; /* Keep the last one above the card */
+    transform: translateX(-50%); /* Only center horizontally */
 }
 
 .center-end .timeline-content {
@@ -3088,3 +3087,102 @@ section, footer, .hero-section, .about-section, .timeline-section {
 
 /* If you prefer English "Radhey Radhey", use this font-size instead: */
 /* font-size: 0.9rem; */
+/* Ensure Video matches the Image styling exactly */
+video.timeline-opposite-img {
+    object-fit: cover; /* Ensures no black bars */
+    border: 1px solid var(--gold);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    background: #000; /* Background color while loading */
+    cursor: pointer;
+}
+/* =========================================
+   DIVINE GUIDANCE (MEET DIDI JI) SECTION
+   ========================================= */
+
+.guidance-container {
+    margin-top: 50px;
+    padding: 40px 20px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 215, 0, 0.2); /* Subtle Gold Line */
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.4));
+}
+
+.guidance-content h3 {
+    font-family: var(--font-head);
+    color: var(--gold);
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.guidance-content p {
+    color: #e0e0e0;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto 30px auto; /* Centers text */
+    line-height: 1.6;
+}
+
+/* Make the button glow to stand out */
+.glow-btn {
+    background: rgba(255, 215, 0, 0.1);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+    border: 1px solid var(--gold);
+    transition: 0.4s ease;
+}
+
+.glow-btn:hover {
+    background: var(--gold);
+    color: black;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+    transform: translateY(-3px);
+}
+/* =========================================
+   MOBILE TIMELINE DOT FIX (CENTERED)
+   ========================================= */
+
+@media (max-width: 768px) {
+    .timeline-dot {
+        /* Force vertical centering on mobile */
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        
+        /* Keep left alignment correct */
+        left: 16px !important; 
+        right: auto !important;
+    }
+}
+/* =========================================
+   PULSING GLOW BUTTON (For Donation CTA)
+   ========================================= */
+
+.glow-effect {
+    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7);
+    transform: scale(1);
+    animation: pulse-gold 2s infinite;
+}
+
+@keyframes pulse-gold {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7);
+    }
+    
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 20px rgba(255, 215, 0, 0);
+    }
+    
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+    }
+}
+
+.glow-effect:hover {
+    animation: none; /* Stops pulsing when they hover to click */
+    background: var(--gold);
+    color: black;
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+}
