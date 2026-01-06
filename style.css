@@ -1085,11 +1085,11 @@ body {
 /* Dots on the line */
 .timeline-dot {
     position: absolute;
-    
+
     /* CHANGED: Move to vertical center */
-    top: 50%; 
+    top: 50%;
     transform: translateY(-50%);
-    
+
     width: 15px;
     height: 15px;
     background: var(--bg-dark);
@@ -1152,8 +1152,10 @@ body {
 }
 
 .center-end .timeline-dot {
-    top: -20px; /* Keep the last one above the card */
-    transform: translateX(-50%); /* Only center horizontally */
+    top: -20px;
+    /* Keep the last one above the card */
+    transform: translateX(-50%);
+    /* Only center horizontally */
 }
 
 .center-end .timeline-content {
@@ -1227,7 +1229,7 @@ body {
 
 .amenity-card {
     background: rgba(255, 255, 255, 0.02);
-   backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
     border: 1px solid rgba(255, 255, 255, 0.05);
     padding: 40px 25px;
     border-radius: 15px;
@@ -1241,17 +1243,20 @@ body {
     border-color: var(--gold);
     transform: translateY(-5px);
 }
+
 .amenity-card h3 {
     font-family: var(--font-head);
     color: white;
     font-size: 1.2rem;
     margin-bottom: 15px;
 }
+
 .amenity-card p {
     color: rgba(255, 255, 255, 0.687);
     font-size: 0.95rem;
     line-height: 1.6;
 }
+
 .icon-circle {
     width: 60px;
     height: 60px;
@@ -2932,6 +2937,7 @@ body {
         /* Allow wrapping on very small screens */
     }
 }
+
 /* =========================================
    GLOBAL FIXED BACKGROUND
    ========================================= */
@@ -2943,30 +2949,41 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: -1; /* Puts it behind everything */
-    
+    z-index: -1;
+    /* Puts it behind everything */
+
     /* MOUNTAIN IMAGE */
-    background-image: url('images/background_1.jpeg'); 
+    background-image: url('images/background_1.jpeg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    
+
     /* STYLE: Dark & Ghostly */
-    opacity: 0.2; /* Adjust visibility (0.1 to 0.3) */
+    opacity: 0.2;
+    /* Adjust visibility (0.1 to 0.3) */
     /* filter: grayscale(100%); /* Black & White */
-} */
+}
+
+*/
 
 /* 2. THE FIX: Make Sections Transparent 
    (So they don't hide the mountain) */
 body {
-    background-color: #0a0a12; /* Fallback color */
+    background-color: #0a0a12;
+    /* Fallback color */
 }
 
-section, footer, .hero-section, .about-section, .timeline-section {
-    background: transparent !important; /* Force transparency */
+section,
+footer,
+.hero-section,
+.about-section,
+.timeline-section {
+    background: transparent !important;
+    /* Force transparency */
     /* If text is hard to read, use a semi-transparent dark tint instead: */
     /* background: rgba(10, 10, 18, 0.8) !important; */
 }
+
 /* =========================================
    KRIPALU PADMA TRUST SECTION
    ========================================= */
@@ -2978,16 +2995,20 @@ section, footer, .hero-section, .about-section, .timeline-section {
 
 .trust-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Two Columns */
+    grid-template-columns: 1fr 1fr;
+    /* Two Columns */
     gap: 40px;
     margin-top: 40px;
 }
 
 /* THE CARDS (Glass Effect) */
 .trust-card {
-    background: rgba(20, 20, 30, 0.6); /* Semi-transparent dark */
-    backdrop-filter: blur(10px);       /* Blurs the mountain behind it */
-    border: 1px solid rgba(255, 215, 0, 0.2); /* Faint Gold Border */
+    background: rgba(20, 20, 30, 0.6);
+    /* Semi-transparent dark */
+    backdrop-filter: blur(10px);
+    /* Blurs the mountain behind it */
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    /* Faint Gold Border */
     padding: 40px;
     border-radius: 12px;
     transition: 0.3s;
@@ -2996,7 +3017,7 @@ section, footer, .hero-section, .about-section, .timeline-section {
 .trust-card:hover {
     border-color: var(--gold);
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 /* PRESIDENT CARD SPECIFICS */
@@ -3047,7 +3068,8 @@ section, footer, .hero-section, .about-section, .timeline-section {
 .mission-list i {
     color: var(--gold);
     font-size: 1.2rem;
-    margin-top: 5px; /* Aligns icon with text */
+    margin-top: 5px;
+    /* Aligns icon with text */
 }
 
 .mission-list span {
@@ -3063,39 +3085,48 @@ section, footer, .hero-section, .about-section, .timeline-section {
 /* MOBILE RESPONSIVENESS */
 @media (max-width: 768px) {
     .trust-grid {
-        grid-template-columns: 1fr; /* Stack vertically on phone */
+        grid-template-columns: 1fr;
+        /* Stack vertically on phone */
     }
-    
+
     .trust-card {
         padding: 30px 20px;
     }
 }
+
 /* =========================================
    CUSTOM RADHEY SYMBOL
    ========================================= */
 
 .radhey-symbol {
-    font-family: 'Poppins', sans-serif; /* Clean, bold font */
+    font-family: 'Poppins', sans-serif;
+    /* Clean, bold font */
     font-weight: 800;
-    font-size: 1.6rem; /* Adjusted size to fit the box */
+    font-size: 1.6rem;
+    /* Adjusted size to fit the box */
     color: var(--gold);
     line-height: 1;
     display: inline-block;
-    transform: translateY(-2px); /* Slight alignment fix */
-    white-space: nowrap; /* Ensures it stays on one line */
+    transform: translateY(-2px);
+    /* Slight alignment fix */
+    white-space: nowrap;
+    /* Ensures it stays on one line */
 }
 
 /* If you prefer English "Radhey Radhey", use this font-size instead: */
 /* font-size: 0.9rem; */
 /* Ensure Video matches the Image styling exactly */
 video.timeline-opposite-img {
-    object-fit: cover; /* Ensures no black bars */
+    object-fit: cover;
+    /* Ensures no black bars */
     border: 1px solid var(--gold);
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    background: #000; /* Background color while loading */
+    background: #000;
+    /* Background color while loading */
     cursor: pointer;
 }
+
 /* =========================================
    DIVINE GUIDANCE (MEET DIDI JI) SECTION
    ========================================= */
@@ -3104,7 +3135,8 @@ video.timeline-opposite-img {
     margin-top: 50px;
     padding: 40px 20px;
     text-align: center;
-    border-top: 1px solid rgba(255, 215, 0, 0.2); /* Subtle Gold Line */
+    border-top: 1px solid rgba(255, 215, 0, 0.2);
+    /* Subtle Gold Line */
     background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.4));
 }
 
@@ -3119,7 +3151,8 @@ video.timeline-opposite-img {
     color: #e0e0e0;
     font-size: 1.1rem;
     max-width: 600px;
-    margin: 0 auto 30px auto; /* Centers text */
+    margin: 0 auto 30px auto;
+    /* Centers text */
     line-height: 1.6;
 }
 
@@ -3137,6 +3170,7 @@ video.timeline-opposite-img {
     box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
     transform: translateY(-3px);
 }
+
 /* =========================================
    MOBILE TIMELINE DOT FIX (CENTERED)
    ========================================= */
@@ -3146,12 +3180,13 @@ video.timeline-opposite-img {
         /* Force vertical centering on mobile */
         top: 50% !important;
         transform: translateY(-50%) !important;
-        
+
         /* Keep left alignment correct */
-        left: 16px !important; 
+        left: 16px !important;
         right: auto !important;
     }
 }
+
 /* =========================================
    PULSING GLOW BUTTON (For Donation CTA)
    ========================================= */
@@ -3167,12 +3202,12 @@ video.timeline-opposite-img {
         transform: scale(0.95);
         box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7);
     }
-    
+
     70% {
         transform: scale(1);
         box-shadow: 0 0 0 20px rgba(255, 215, 0, 0);
     }
-    
+
     100% {
         transform: scale(0.95);
         box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
@@ -3180,7 +3215,8 @@ video.timeline-opposite-img {
 }
 
 .glow-effect:hover {
-    animation: none; /* Stops pulsing when they hover to click */
+    animation: none;
+    /* Stops pulsing when they hover to click */
     background: var(--gold);
     color: black;
     transform: scale(1.05);
