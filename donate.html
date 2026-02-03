@@ -16,61 +16,27 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <style>
-        /* PAGE SPECIFIC FIXES */
-
-        /* 1. Header Fix: Darken image to hide blur & Push text down */
-        .donate-header-bg {
-            height: 60vh;
-            /* Taller header */
-            background:
-                linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)),
-                /* Dark Overlay */
-                url('images/background_1.jpeg') no-repeat center center/cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding-top: 100px;
-            /* Pushes text below the Navbar */
-            text-align: center;
-        }
-
-        /* 2. Make the page transparent so Global Background shows */
-        main {
-            background: transparent;
-        }
-
-        section {
-            background: transparent !important;
-        }
-
-        .trust-card,
-        .impact-card,
-        .donation-container {
-            background: rgba(20, 20, 30, 0.6);
-            /* Glass effect */
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 215, 0, 0.1);
-        }
-    </style>
 </head>
 
-<body>
+<body class="donate-page">
     <div class="global-bg"></div>
     <nav class="glass-nav">
         <div class="logo"><a href="index.html" style="color:var(--gold); text-decoration:none;">Radha Govind Dham</a>
         </div>
-        <div class="menu-btn"><i class="fa-solid fa-bars-staggered"></i></div>
+        <button class="menu-btn" type="button" aria-label="Open menu">
+            <i class="fa-solid fa-bars-staggered"></i>
+        </button>
     </nav>
 
     <div id="menu-overlay">
-        <div class="close-menu"><i class="fa-solid fa-xmark"></i></div>
+        <button class="close-menu" type="button" aria-label="Close menu">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
 
         <div class="menu-content">
 
             <div class="menu-left">
-                <img id="menu-preview-img" src="images/logo.jpg" alt="Preview"
-                    style="width: 250px; height: 350px; object-fit: cover; border-radius: 10px; border: 1px solid var(--gold); opacity: 0.8; transition: 0.3s;">
+                <img id="menu-preview-img" src="images/logo.jpg" alt="Preview">
 
                 <p class="menu-quote" id="menu-caption">"The call of the Divine Flute."</p>
             </div>
@@ -106,11 +72,9 @@
                 </li>
 
                 <li>
-                    <a href="#shivir-section" class="nav-item" onclick="closeMenu()" data-img="images/join_us.jpg"
+                    <a href="index.html#guidance" class="nav-item" onclick="closeMenu()" data-img="images/join_us.jpg"
                         data-text='"Transform Your Life"'>
-                        Join Us <span class="sub-text">Sadhana Shivir Registration</span>
-
-
+                        Join Us <span class="sub-text">Personal Guidance</span>
                     </a>
                 </li>
 
@@ -131,24 +95,21 @@
         </div>
     </div>
 
-    <header class="donate-header-bg">
-        <div class="bio-title-card"
-            style="background: rgba(0,0,0,0.6); padding: 30px 50px; border: 1px solid var(--gold); border-radius: 10px;">
-            <h1 style="color: var(--gold); font-family: var(--font-head); font-size: 3rem; margin: 0;">The Gift of Seva
-            </h1>
-            <p style="color: #e0e0e0; letter-spacing: 3px; margin-top: 10px; font-size: 1.1rem;">Kripalu Padma Trust</p>
+    <header class="donate-hero">
+        <div class="donate-hero-card">
+            <p class="subtitle donate-kicker">The Gift of Seva</p>
+            <h1>Make an Offering</h1>
+            <p>Support the spiritual sanctuary and seva initiatives of Kripalu Padma Trust.</p>
         </div>
     </header>
 
     <main>
-        <section id="trust-info" class="trust-section" style="padding-top: 60px;">
+        <section id="trust-info" class="trust-section">
             <div class="container">
-                <div class="section-header center" style="text-align:center; margin-bottom:50px;">
-                    <h1 class="gold-text" style="font-family: var(--font-head); color:var(--gold);">Kripalu Padma Trust
-                    </h1>
-                    <div class="divider-gold"
-                        style="width:100px; height:2px; background:var(--gold); margin:10px auto;"></div>
-                    <p class="subtitle" style="color:#aaa;">The Guiding Force behind Radha Govind Dham</p>
+                <div class="section-header section-header-centered section-header-spacious">
+                    <h1 class="section-title">Kripalu Padma Trust</h1>
+                    <div class="gold-divider gold-divider-centered gold-divider-wide"></div>
+                    <p class="section-subtitle">The guiding force behind Radha Govind Dham</p>
                 </div>
 
                 <div class="trust-card leader-card">
@@ -190,6 +151,33 @@
                 </div>
 
             </div>
+        </section>
+
+        <section class="panel dark-panel centered-panel">
+            <div class="panel-content column-layout">
+                <div class="section-header section-header-centered section-header-spacious">
+                    <p class="subtitle">Your Seva, Our Responsibility</p>
+                    <h2 class="section-title">Why Your Offering Matters</h2>
+                    <div class="gold-divider gold-divider-centered gold-divider-wide"></div>
+                </div>
+
+                <div class="donate-highlights">
+                    <div class="donate-highlight-card">
+                        <i class="fa-solid fa-hands-praying"></i>
+                        <h3>Daily Worship & Satsang</h3>
+                        <p>Support the daily rhythm of seva, satsang, and divine worship.</p>
+                    </div>
+                    <div class="donate-highlight-card">
+                        <i class="fa-solid fa-bowl-food"></i>
+                        <h3>Prasadam for All</h3>
+                        <p>Your donation nourishes devotees and local communities with mahaprasad.</p>
+                    </div>
+                    <div class="donate-highlight-card">
+                        <i class="fa-solid fa-mountain-sun"></i>
+                        <h3>Himalayan Retreats</h3>
+                        <p>Enable sadhana programs and a peaceful sanctuary in Chail.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -246,48 +234,59 @@
             </div>
         </section>
 
-        <section id="donate" class="panel dark-panel" style="background:#050508;">
+        <section id="donate" class="panel dark-panel">
             <div class="panel-content column-layout">
-                <div class="donate-header" style="text-align:center;">
-                    <h2 style="color:var(--gold); font-family:var(--font-head);">Make a Contribution</h2>
-                    <!-- <p style="color:#aaa; margin-bottom:40px;"></p> -->
+                <div class="donate-header section-header-centered">
+                    <h2 class="section-title">Make a Contribution</h2>
                 </div>
 
-                <div class="donation-container shivir-form"
-                    style="max-width: 500px; margin: 0 auto; background:rgba(255,255,255,0.02); padding:40px; border-radius:15px; border:1px solid rgba(255,215,0,0.2);">
-                    <form id="donation-form">
+                <div class="donate-layout">
+                    <div class="donate-info-card">
+                        <h3>Secure & Instant</h3>
+                        <p>Every contribution is acknowledged with an instant receipt and handled through Razorpay’s
+                            secure payment gateway.</p>
+                        <div class="donate-points">
+                            <div class="donate-point"><i class="fa-solid fa-shield-halved"></i> Secure payment via
+                                Razorpay</div>
+                            <div class="donate-point"><i class="fa-solid fa-receipt"></i> Instant digital receipt</div>
+                            <div class="donate-point"><i class="fa-solid fa-heart"></i> Direct seva impact</div>
+                        </div>
+                    </div>
 
-                        <div class="input-group">
-                            <label>Amount (₹)</label>
-                            <div class="amount-presets">
-                                <span class="preset-btn" onclick="setAmount(501)">₹501</span>
-                                <span class="preset-btn" onclick="setAmount(1100)">₹1100</span>
-                                <span class="preset-btn" onclick="setAmount(2100)">₹2100</span>
-                                <span class="preset-btn" onclick="setAmount(5100)">₹5100</span>
+                    <div class="donation-container shivir-form donation-form-card">
+                        <form id="donation-form">
+
+                            <div class="input-group">
+                                <label>Amount (₹)</label>
+                                <div class="amount-presets">
+                                    <span class="preset-btn" onclick="setAmount(501)">₹501</span>
+                                    <span class="preset-btn" onclick="setAmount(1100)">₹1100</span>
+                                    <span class="preset-btn" onclick="setAmount(2100)">₹2100</span>
+                                    <span class="preset-btn" onclick="setAmount(5100)">₹5100</span>
+                                </div>
+                                <input type="number" id="donate-amount" placeholder="Or enter custom amount" required
+                                    min="1">
                             </div>
-                            <input type="number" id="donate-amount" placeholder="Or enter custom amount" required
-                                min="1">
-                        </div>
 
-                        <div class="input-group">
-                            <label>Full Name</label>
-                            <input type="text" id="donate-name" placeholder="Name for Receipt" required>
-                        </div>
+                            <div class="input-group">
+                                <label>Full Name</label>
+                                <input type="text" id="donate-name" placeholder="Name for Receipt" required>
+                            </div>
 
-                        <div class="input-group">
-                            <label>Email ID</label>
-                            <input type="email" id="donate-email" placeholder="devotee@example.com" required>
-                        </div>
+                            <div class="input-group">
+                                <label>Email ID</label>
+                                <input type="email" id="donate-email" placeholder="devotee@example.com" required>
+                            </div>
 
-                        <div class="input-group">
-                            <label>Phone Number</label>
-                            <input type="tel" id="donate-phone" placeholder="+91..." required>
-                        </div>
+                            <div class="input-group">
+                                <label>Phone Number</label>
+                                <input type="tel" id="donate-phone" placeholder="+91..." required>
+                            </div>
 
                         <div class="input-group">
                             <label>PAN Card (For Tax Exemption)</label>
                             <input type="text" id="donate-pan" placeholder="ABCDE1234F" maxlength="10"
-                                style="text-transform: uppercase;">
+                                class="text-uppercase" required>
                             <small id="pan-error"
                                 style="color: #ff6b6b; font-size: 0.8rem; display: none; margin-top: 5px;">
                                 <i class="fa-solid fa-circle-exclamation"></i> Invalid PAN Format
@@ -296,88 +295,101 @@
 
                         <div class="input-group">
                             <label>Upload PAN Card Copy</label>
-                            <input type="file" id="pan-upload" accept="image/*,.pdf"
-                                style="padding: 10px; background: rgba(255,255,255,0.1); width: 100%;">
+                            <input type="file" id="pan-upload" accept="image/*,.pdf" class="file-input" required>
+                            <small class="pan-upload-note">Upload a clear photo or PDF of the PAN card.</small>
+                            <small id="pan-upload-error" class="pan-error">Please upload a valid PAN card file.</small>
                         </div>
 
-                        <button type="submit" class="gold-btn full-width" style="margin-top:20px;">
-                            Donate Now <i class="fa-solid fa-heart"></i>
-                        </button>
-                    </form>
-
-                    <p style="margin-top: 20px; font-size: 0.8rem; color: #888; text-align:center;">
-                        <i class="fa-solid fa-shield-halved"></i> Secure Payment via Razorpay.
-                    </p>
+                            <button type="submit" class="gold-btn full-width" style="margin-top:20px;">
+                                Donate Now <i class="fa-solid fa-heart"></i>
+                            </button>
+                        </form>
+                        <p style="margin-top: 20px; font-size: 0.8rem; color: #888; text-align:center;">
+                            <i class="fa-solid fa-shield-halved"></i> Secure Payment via Razorpay.
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
     <footer id="site-footer">
-        <div class="footer-content">
+            <div class="footer-content">
 
-            <div class="footer-col brand-col">
-                <h3 class="footer-logo">Radha Govind Dham</h3>
-                <p>A sanctuary of divine love and meditation in the Himalayas, inspired by Jagadguru Shri Kripalu Ji
-                    Maharaj.</p>
-                <div class="social-icons">
-                    <a href="https://www.youtube.com/@ShreeKripaluKunj" class="social-btn"><i
-                            class="fa-brands fa-youtube"></i></a>
-                    <a href="https://www.facebook.com/ShreeKripaluKunj/" class="social-btn"><i
-                            class="fa-brands fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/shreekripalukunj/" class="social-btn"><i
-                            class="fa-brands fa-instagram"></i></a>
+                <div class="footer-col brand-col">
+                    <h3 class="footer-logo">Kripalu Padma Trust</h3>
+                    
+                    <div class="social-icons">
+                        <a href="https://www.youtube.com/@ShreeKripaluKunj" class="social-btn"
+                            aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/ShreeKripaluKunj/" class="social-btn"
+                            aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/shreekripalukunj/" class="social-btn"
+                            aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
                 </div>
+
+
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#kripalu">The Inspiration</a></li>
+                        <li><a href="index.html#deviji">The Founder</a></li>
+                        <li><a href="index.html#monuments">Our Centers</a></li>
+                        <!-- <li><a href="#gallery">Photo Gallery</a></li> -->
+                        <li><a href="index.html#guidance">Personal Guidance</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <p><i class="fa-solid fa-location-dot"></i> Radha Govind Dham , Nagali<br> Chail , Solan ,Himachal
+                        Pradesh, India
+                    </p>
+                    <p><i class="fa-solid fa-location-dot"></i>Kripalu Kunj <br> Bathinda, Punjab , India
+                    </p>
+                    <p><i class="fa-solid fa-phone"></i> +91 97808 81008</p>
+                    <p><i class="fa-solid fa-envelope"></i> kripaluPadmaTrust@gmail.com</p>
+                </div>
+
+                <div class="footer-col newsletter-col">
+                    <h4>Stay Connected</h4>
+                    <p>Receive updates on upcoming Shivirs and daily inspiration.</p>
+                    <form action="https://api.web3forms.com/submit" method="POST" class="newsletter-form">
+                        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                        <input type="email" name="email" placeholder="Your Email Address" required>
+                        <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
+                    </form>
+                </div>
+
             </div>
 
+            <div class="footer-bottom">
+                <p>© 2026 Kripalu Padma Trust. All Rights Reserved.</p>
 
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="#kripalu">The Inspiration</a></li>
-                    <li><a href="#deviji">The Founder</a></li>
-                    <li><a href="#amenities">Ashram Amenities</a></li>
-                    <!-- <li><a href="#gallery">Photo Gallery</a></li> -->
-                    <li><a href="#shivir">Sadhna Shivir</a></li>
-                </ul>
+                <div class="legal-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <span class="separator">|</span>
+                    <a href="terms.html">Terms & Conditions</a>
+                    <span class="separator">|</span>
+                    <a href="refund.html">Refund Policy</a>
+                </div>
+
+
+                <p>Designed with <i class="fa-solid fa-heart heart-icon"></i> for Shri Maharaj Ji .</p>
             </div>
 
-            <div class="footer-col">
-                <h4>Contact Us</h4>
-                <p><i class="fa-solid fa-location-dot"></i> Radha Govind Dham , Nagali<br>Himachal Pradesh, India
-                </p>
-                <p><i class="fa-solid fa-phone"></i> +91 97808 81008</p>
-                <p><i class="fa-solid fa-envelope"></i> kripalurgdham.in</p>
-            </div>
+        </footer>
 
-            <div class="footer-col newsletter-col">
-                <h4>Stay Connected</h4>
-                <p>Receive updates on upcoming Shivirs and daily inspiration.</p>
-                <form action="https://api.web3forms.com/submit" method="POST" class="newsletter-form">
-                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
-                    <input type="email" name="email" placeholder="Your Email Address" required>
-                    <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
-                </form>
-            </div>
+    <a class="whatsapp-float" href="https://wa.me/919780881008" target="_blank" rel="noopener"
+        aria-label="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
-        </div>
-
-        <div class="footer-bottom">
-            <p>© 2026 Kripalu Padma Trust. All Rights Reserved.</p>
-
-            <div class="legal-links">
-                <a href="privacy.html">Privacy Policy</a>
-                <span class="separator">|</span>
-                <a href="terms.html">Terms & Conditions</a>
-                <span class="separator">|</span>
-                <a href="refund.html">Refund Policy</a>
-            </div>
-
-
-            <p>Designed with <i class="fa-solid fa-heart" style="color: red;"></i> for Shri Maharaj Ji.</p>
-        </div>
-
-    </footer>
+    <div class="sticky-cta" role="region" aria-label="Quick actions">
+        <a href="donate.html" class="sticky-donate">Donate</a>
+        <a href="index.html#guidance" class="sticky-guidance">Request Guidance</a>
+    </div>
 
     <script src="script.js"></script>
 </body>

@@ -4,10 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kripalu Radha Govind Dham, Chail - Official Website</title>
-
-    <meta name="description"
-        content="Welcome to Kripalu Radha Govind Dham in Chail, Himachal Pradesh. A spiritual ashram dedicated to Devi Ji and the teachings of Shri Kripalu Ji Maharaj.">
+    <title>Kripalu Padma Trust - Official Website</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
@@ -33,7 +30,7 @@
         <div class="intro-content">
             <h2 class="intro-text line-1">Jagadguru Shri Kripalu Ji Maharaj</h2>
 
-            <h1 class="intro-text line-2">राधा गोविंद धाम</h1>
+            <h1 class="intro-text line-2">Kripalu Padma Trust</h1>
 
         </div>
     </div>
@@ -44,24 +41,26 @@
     <main id="content">
 
         <nav class="glass-nav">
-            <div class="logo">Radha Govind Dham</div>
+            <div class="logo">Kripalu Padma Trust</div>
 
-            <div style="display: flex; align-items: center; gap: 15px;">
-                <a href="hindi.html" class="lang-btn"
-                    style="text-decoration:none; color: var(--gold); border: 1px solid var(--gold); padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; font-family: sans-serif; transition: 0.3s;">
+            <div class="nav-actions">
+                <a href="hindi.html" class="lang-btn">
                     HINDI
                 </a>
-                <div class="menu-btn"><i class="fa-solid fa-bars-staggered"></i></div>
+                <button class="menu-btn" type="button" aria-label="Open menu">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </button>
             </div>
         </nav>
         <div id="menu-overlay">
-            <div class="close-menu"><i class="fa-solid fa-xmark"></i></div>
+            <button class="close-menu" type="button" aria-label="Close menu">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
 
             <div class="menu-content">
 
                 <div class="menu-left">
-                    <img id="menu-preview-img" src="images/logo.jpg" alt="Preview"
-                        style="width: 250px; height: 350px; object-fit: cover; border-radius: 10px; border: 1px solid var(--gold); opacity: 0.8; transition: 0.3s;">
+                    <img id="menu-preview-img" src="images/logo.jpg" alt="Preview">
 
                     <p class="menu-quote" id="menu-caption">"The call of the Divine Flute."</p>
                 </div>
@@ -90,16 +89,16 @@
                     </li>
 
                     <li>
-                        <a href="journey.html" class="nav-item" data-img="images/chail_view.JPG"
+                        <a href="#monuments" class="nav-item" data-img="images/chail_view.JPG"
                             data-text='"The Abode of Peace"'>
                             The Dham <span class="sub-text">Our Centers</span>
                         </a>
                     </li>
 
                     <li>
-                        <a href="#shivir-section" class="nav-item" onclick="closeMenu()" data-img="images/join_us.jpg"
+                        <a href="#guidance" class="nav-item" onclick="closeMenu()" data-img="images/join_us.jpg"
                             data-text='"Transform Your Life"'>
-                            Join Us <span class="sub-text">Sadhana Shivir Registration</span>
+                            Join Us <span class="sub-text">Personal Guidance</span>
 
 
                         </a>
@@ -126,36 +125,22 @@
         <section class="hero-section">
             <div class="hero-bg"></div>
             <div class="hero-text">
-                <div style="text-align: center; padding: 40px 20px;">
+                <div class="hero-intro">
 
-                    <p style="
-        font-family: sans-serif; 
-        font-size: 14px; 
-        text-transform: uppercase; 
-        letter-spacing: 3px; 
-        color: #FFD700; 
-        margin-bottom: 10px;
-        font-weight: 500;">
+                    <p class="hero-kicker">
                         Under the Guidance of
                     </p>
 
-                    <h1 style="
-        font-family: 'Times New Roman', serif; 
-        font-size: 48px; 
-        line-height: 1.2; 
-        color: #d97706; /* Saffron/Gold Color */
-        margin: 0;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.1); /* Subtle 3D lift */
-        font-weight: 700;">
+                    <h1 class="hero-guide-name">
                         Sushri Braj Bhuvneshwari Devi Ji
                     </h1>
 
                 </div>
-                <h1 class="glimmer-text" style="font-size: 50px;">Radha Govind Dham</h1>
-                <p class="location" style="font-size: 25px;">Chail, Himachal Pradesh</p>
+                <h1 class="glimmer-text hero-title">Kripalu Padma Trust</h1>
+                <!-- <p class="location" style="font-size: 25px;">Chail, Himachal Pradesh</p>
                 <p class="status-note">
                     Currently under development • Inauguration upon completion
-                </p>
+                </p> -->
 
                 <a href="#kripalu" class="scroll-down-btn">
                     <i class="fa-solid fa-arrow-down-long"></i>
@@ -163,10 +148,21 @@
             </div>
 
         </section>
-        <section id="start-journey" class="panel dark-panel centered-panel"
-            style="padding: 60px 20px; background: linear-gradient(to bottom, #0a0a12, #111); border-bottom: 1px solid rgba(255,215,0,0.1);">
 
-            <div class="panel-content column-layout">
+        <section id="mission" class="mission-strip">
+            <div class="mission-content">
+                <p class="mission-kicker">Our Mission</p>
+                <h2 class="mission-title">A sanctuary of Bhakti, seva, and inner transformation.</h2>
+                <p class="mission-text">
+                    Kripalu Padma Trust nurtures spiritual growth through satsang, sadhana, and service—preserving
+                    timeless wisdom and making it accessible to every sincere seeker.
+                </p>
+            </div>
+        </section>
+        <!-- <section id="start-journey" class="panel dark-panel centered-panel"
+            style="padding: 60px 20px; background: linear-gradient(to bottom, #0a0a12, #111); border-bottom: 1px solid rgba(255,215,0,0.1);"> -->
+
+        <!-- <div class="panel-content column-layout">
 
                 <div class="visitor-header">
                     <p class="subtitle" style="margin-bottom: 10px;">New to Radha Govind Dham?</p>
@@ -212,7 +208,7 @@
                 </div>
 
             </div>
-        </section>
+        </section> -->
 
         <section id="kripalu" class="legacy-section">
 
@@ -241,7 +237,7 @@
                         <span class="year">5 October 1922
                         </span>
                         <h3>The Divine Appearance</h3>
-                        <p style="font-size: 1.1rem;">Appeared on Sharad Purnima night in Mangarh. From childhood, his
+                        <p class="timeline-desc">Appeared on Sharad Purnima night in Mangarh. From childhood, his
                             divine radiance captivated
                             everyone around him.</p>
                     </div>
@@ -255,7 +251,7 @@
                     <div class="timeline-content glass-card">
                         <span class="year">January 14, 1957</span>
                         <h3>Honored as Jagadgurottam</h3>
-                        <p style="font-size: 1.1rem;">At just 34 years old, the scholars of Kashi Vidvat Parishat
+                        <p class="timeline-desc">At just 34 years old, the scholars of Kashi Vidvat Parishat
                             unanimously honored him as the
                             <strong>5th Original Jagadguru</strong>.
                         </p>
@@ -270,7 +266,7 @@
                     <div class="timeline-content glass-card">
                         <span class="year">Scriptures</span>
                         <h3>The Ocean of Knowledge</h3>
-                        <p style="font-size: 1.1rem;">He gifted the world with monumental works like <em>Prem Ras
+                        <p class="timeline-desc">He gifted the world with monumental works like <em>Prem Ras
                                 Madira</em> and <em>Radha Govind
                                 Geet</em>, simplifying the Vedas for the common man.</p>
                     </div>
@@ -284,7 +280,7 @@
                     <div class="timeline-content glass-card">
                         <span class="year">Legacy</span>
                         <h3>A Gift to the World</h3>
-                        <p style="font-size: 1.1rem;">He established divine monuments like <strong>Prem Mandir</strong>
+                        <p class="timeline-desc">He established divine monuments like <strong>Prem Mandir</strong>
                             (Vrindavan) and Kirti
                             Mandir to preserve the glory of Bhakti for eternity.</p>
                     </div>
@@ -293,22 +289,20 @@
                 </div>
 
             </div>
-
-            </div>
-            <div style="text-align: center; margin-top: 60px; padding-bottom: 40px;">
+            <div class="section-cta">
                 <a href="maharajji.html" class="gold-btn big-btn">
                     <i class="fa-solid fa-book-open"></i> Read Full Biography
                 </a>
             </div>
 
         </section>
-        </section>
+       
 
-        <section id="deviji" class="legacy-section" style="background: linear-gradient(to bottom, #0a0a12, #1a1a2e);">
+        <section id="deviji" class="legacy-section deviji-section">
 
             <div class="guru-header">
                 <div class="guru-portrait-container">
-                    <div class="halo" style="animation-delay: 1s;"></div>
+                    <div class="halo halo-delay-1"></div>
                     <img src="images/didi_portrait3.png" alt="Sushri Bhuvneshwari Devi Ji" class="guru-portrait">
                 </div>
                 <h2 class="guru-title">Sushri Braj Bhuvneshwari Devi Ji</h2>
@@ -329,7 +323,7 @@
                     <div class="timeline-content glass-card">
                         <span class="year">1971</span>
                         <h3>Divine Appearance</h3>
-                        <p style="font-size: 1.1rem;">Appeared on <strong>September 22</strong> in Lucknow, UP. Born
+                        <p class="timeline-desc">Appeared on <strong>September 22</strong> in Lucknow, UP. Born
                             into a divine family where her
                             parents and siblings were already ardent devotees of Shri Maharaj Ji.</p>
                     </div>
@@ -341,7 +335,7 @@
                     <div class="timeline-content glass-card">
                         <span class="year">Early Life</span>
                         <h3>Education & Renunciation</h3>
-                        <p style="font-size: 1.1rem;">She excelled in academics, completing her M.A. and M.Phil.
+                        <p class="timeline-desc">She excelled in academics, completing her M.A. and M.Phil.
                             However, while pursuing her Ph.D.,
                             the color of <em>Sahaj Vairagya</em> (Natural Renunciation) took over, and she left it
                             midway to serve her Guru.</p>
@@ -354,7 +348,7 @@
                     <div class="timeline-content glass-card">
                         <span class="year">1998</span>
                         <h3>The Divine Command</h3>
-                        <p style="font-size: 1.1rem;">On the auspicious day of <strong>Diwali</strong>, Shri Maharaj Ji
+                        <p class="timeline-desc">On the auspicious day of <strong>Diwali</strong>, Shri Maharaj Ji
                             formally declared her as
                             his <em>Pracharika</em> and bestowed upon her the divine name <strong>"Braj
                                 Bhuvneshwari"</strong>.</p>
@@ -374,7 +368,7 @@
                     <div class="timeline-content glass-card">
                         <span class="year">Mission</span>
                         <h3>Kripalu Padma Trust</h3>
-                        <p style="font-size: 1.1rem;">Following Maharaj Ji's order, she established her first divine
+                        <p class="timeline-desc">Following Maharaj Ji's order, she established her first divine
                             center, <strong>Shri Kripalu
                                 Kunj</strong> in Bathinda (Punjab), creating a foundation for Satsang in the region.</p>
                     </div>
@@ -386,7 +380,7 @@
 
                     <div class="timeline-content glass-card">
                         <h3>The Himalayan Vision</h3>
-                        <p style="font-size: 1.1rem;">Expanding her mission, she established <strong>Radha Govind
+                        <p class="timeline-desc">Expanding her mission, she established <strong>Radha Govind
                                 Dham</strong> in Chail, a
                             sanctuary in the Himalayas for deep Sadhana and solitude.</p>
                     </div>
@@ -395,12 +389,12 @@
 
             </div>
 
-            <div style="text-align: center; margin-top: 60px; padding-bottom: 40px;">
+            <div class="section-cta">
                 <a href="deviji.html" class="gold-btn big-btn">
                     <i class="fa-solid fa-user-graduate"></i> Read Full Biography
                 </a>
             </div>
-            <div class="guidance-container">
+            <div class="guidance-container" id="guidance">
                 <div class="guidance-content">
                     <h3><i class="fa-solid fa-hands-praying"></i> Seek Divine Guidance</h3>
                     <p>
@@ -416,8 +410,91 @@
 
 
         </section>
+        <section id="monuments" class="panel dark-panel centered-panel">
+            <div class="panel-content column-layout">
+
+                <div class="section-header section-header-centered section-header-spacious">
+                    <h2 class="section-title">Our Centers</h2>
+                    <p class="section-subtitle">From the vibrant plains of Punjab to the silent peaks of the Himalayas.
+                    </p>
+                    <div class="gold-divider gold-divider-centered gold-divider-wide"></div>
+                </div>
+
+                <div class="monuments-grid">
+
+                    <div class="monument-card">
+                        <div class="monument-img">
+                            <img src="images/kripalu_kunj.jpeg" alt="Prem Mandir Vrindavan">
+                            <div class="overlay-location"><i class="fa-solid fa-location-dot"></i> Bathinda , Punjab
+                            </div>
+                        </div>
+                        <div class="monument-text">
+                            <h3>Shri Kripalu Kunj</h3>
+                            <p class="temple-desc">
+                                The Trust's foundational center and vibrant community hub in the heart of Punjab. It
+                                serves as a beacon of devotion, hosting weekly Satsangs, grand festival celebrations,
+                                and selfless service initiatives.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="monument-card">
+                        <div class="monument-img">
+                            <img src="images/BM.png" alt="Bhakti Mandir Mangarh">
+                            <div class="overlay-location"><i class="fa-solid fa-location-dot"></i> Chail , Himachal
+                                Pradesh
+                            </div>
+                        </div>
+                        <div class="monument-text">
+                            <h3>Radha Govind Dham</h3>
+                            <p class="temple-desc">
+                                A serene Himalayan sanctuary nestled at 6000ft, dedicated to deep silence and spiritual
+                                retreat. Far from the city's chaos, it provides a sacred environment for Sadhana Shivirs
+                                and Roop Dhyan meditation
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </section>
-        <section id="amenities" class="panel dark-panel centered-panel">
+
+        <section id="journey" class="photo-story">
+            <div class="photo-story-header">
+                <p class="subtitle">Journey in Glimpses</p>
+                <h2 class="section-title">A Living Tapestry of Seva & Satsang</h2>
+                <p class="section-subtitle">Swipe through moments of devotion, community, and grace.</p>
+            </div>
+
+            <div class="photo-story-controls" aria-label="Photo story controls">
+                <button class="photo-nav photo-prev" type="button" aria-label="Previous photos">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button class="photo-nav photo-next" type="button" aria-label="Next photos">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <div class="photo-story-track" aria-label="Photo story">
+                <figure class="story-card">
+                    <img src="images/glimpse_1.JPG" alt="Devotees singing kirtan together">
+                    <figcaption>Satsang that unites hearts in divine remembrance.</figcaption>
+                </figure>
+                <figure class="story-card">
+                    <img src="images/glimpse_2.JPG" alt="Devotees gathered for darshan">
+                    <figcaption>Darshan moments filled with gratitude and stillness.</figcaption>
+                </figure>
+                <figure class="story-card">
+                    <img src="images/glimpse_3.JPG" alt="Seva and service activities at the dham">
+                    <figcaption>Seva as worship—humble service in every action.</figcaption>
+                </figure>
+                <figure class="story-card">
+                    <img src="images/winter-min.jpg" alt="Himalayan landscape near the dham in winter">
+                    <figcaption>The Himalayas—silence that deepens sadhana.</figcaption>
+                </figure>
+            </div>
+        </section>
+        <!-- <section id="amenities" class="panel dark-panel centered-panel">
 
             <div class="panel-content column-layout">
 
@@ -565,9 +642,9 @@
                 </a>
             </div>
 
-        </section>
+        </section> -->
 
-        <section id="shivir" class="panel dark-panel shivir-section">
+        <!-- <section id="shivir" class="panel dark-panel shivir-section">
 
             <div class="shivir-container">
 
@@ -661,7 +738,7 @@
                 </div>
 
             </div>
-        </section>
+        </section> -->
         <!-- <section id="pravachan-teaser" class="panel dark-panel centered-panel">
             <div class="panel-content">
 
@@ -688,46 +765,96 @@
             </div>
         </section> -->
 
-        <!-- <section id="donate-cta" class="panel dark-panel centered-panel"
-            style="background: linear-gradient(to bottom, #000000, #0a0a12); border-top: 1px solid rgba(255,215,0,0.1);">
+        <section id="donation-impact" class="panel dark-panel centered-panel">
+            <div class="panel-content column-layout">
+                <div class="section-header section-header-centered section-header-spacious">
+                    <p class="subtitle">Where Your Offering Goes</p>
+                    <h2 class="section-title">A Transparent Gift of Seva</h2>
+                    <div class="gold-divider gold-divider-centered gold-divider-wide"></div>
+                </div>
+
+                <div class="impact-split">
+                    <div class="impact-visual">
+                        <div class="impact-track" aria-label="Donation allocation">
+                            <span class="impact-seg seg-1 glow" style="--pct: 40%;"></span>
+                            <span class="impact-seg seg-2 glow" style="--pct: 25%;"></span>
+                            <span class="impact-seg seg-3 glow" style="--pct: 20%;"></span>
+                            <span class="impact-seg seg-4 glow" style="--pct: 15%;"></span>
+                        </div>
+                        <p class="impact-note">Every offering fuels daily worship, seva, and the sanctuary’s long-term
+                            growth.</p>
+                    </div>
+
+                    <div class="impact-list">
+                        <div class="impact-item">
+                            <div class="impact-badge" data-percent="40">0%</div>
+                            <div class="impact-info">
+                                <div class="impact-icon"><i class="fa-solid fa-gopuram"></i></div>
+                                <h3>Temple & Ashram Operations</h3>
+                                <p>Daily worship, upkeep, and resident care.</p>
+                            </div>
+                        </div>
+                        <div class="impact-item">
+                            <div class="impact-badge" data-percent="25">0%</div>
+                            <div class="impact-info">
+                                <div class="impact-icon"><i class="fa-solid fa-bowl-food"></i></div>
+                                <h3>Prasadam & Community Seva</h3>
+                                <p>Food offerings and support for the community.</p>
+                            </div>
+                        </div>
+                        <div class="impact-item">
+                            <div class="impact-badge" data-percent="20">0%</div>
+                            <div class="impact-info">
+                                <div class="impact-icon"><i class="fa-solid fa-hands-praying"></i></div>
+                                <h3>Shivir & Sadhana Programs</h3>
+                                <p>Retreats, satsang, and spiritual education.</p>
+                            </div>
+                        </div>
+                        <div class="impact-item">
+                            <div class="impact-badge" data-percent="15">0%</div>
+                            <div class="impact-info">
+                                <div class="impact-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                                <h3>Infrastructure & Maintenance</h3>
+                                <p>Facilities, repairs, and long-term growth.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="donate-cta" class="panel dark-panel centered-panel">
 
             <div class="panel-content column-layout">
 
-                <div class="section-header" style="text-align: center;">
-                    <p class="subtitle"
-                        style="color: var(--gold); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px;">
+                <div class="section-header section-header-centered">
+                    <p class="subtitle donate-kicker">
                         The Gift of Seva</p>
-                    <h2 class="section-title" style="font-size: 3rem; margin-bottom: 20px;">Become a Pillar of Support
+                    <h2 class="section-title donate-title">Become a Pillar of Support
                     </h2>
-                    <div class="gold-divider"
-                        style="margin: 0 auto 30px auto; width: 100px; height: 3px; background: var(--gold);"></div>
+                    <div class="gold-divider gold-divider-centered gold-divider-xl"></div>
                 </div>
 
-                <p
-                    style="max-width: 800px; color: #ccc; font-size: 1.2rem; line-height: 1.8; margin-bottom: 40px; text-align: center;">
+                <p class="donate-desc">
                     "The wealth given in the service of God and Guru is the only true wealth." <br><br>
-                    Radha Govind Dham is rising solely through the love of devotees like you.
+                    Kripalu Padma Trust is rising solely through the love of devotees like you.
                     Your contribution is not just a donation; it is an <strong>offering</strong> that builds a sanctuary
                     for thousands of seekers,
                     feeds the hungry.
                 </p>
 
-                <a href="donate.html" class="gold-btn big-btn glow-effect"
-                    style="text-decoration: none; padding: 20px 50px; font-size: 1.2rem;">
+                <a href="donate.html" class="gold-btn big-btn glow-effect donate-button">
                     <i class="fa-solid fa-hand-holding-heart"></i> Make an Offering Now
                 </a>
 
-                <div
-                    style="margin-top: 30px; display: flex; gap: 40px; justify-content: center; color: #888; font-size: 0.9rem;">
+                <div class="donate-benefits">
 
-                    <span style="display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-bolt"
-                            style="color: var(--gold);"></i> Instant Receipt</span>
-                    <span style="display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-lock"
-                            style="color: var(--gold);"></i> Secure Payment</span>
+                    <span class="benefit-item"><i class="fa-solid fa-bolt"></i> Instant Receipt</span>
+                    <span class="benefit-item"><i class="fa-solid fa-lock"></i> Secure Payment</span>
                 </div>
 
             </div>
-        </section> -->
+        </section>
 
 
         <div id="lightbox" class="lightbox">
@@ -741,7 +868,7 @@
                 <div class="gallery-header">
                     <p class="subtitle">Transparency & Joy</p>
                     <h2 class="section-title">Recent Divine Activities</h2>
-                    <div class="gold-divider" style="margin: 20px auto;"></div>
+                    <div class="gold-divider gold-divider-centered"></div>
                 </div>
 
                 <div class="updates-grid">
@@ -786,6 +913,51 @@
                     </div>
 
                 </div>
+            </div>
+        </section>
+
+        <section id="trust-timeline" class="panel dark-panel centered-panel">
+            <div class="panel-content column-layout">
+                <div class="section-header section-header-centered section-header-spacious">
+                    <p class="subtitle">Trust Timeline</p>
+                    <h2 class="section-title">Highlights Since 2016</h2>
+                    <div class="gold-divider gold-divider-centered gold-divider-wide"></div>
+                </div>
+
+                <div class="mini-timeline">
+                    <div class="mini-timeline-item">
+                        <span class="mini-year">2016</span>
+                        <div class="mini-timeline-media">
+                            <img src="images/glimpse_1.JPG" alt="Satsang outreach">
+                        </div>
+                        <p>Expanded satsang outreach across North India and strengthened seva initiatives.</p>
+                    </div>
+                    <div class="mini-timeline-item">
+                        <span class="mini-year">2019</span>
+                        <div class="mini-timeline-media">
+                            <img src="images/kripalu_kunj.jpeg" alt="Facility improvements">
+                        </div>
+                        <p>Major facility improvements at Shri Kripalu Kunj to support growing devotees.</p>
+                    </div>
+                    <div class="mini-timeline-item">
+                        <span class="mini-year">2022</span>
+                        <div class="mini-timeline-media">
+                            <img src="images/IMG_9284-min.JPG" alt="Youth sadhana programs">
+                        </div>
+                        <p>Dedicated programs for youth sadhana and community service momentum.</p>
+                    </div>
+                    <div class="mini-timeline-item">
+                        <span class="mini-year">2025</span>
+                        <div class="mini-timeline-media">
+                            <img src="images/winter-min.jpg" alt="Winter seva drives">
+                        </div>
+                        <p>Expanded Himalayan retreat activities and winter seva drives.</p>
+                    </div>
+                </div>
+
+                <a href="trust-work.html" class="gold-btn big-btn">
+                    <i class="fa-solid fa-timeline"></i> View Full Work Timeline (2016–Present)
+                </a>
             </div>
         </section>
 
@@ -838,16 +1010,15 @@
             <div class="footer-content">
 
                 <div class="footer-col brand-col">
-                    <h3 class="footer-logo">Radha Govind Dham</h3>
-                    <p>A sanctuary of divine love and meditation in the Himalayas, inspired by Jagadguru Shri Kripalu Ji
-                        Maharaj.</p>
+                    <h3 class="footer-logo">Kripalu Padma Trust</h3>
+
                     <div class="social-icons">
-                        <a href="https://www.youtube.com/@ShreeKripaluKunj" class="social-btn"><i
-                                class="fa-brands fa-youtube"></i></a>
-                        <a href="https://www.facebook.com/ShreeKripaluKunj/" class="social-btn"><i
-                                class="fa-brands fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/shreekripalukunj/" class="social-btn"><i
-                                class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@ShreeKripaluKunj" class="social-btn"
+                            aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/ShreeKripaluKunj/" class="social-btn"
+                            aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/shreekripalukunj/" class="social-btn"
+                            aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
                     </div>
                 </div>
 
@@ -857,9 +1028,9 @@
                     <ul>
                         <li><a href="#kripalu">The Inspiration</a></li>
                         <li><a href="#deviji">The Founder</a></li>
-                        <li><a href="#amenities">Ashram Amenities</a></li>
+                        <li><a href="#monuments">Our Centers</a></li>
                         <!-- <li><a href="#gallery">Photo Gallery</a></li> -->
-                        <li><a href="#shivir">Sadhna Shivir</a></li>
+                        <li><a href="#guidance">Personal Guidance</a></li>
                     </ul>
                 </div>
 
@@ -868,8 +1039,10 @@
                     <p><i class="fa-solid fa-location-dot"></i> Radha Govind Dham , Nagali<br> Chail , Solan ,Himachal
                         Pradesh, India
                     </p>
+                    <p><i class="fa-solid fa-location-dot"></i>Kripalu Kunj <br> Bathinda, Punjab , India
+                    </p>
                     <p><i class="fa-solid fa-phone"></i> +91 97808 81008</p>
-                    <p><i class="fa-solid fa-envelope"></i> kripalurgdham@gmail.com</p>
+                    <p><i class="fa-solid fa-envelope"></i> kripaluPadmaTrust@gmail.com</p>
                 </div>
 
                 <div class="footer-col newsletter-col">
@@ -896,7 +1069,7 @@
                 </div>
 
 
-                <p>Designed with <i class="fa-solid fa-heart" style="color: red;"></i> for Shri Maharaj Ji .</p>
+                <p>Designed with <i class="fa-solid fa-heart heart-icon"></i> for Shri Maharaj Ji .</p>
             </div>
 
         </footer>
@@ -904,11 +1077,13 @@
     </main>
     <div class="modal-overlay" id="darshan-modal">
         <div class="modal-content">
-            <span class="close-modal" onclick="closeDarshanModal()">&times;</span>
+            <button class="close-modal" type="button" aria-label="Close dialog" onclick="closeDarshanModal()">
+                &times;
+            </button>
 
             <div class="modal-header">
                 <h2>Request a Meeting</h2>
-                <p>Hari Bol! Please share your details to schedule a Darshan.</p>
+                <p>Radhey Radhey! Please share your details to schedule a Darshan.</p>
             </div>
 
             <form onsubmit="sendDarshanRequest(event)">
@@ -938,38 +1113,24 @@
                     <textarea id="d-msg" rows="3" placeholder="Jai Shree Radhey..."></textarea>
                 </div>
 
-                <button type="submit" class="gold-btn" style="width: 100%;">Send Request on WhatsApp</button>
+                <button type="submit" class="gold-btn full-width">Send Request on WhatsApp</button>
             </form>
         </div>
+    </div>
+
+    <a class="whatsapp-float" href="https://wa.me/919780881008" target="_blank" rel="noopener"
+        aria-label="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <div class="sticky-cta" role="region" aria-label="Quick actions">
+        <a href="donate.html" class="sticky-donate">Donate</a>
+        <a href="#guidance" class="sticky-guidance">Request Guidance</a>
     </div>
 
 
 
     <script src="script.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Create an observer to watch the Future Teaser section
-            let observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // User has scrolled to the 3D section. Load the script NOW.
-                        let script = document.createElement('script');
-                        script.type = 'module';
-                        script.src = 'https://unpkg.com/@splinetool/viewer@0.9.490/build/spline-viewer.js';
-                        document.body.appendChild(script);
-
-                        // Stop watching
-                        observer.unobserve(entry.target);
-                        console.log("3D Viewer Loaded");
-                    }
-                });
-            });
-
-            // Target the section ID where the 3D viewer lives
-            let target = document.querySelector('#future-teaser');
-            if (target) observer.observe(target);
-        });
-    </script>
     <audio id="intro-audio" src="intro_audio.mp3" preload="auto"></audio>
 </body>
 

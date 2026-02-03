@@ -1,4 +1,7 @@
-gsap.registerPlugin(ScrollTrigger);
+const hasGsap = typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined';
+if (hasGsap) {
+    gsap.registerPlugin(ScrollTrigger);
+}
 
 // =========================================
 // 1. INTRO SEQUENCE (AUTO FADE)
@@ -67,10 +70,12 @@ if (menuBtn && menuOverlay) {
     // Open Menu
     menuBtn.addEventListener('click', () => {
         menuOverlay.classList.add('active');
-        gsap.fromTo(".nav-item",
-            { y: 50, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, delay: 0.2 }
-        );
+        if (hasGsap) {
+            gsap.fromTo(".nav-item",
+                { y: 50, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, delay: 0.2 }
+            );
+        }
     });
 
     // Close Menu
@@ -90,33 +95,62 @@ if (menuBtn && menuOverlay) {
 // 3. ANIMATIONS (ScrollTrigger)
 // =========================================
 
-// Fade In Panels
-gsap.utils.toArray('.panel').forEach(section => {
-    try {
-        const content = section.querySelector('.panel-content');
-        if (content) {
-            gsap.from(content, {
-                scrollTrigger: { trigger: section, start: "top 70%" },
-                y: 50, opacity: 0, duration: 1
-            });
-        }
-    } catch (e) { console.log("Section animation skipped", e); }
-});
+if (hasGsap) {
+    // Fade In Panels
+    gsap.utils.toArray('.panel').forEach(section => {
+        try {
+            const content = section.querySelector('.panel-content');
+            if (content) {
+                gsap.from(content, {
+                    scrollTrigger: { trigger: section, start: "top 70%" },
+                    y: 50, opacity: 0, duration: 1
+                });
+            }
+        } catch (e) { console.log("Section animation skipped", e); }
+    });
+
+    // Impact Percent Animation
+    gsap.utils.toArray('.impact-badge').forEach((badge) => {
+        const target = parseInt(badge.getAttribute('data-percent'), 10);
+        if (Number.isNaN(target)) return;
+
+        ScrollTrigger.create({
+            trigger: badge,
+            start: "top 80%",
+            once: true,
+            onEnter: () => {
+                gsap.fromTo(badge,
+                    { innerText: 0 },
+                    {
+                        innerText: target,
+                        duration: 1.2,
+                        snap: { innerText: 1 },
+                        onUpdate: function () {
+                            badge.innerText = `${Math.round(badge.innerText)}%`;
+                        }
+                    }
+                );
+            }
+        });
+    });
+}
 
 // Timeline Animation
-gsap.utils.toArray('.timeline-item').forEach((item, i) => {
-    gsap.from(item, {
-        scrollTrigger: {
-            trigger: item,
-            start: "top 85%",
-            end: "top 20%",
-            toggleActions: "play none none reverse"
-        },
-        opacity: 0,
-        x: i % 2 === 0 ? -50 : 50,
-        duration: 1
+if (hasGsap) {
+    gsap.utils.toArray('.timeline-item').forEach((item, i) => {
+        gsap.from(item, {
+            scrollTrigger: {
+                trigger: item,
+                start: "top 85%",
+                end: "top 20%",
+                toggleActions: "play none none reverse"
+            },
+            opacity: 0,
+            x: i % 2 === 0 ? -50 : 50,
+            duration: 1
+        });
     });
-});
+}
 
 // =========================================
 // 4. GALLERY LIGHTBOX
@@ -237,6 +271,8 @@ function setAmount(val) {
 if (donateForm) {
     // Real-time Auto Capitalize
     const panInput = document.getElementById('donate-pan');
+    const panUpload = document.getElementById('pan-upload');
+    const panUploadError = document.getElementById('pan-upload-error');
     if (panInput) {
         panInput.addEventListener('input', function () {
             this.value = this.value.toUpperCase();
@@ -257,6 +293,29 @@ if (donateForm) {
         const panValue = panInput ? panInput.value.trim().toUpperCase() : "";
         const panError = document.getElementById('pan-error');
 
+        if (panUploadError) panUploadError.style.display = "none";
+
+        if (panUpload && panUpload.files.length === 0) {
+            if (panUploadError) {
+                panUploadError.innerText = "Please upload a valid PAN card file.";
+                panUploadError.style.display = "block";
+            }
+            return;
+        }
+
+        if (panUpload && panUpload.files.length > 0) {
+            const file = panUpload.files[0];
+            const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
+            const maxSizeMb = 5;
+            if (!allowedTypes.includes(file.type) || file.size > maxSizeMb * 1024 * 1024) {
+                if (panUploadError) {
+                    panUploadError.innerText = "Only JPG, PNG, or PDF up to 5MB is allowed.";
+                    panUploadError.style.display = "block";
+                }
+                return;
+            }
+        }
+
         if (!amount || amount <= 0) {
             alert("Please enter a valid amount");
             return;
@@ -265,16 +324,21 @@ if (donateForm) {
         // STRICT Regex (4th letter P)
         const panRegex = /^[A-Z]{3}P[A-Z]{1}[0-9]{4}[A-Z]{1}$/;
 
-        if (panValue !== "") {
-            if (!panRegex.test(panValue)) {
-                panInput.style.borderColor = "#ff6b6b";
-                panError.style.display = "block";
-                panError.innerText = "Invalid Personal PAN (4th letter must be P).";
-                return;
-            } else {
-                panInput.style.borderColor = "rgba(255, 255, 255, 0.2)";
-                panError.style.display = "none";
-            }
+        if (panValue === "") {
+            panInput.style.borderColor = "#ff6b6b";
+            panError.style.display = "block";
+            panError.innerText = "PAN is required for the donation receipt.";
+            return;
+        }
+
+        if (!panRegex.test(panValue)) {
+            panInput.style.borderColor = "#ff6b6b";
+            panError.style.display = "block";
+            panError.innerText = "Invalid Personal PAN (4th letter must be P).";
+            return;
+        } else {
+            panInput.style.borderColor = "rgba(255, 255, 255, 0.2)";
+            panError.style.display = "none";
         }
 
         // Razorpay Options
@@ -513,6 +577,57 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    const photoTrack = document.querySelector('.photo-story-track');
+    const photoPrev = document.querySelector('.photo-prev');
+    const photoNext = document.querySelector('.photo-next');
+
+    if (photoTrack) {
+        const scrollByAmount = () => Math.min(photoTrack.clientWidth * 0.8, 520);
+
+        const scrollTrack = (direction) => {
+            photoTrack.scrollBy({
+                left: direction * scrollByAmount(),
+                behavior: 'smooth'
+            });
+
+            setTimeout(() => {
+                const atEnd = photoTrack.scrollLeft + photoTrack.clientWidth >= photoTrack.scrollWidth - 5;
+                if (direction > 0 && atEnd) {
+                    photoTrack.scrollTo({ left: 0, behavior: 'smooth' });
+                }
+            }, 450);
+        };
+
+        if (photoPrev) {
+            photoPrev.addEventListener('click', () => scrollTrack(-1));
+        }
+        if (photoNext) {
+            photoNext.addEventListener('click', () => scrollTrack(1));
+        }
+
+        let autoScroll = setInterval(() => scrollTrack(1), 3500);
+
+        const pauseAuto = () => {
+            if (autoScroll) {
+                clearInterval(autoScroll);
+                autoScroll = null;
+            }
+        };
+
+        const resumeAuto = () => {
+            if (!autoScroll) {
+                autoScroll = setInterval(() => scrollTrack(1), 3500);
+            }
+        };
+
+        photoTrack.addEventListener('mouseenter', pauseAuto);
+        photoTrack.addEventListener('mouseleave', resumeAuto);
+        photoTrack.addEventListener('focusin', pauseAuto);
+        photoTrack.addEventListener('focusout', resumeAuto);
+        photoTrack.addEventListener('touchstart', pauseAuto, { passive: true });
+        photoTrack.addEventListener('touchend', resumeAuto, { passive: true });
+    }
 });
 
 function closeMenu() {
@@ -525,7 +640,7 @@ function closeMenu() {
 // =========================================
 // 12. SMOOTH SCROLL (LENIS)
 // =========================================
-if (typeof Lenis !== 'undefined') {
+if (typeof Lenis !== 'undefined' && hasGsap) {
     const lenis = new Lenis({
         duration: 1.2,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),

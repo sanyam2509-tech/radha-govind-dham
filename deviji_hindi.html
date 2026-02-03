@@ -7,7 +7,7 @@
     <title>सुश्री ब्रज भुवनेश्वरी देवी जी | जीवन परिचय</title>
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@400;600;700&family=Yatra+One&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@400;600;700&family=Hind:wght@400;500;600&family=Tiro+Devanagari+Hindi:wght@400;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -20,13 +20,16 @@
         }
 
         /* Hindi Font Overrides */
-        h1,
-        h2,
-        h3,
-        .guru-title,
-        .section-title,
-        .back-btn {
-            font-family: 'Yatra One', cursive !important;
+        body.lang-hi {
+            font-family: 'Hind', sans-serif;
+        }
+
+        body.lang-hi h1,
+        body.lang-hi h2,
+        body.lang-hi h3,
+        body.lang-hi .guru-title,
+        body.lang-hi .section-title {
+            font-family: 'Tiro Devanagari Hindi', serif;
         }
 
         :root {
@@ -272,14 +275,77 @@
     </style>
 </head>
 
-<body>
+<body class="lang-hi">
+    <div class="global-bg"></div>
+
+    <nav class="glass-nav">
+        <div class="logo">कृपालु पद्मा ट्रस्ट</div>
+
+        <div class="nav-actions">
+            <a href="deviji.html" class="lang-btn">ENG</a>
+            <button class="menu-btn" type="button" aria-label="मेनू खोलें">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div id="menu-overlay">
+        <button class="close-menu" type="button" aria-label="मेनू बंद करें">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="menu-content">
+            <div class="menu-left">
+                <img id="menu-preview-img" src="images/logo.jpg" alt="Preview">
+                <p class="menu-quote" id="menu-caption">"दिव्य बाँसुरी की पुकार।"</p>
+            </div>
+
+            <ul class="nav-links">
+                <li>
+                    <a href="hindi.html" class="nav-item" data-img="images/logo.jpg"
+                        data-text='"दिव्य बाँसुरी की पुकार।"'>
+                        मुख्य पृष्ठ <span class="sub-text">आरम्भ</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="maharajji_hindi.html" class="nav-item" data-img="images/maharaj_potrait2.jpg"
+                        data-text='"पंचम मूल जगद्गुरु"'>
+                        प्रेरणा स्रोत <span class="sub-text">श्री महाराज जी</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="deviji_hindi.html" class="nav-item" data-img="images/founder.JPG"
+                        data-text='"कृपा की प्रतिमूर्ति"'>
+                        संस्थापक <span class="sub-text">सुश्री देवी जी</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="hindi.html#monuments" class="nav-item" data-img="images/chail_view.JPG"
+                        data-text='"शांति का धाम"'>
+                        हमारा धाम <span class="sub-text">हमारे केंद्र</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="hindi.html#guidance" class="nav-item" data-img="images/join_us.jpg"
+                        data-text='"जीवन रूपांतरण"'>
+                        मार्गदर्शन <span class="sub-text">व्यक्तिगत भेंट</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="menu-footer">
+            <a href="https://www.youtube.com/@ShreeKripaluKunj">YouTube</a>
+            <a href="https://www.facebook.com/ShreeKripaluKunj/">Facebook</a>
+            <a href="https://www.instagram.com/shreekripalukunj/">Instagram</a>
+        </div>
+    </div>
     <div id="particle-container"></div>
 
     <div class="divine-frame">
         <img src="images/didi_mji.png" class="guard-img right-guard" alt="H.H. Raseshwari Devi Ji">
     </div>
 
-    <a href="hindi.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> मुख्य पृष्ठ पर लौटें</a>
 
     <header class="bio-header">
         <div class="bio-title-card">
@@ -394,11 +460,76 @@
         </div>
     </section>
 
-    <footer style="text-align: center; padding: 50px; border-top: 1px solid #333; color: #666;">
-        <p>© 2026 राधा गोविंद धाम। सर्वाधिकार सुरक्षित।</p>
-        <p>जय श्री राधे</p>
+    
+
+    <footer id="site-footer">
+        <div class="footer-content">
+            <div class="footer-col brand-col">
+                <h3 class="footer-logo">कृपालु पद्मा ट्रस्ट</h3>
+                <div class="social-icons">
+                    <a href="https://www.youtube.com/@ShreeKripaluKunj" class="social-btn" aria-label="YouTube"><i
+                            class="fa-brands fa-youtube"></i></a>
+                    <a href="https://www.facebook.com/ShreeKripaluKunj/" class="social-btn" aria-label="Facebook"><i
+                            class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/shreekripalukunj/" class="social-btn"
+                        aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>त्वरित लिंक</h4>
+                <ul>
+                    <li><a href="hindi.html#kripalu">प्रेरणा स्रोत</a></li>
+                    <li><a href="hindi.html#deviji">संस्थापक</a></li>
+                    <li><a href="hindi.html#monuments">हमारे केंद्र</a></li>
+                    <li><a href="hindi.html#guidance">मार्गदर्शन</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>संपर्क करें</h4>
+                <p><i class="fa-solid fa-location-dot"></i> राधा गोविंद धाम , नागली<br> चायल , सोलन , हिमाचल प्रदेश,
+                    भारत</p>
+                <p><i class="fa-solid fa-location-dot"></i>कृपालु कुंज <br> बठिंडा, पंजाब , भारत</p>
+                <p><i class="fa-solid fa-phone"></i> +91 97808 81008</p>
+                <p><i class="fa-solid fa-envelope"></i> kripaluPadmaTrust@gmail.com</p>
+            </div>
+
+            <div class="footer-col newsletter-col">
+                <h4>जुड़े रहें</h4>
+                <p>आगामी शिविरों और दैनिक प्रेरणा के अपडेट प्राप्त करें।</p>
+                <form action="https://api.web3forms.com/submit" method="POST" class="newsletter-form">
+                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                    <input type="email" name="email" placeholder="आपका ईमेल" required>
+                    <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 कृपालु पद्मा ट्रस्ट. सर्वाधिकार सुरक्षित.</p>
+            <div class="legal-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <span class="separator">|</span>
+                <a href="terms.html">Terms & Conditions</a>
+                <span class="separator">|</span>
+                <a href="refund.html">Refund Policy</a>
+            </div>
+            <p>Designed with <i class="fa-solid fa-heart heart-icon"></i> for Shri Maharaj Ji .</p>
+        </div>
     </footer>
 
+    <a class="whatsapp-float" href="https://wa.me/919780881008" target="_blank" rel="noopener"
+        aria-label="WhatsApp पर चैट करें">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <div class="sticky-cta" role="region" aria-label="त्वरित विकल्प">
+        <a href="donate_hindi.html" class="sticky-donate">दान करें</a>
+        <a href="hindi.html#guidance" class="sticky-guidance">मार्गदर्शन</a>
+    </div>
+
+    <script src="script.js"></script>
     <script>
         // 1. PARTICLES GENERATOR
         function initParticles() {
